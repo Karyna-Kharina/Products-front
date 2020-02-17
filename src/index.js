@@ -1,5 +1,5 @@
 import React from "react";
 import {render} from "react-dom";
-import App from "./components/App";
+import ProductList from "./react/auth/SingUp"
 
-render(<App/>, document.getElementById('root'));
+render(<ProductList/>, document.getElementById('root'));
