@@ -11,11 +11,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-} from '@material-ui/pickers';
+import {KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "./Validation";
 
 const styles = theme => ({
     paper: {
@@ -43,50 +41,49 @@ class SignUp extends Component {
         super(props);
 
         this.state = {
-            lastName: '',
             firstName: '',
             firstNameValid: true,
-            emailValid: true,
+            lastName: '',
+            lastNameValid: true,
             email: '',
+            emailValid: true,
             phoneNumber: '',
+            phoneNumberValid: true,
             password: '',
+            passwordValid: true,
+            checkedBox: false,
             selectedDate: new Date()
         }
     }
 
-    validateName(name) {
-        const pattern = /^[A-Za-z]+$/;
-        return pattern.test(name);
-    }
-
     onChangeFirstName(firstName) {
         console.log("onChangeFirstName()", firstName);
-        this.setState({firstName: firstName, firstNameValid: this.validateName(firstName)});
+        this.setState({firstName: firstName, firstNameValid: isValidName(firstName)});
     }
 
     onChangeLastName(lastName) {
         console.log("onChangeLastName()", lastName);
-        this.setState({lastName: lastName});
+        this.setState({lastName: lastName, lastNameValid: isValidName(lastName)});
     }
 
     onChangeEmail(email) {
-        function validateEmail(email) {
-            const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return pattern.test(String(email).toLowerCase());
-        }
-
         console.log("onChangeEmail()", email);
-        this.setState({email: email, emailValid: validateEmail(email)});
+        this.setState({email: email, emailValid: isValidEmail(email)});
     }
 
     onChangePhone(phone) {
         console.log("onChangePhone()", phone);
-        this.setState({phone: phone});
+        this.setState({phoneNumber: phone, phoneNumberValid: isValidPhoneNumber(phone)});
     }
 
     onChangePassword(password) {
         console.log("onChangePassword()", password);
-        this.setState({password: password});
+        this.setState({password: password, passwordValid: isValidPassword(password)});
+    }
+
+    onChangeCheckbox(checkbox) {
+        console.log("onChangeCheckbox()", checkbox);
+        this.setState({checkedBox: checkbox});
     }
 
     getState() {
@@ -102,7 +99,31 @@ class SignUp extends Component {
     render() {
 
         const {classes} = this.props;
-        const {selectedDate, firstNameValid, emailValid} = this.state;
+
+        const {
+            selectedDate,
+            firstNameValid,
+            lastNameValid,
+            emailValid,
+            phoneNumberValid,
+            passwordValid,
+        } = this.state;
+
+        const isDisabledButton = () => {
+
+            const {firstName, lastName, email, phoneNumber, password, checkedBox} = this.state;
+            const res = !(
+                isValidName(firstName)
+                && isValidName(lastName)
+                && isValidEmail(email)
+                && isValidPhoneNumber(phoneNumber)
+                && isValidPassword(password)
+                && checkedBox
+            );
+
+            console.log("RESULT: ", res);
+            return res;
+        };
 
         return (
             <Container component="main" maxWidth="xs">
@@ -127,8 +148,8 @@ class SignUp extends Component {
                                     name="firstName"
                                     variant="outlined"
                                     required
-                                    error={!firstNameValid}
                                     fullWidth
+                                    error={!firstNameValid}
                                     id="firstName"
                                     label="First Name"
                                     autoFocus
@@ -141,6 +162,7 @@ class SignUp extends Component {
                                     variant="outlined"
                                     required
                                     fullWidth
+                                    error={!lastNameValid}
                                     id="lastName"
                                     label="Last Name"
                                     name="lastName"
@@ -154,8 +176,6 @@ class SignUp extends Component {
                                     <KeyboardDatePicker
                                         style={{"margin-left": 10, "margin-right": 10}}
                                         fullWidth
-                                        disableToolbart
-                                        variant="inline"
                                         format="MM/dd/yyyy"
                                         margin="normal"
                                         id="dpi"
@@ -188,6 +208,7 @@ class SignUp extends Component {
                                     variant="outlined"
                                     required
                                     fullWidth
+                                    error={!phoneNumberValid}
                                     id="phoneNumber"
                                     label="Phone Number"
                                     name="phoneNumber"
@@ -201,6 +222,7 @@ class SignUp extends Component {
                                     variant="outlined"
                                     required
                                     fullWidth
+                                    error={!passwordValid}
                                     name="password"
                                     label="Password"
                                     type="password"
@@ -212,7 +234,13 @@ class SignUp extends Component {
 
                             <Grid item xs={12}>
                                 <FormControlLabel
-                                    control={<Checkbox value="allowExtraEmails" color="primary"/>}
+                                    control={
+                                        <Checkbox
+                                            onChange={(e) => this.onChangeCheckbox(e.target.checked)}
+                                            // checked={checkedBox}
+                                            color="primary"
+                                        />
+                                    }
                                     label="I want to receive inspiration, marketing promotions and updates via email."
                                 />
                             </Grid>
@@ -220,6 +248,7 @@ class SignUp extends Component {
 
                         <Button
                             fullWidth
+                            disabled={isDisabledButton()}
                             variant="contained"
                             color="primary"
                             className={classes.submit}
