@@ -15,7 +15,7 @@ import {KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers
 import DateFnsUtils from '@date-io/date-fns';
 import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "./Validation";
 
-const styles = theme => ({
+export const styles = theme => ({
     paper: {
         marginTop: theme.spacing(8),
         display: 'flex',
@@ -126,7 +126,7 @@ class SignUp extends Component {
         };
 
         return (
-            <Container component="main" maxWidth="xs">
+            <Container component="main" maxWidth="xs" >
                 <CssBaseline/>
 
                 <div className={classes.paper}>
