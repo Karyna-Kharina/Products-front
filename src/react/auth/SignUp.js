@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
@@ -11,9 +10,15 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
+import {MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "./Validation";
+import Email from "./components/Email";
+import FirstName from "./components/FirstName";
+import LastName from "./components/LastName";
+import Password from "./components/Password";
+import PhoneNumber from "./components/PhoneNumber";
+import DateComponent from "./components/Date";
 
 export const styles = theme => ({
     paper: {
@@ -51,7 +56,7 @@ class SignUp extends Component {
             phoneNumberValid: true,
             password: '',
             passwordValid: true,
-            checkedBox: false,
+            isCheckedBox: false,
             selectedDate: new Date()
         }
     }
@@ -70,6 +75,11 @@ class SignUp extends Component {
         console.log("onChangeEmail()", email);
         this.setState({email: email, emailValid: isValidEmail(email)});
     }
+
+    onChangeDate(date) {
+        console.log("onChangeDate()", date);
+        this.setState({selectedDate: date});
+    };
 
     onChangePhone(phone) {
         console.log("onChangePhone()", phone);
@@ -90,15 +100,10 @@ class SignUp extends Component {
         console.log(this.state);
     }
 
-    handleDateChange = date => {
-        this.setState({
-            selectedDate: date
-        });
-    };
-
     render() {
 
         const {classes} = this.props;
+        const {firstName, lastName, email, phoneNumber, password, checkedBox} = this.state;
 
         const {
             selectedDate,
@@ -111,7 +116,6 @@ class SignUp extends Component {
 
         const isDisabledButton = () => {
 
-            const {firstName, lastName, email, phoneNumber, password, checkedBox} = this.state;
             const res = !(
                 isValidName(firstName)
                 && isValidName(lastName)
@@ -126,7 +130,7 @@ class SignUp extends Component {
         };
 
         return (
-            <Container component="main" maxWidth="xs" >
+            <Container component="main" maxWidth="xs">
                 <CssBaseline/>
 
                 <div className={classes.paper}>
@@ -143,92 +147,51 @@ class SignUp extends Component {
 
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                                <TextField
-                                    autoComplete="fname"
-                                    name="firstName"
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    error={!firstNameValid}
-                                    id="firstName"
-                                    label="First Name"
-                                    autoFocus
-                                    onChange={(e) => this.onChangeFirstName(e.target.value)}
+                                <FirstName
+                                    firstName={firstName}
+                                    firstNameValid={firstNameValid}
+                                    onChangeFirstName={(e) => this.onChangeFirstName(e.target.value)}
                                 />
                             </Grid>
 
                             <Grid item xs={12} sm={6}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    error={!lastNameValid}
-                                    id="lastName"
-                                    label="Last Name"
-                                    name="lastName"
-                                    autoComplete="lname"
-                                    onChange={(e) => this.onChangeLastName(e.target.value)}
+                                <LastName
+                                    lastName={lastName}
+                                    lastNameValid={lastNameValid}
+                                    onChangeLastName={(e) => this.onChangeLastName(e.target.value)}
                                 />
                             </Grid>
 
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                 <Grid container justify="space-around">
-                                    <KeyboardDatePicker
-                                        style={{"margin-left": 10, "margin-right": 10}}
-                                        fullWidth
-                                        format="MM/dd/yyyy"
-                                        margin="normal"
-                                        id="dpi"
-                                        label="Date"
-                                        value={selectedDate}
-                                        onChange={this.handleDateChange}
-                                        KeyboardButtonProps={{
-                                            'aria-label': 'change date',
-                                        }}
+                                    <DateComponent
+                                        selectedDate={selectedDate}
+                                        onChangeDate={(e) => this.onChangeDate(e)}
                                     />
                                 </Grid>
                             </MuiPickersUtilsProvider>
 
                             <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    error={!emailValid}
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
-                                    onChange={(e) => this.onChangeEmail(e.target.value)}
+                                <Email
+                                    emailValid={emailValid}
+                                    email={email}
+                                    onChangeEmail={(e) => this.onChangeEmail(e.target.value)}
                                 />
                             </Grid>
 
                             <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    error={!phoneNumberValid}
-                                    id="phoneNumber"
-                                    label="Phone Number"
-                                    name="phoneNumber"
-                                    autoComplete="phone"
-                                    onChange={(e) => this.onChangePhone(e.target.value)}
+                                <PhoneNumber
+                                    phoneNumber={phoneNumber}
+                                    phoneNumberValid={phoneNumberValid}
+                                    onChangePhone={(e) => this.onChangePhone(e.target.value)}
                                 />
                             </Grid>
 
                             <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    error={!passwordValid}
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="current-password"
-                                    onChange={(e) => this.onChangePassword(e.target.value)}
+                                <Password
+                                    password={password}
+                                    passwordValid={passwordValid}
+                                    onChangePassword={(e) => this.onChangePassword(e.target.value)}
                                 />
                             </Grid>
 
@@ -237,7 +200,6 @@ class SignUp extends Component {
                                     control={
                                         <Checkbox
                                             onChange={(e) => this.onChangeCheckbox(e.target.checked)}
-                                            // checked={checkedBox}
                                             color="primary"
                                         />
                                     }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Container, Grid, TextField} from "@material-ui/core";
+import {Container, Grid} from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Avatar from "@material-ui/core/Avatar";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {styles} from "./SignUp";
 import {isValidEmail, isValidPassword} from "./Validation";
+import Email from "./components/Email";
+import Password from "./components/Password";
 
 
 class SignIn extends Component {
@@ -60,32 +62,18 @@ class SignIn extends Component {
                     <form className={classes.form} noValidate>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <TextField
-                                    autoComplete="email"
-                                    name="email"
-                                    id="email"
-                                    label="Email Address"
-                                    required    // Email *
-                                    fullWidth
-                                    autoFocus
-                                    variant="outlined"
-                                    error={!emailValid}
-                                    onChange={(e) => this.onChangeEmail(e.target.value)}
+                                <Email
+                                    email={email}
+                                    emailValid={emailValid}
+                                    onChangeEmail={(e) => this.onChangeEmail(e.target.value)}
                                 />
                             </Grid>
 
                             <Grid item xs={12}>
-                                <TextField
-                                    autoComplete="password"
-                                    name="password"
-                                    id="password"
-                                    label="Password"
-                                    required
-                                    fullWidth
-                                    autoFocus
-                                    variant="outlined"
-                                    error={!passwordValid}
-                                    onChange={(e) => this.onChangePassword(e.target.value)}
+                                <Password
+                                    password={password}
+                                    passwordValid={passwordValid}
+                                    onChangePassword={(e) => this.onChangePassword(e.target.value)}
                                 />
                             </Grid>
                         </Grid>
