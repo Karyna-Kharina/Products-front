@@ -1,44 +1,23 @@
 import React, {Component} from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import {
+    Avatar,
+    Button,
+    Checkbox,
+    Container,
+    CssBaseline,
+    FormControlLabel,
+    Grid,
+    Link,
+    Typography
+} from '@material-ui/core';
 import {MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "./Validation";
-import Email from "./components/Email";
-import FirstName from "./components/FirstName";
-import LastName from "./components/LastName";
-import Password from "./components/Password";
-import PhoneNumber from "./components/PhoneNumber";
-import DateComponent from "./components/Date";
+import {DateComponent, Email, FirstName, LastName, Password, PhoneNumber} from "./components";
+import {withStyles} from '@material-ui/core/styles';
+import {styles} from "./AuthStyle";
 
-export const styles = theme => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: "pink",
-    },
-    form: {
-        width: '100%',
-        marginTop: theme.spacing(3),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-});
 
 class SignUp extends Component {
 

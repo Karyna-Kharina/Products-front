@@ -1,14 +1,10 @@
 import React, {Component} from "react";
-import {Container, Grid} from "@material-ui/core";
-import withStyles from "@material-ui/core/styles/withStyles";
-import Avatar from "@material-ui/core/Avatar";
+import {Avatar, Button, Container, Grid, Typography} from "@material-ui/core";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import {styles} from "./SignUp";
 import {isValidEmail, isValidPassword} from "./Validation";
-import Email from "./components/Email";
-import Password from "./components/Password";
+import {Email, Password} from "./components";
+import {withStyles} from '@material-ui/core/styles';
+import {styles} from "./AuthStyle";
 
 
 class SignIn extends Component {
