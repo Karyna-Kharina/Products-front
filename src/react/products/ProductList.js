@@ -5,21 +5,17 @@ import Container from "@material-ui/core/Container";
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {TableBody, TableContainer, TableRow} from "@material-ui/core";
-import Table from "@material-ui/core/Table";
-import TableHead from "@material-ui/core/TableHead";
-import TableCell from "@material-ui/core/TableCell";
+import {TableContainer} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import DeleteIcon from '@material-ui/icons/Delete';
-import UpdateIcon from '@material-ui/icons/Update';
 import SwapVert from '@material-ui/icons/SwapVert';
 import {fade, withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import ProductTable from "./components/ProductTable";
 
 const styles = theme => ({
     grow: {
@@ -86,38 +82,63 @@ const styles = theme => ({
     }
 });
 
-const StyledTableCell = withStyles(theme => ({
-    head: {
-        fontSize: 16,
-        fontWeight: "bold",
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-    },
-    body: {
-        fontSize: 2,
-    },
-}))(TableCell);
-
 class ProductList extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            selectedProduct: {},
+            id: '',
+            name: '',
+            price: '',
             filteredName: '',
             products: productFixtures
         }
     }
 
-    onSaveClick(newItem) {
+    onChangeId(id) {
+
+        console.log("onChangeId()", id);
+        this.setState({id: id});
+    }
+
+    onChangeName(name) {
+
+        console.log("onChangeName()", name);
+        this.setState({name: name});
+    }
+
+    onChangePrice(price) {
+
+        console.log("onChangePrice()", price);
+        this.setState({price: price});
+    }
+
+    onSaveClick() {
 
         console.log("onSaveClick()", this);
 
-        const newList = [...this.state.products, newItem];
+        const {id, name, price} = this.state;
+        const index = this.state.products.findIndex((el) => el.id === id);
+        const newItem = {id, name, price};
+
+        let newList = [];
+
+        if (index === -1) {
+            newList = [...this.state.products, newItem];
+        } else {
+            newList = [
+                ...this.state.products.slice(0, index),
+                newItem,
+                ...this.state.products.slice(index + 1)
+            ];
+        }
 
         this.setState({
-            products: newList
+            products: newList,
+            id: '',
+            name: '',
+            price: ''
         });
     }
 
@@ -141,16 +162,13 @@ class ProductList extends Component {
 
         console.log("onUpdateClick()", id);
 
-        const index = this.state.products.findIndex((el) => el.id === id);
-
-        const newList = [
-            ...this.state.products.slice(0, index),
-            this.state.selectedProduct,
-            ...this.state.products.slice(index + 1)
-        ];
+        const selectedItem = this.state.products.find((el) => el.id === id);
+        const {name, price} = selectedItem;
 
         this.setState({
-            products: newList
+            id: id,
+            name: name,
+            price: price
         });
     }
 
@@ -174,7 +192,7 @@ class ProductList extends Component {
     render() {
 
         const {classes} = this.props;
-        const {products, filteredName, selectedProduct} = this.state;
+        const {id, name, price, products, filteredName} = this.state;
 
         return (
 
@@ -214,8 +232,13 @@ class ProductList extends Component {
 
                 <Container>
                     <CreateProductForm
-                        product={selectedProduct}
-                        onCreate={(item) => this.onSaveClick(item)}
+                        onCreate={() => this.onSaveClick()}
+                        id={id}
+                        name={name}
+                        price={price}
+                        onChangeId={(e) => this.onChangeId(e)}
+                        onChangeName={(e) => this.onChangeName(e)}
+                        onChangePrice={(e) => this.onChangePrice(e)}
                     />
 
                     <Box mt={4} mb={4}>
@@ -231,41 +254,13 @@ class ProductList extends Component {
                     </Box>
 
                     <TableContainer component={Paper}>
-                        <Table className={classes.table} size="small" aria-label="a dense table">
-                            <TableHead>
-                                <TableRow>
-                                    <StyledTableCell align="center">ID</StyledTableCell>
-                                    <StyledTableCell align="center">Name</StyledTableCell>
-                                    <StyledTableCell align="center">Price</StyledTableCell>
-                                    <StyledTableCell align="center">Update</StyledTableCell>
-                                    <StyledTableCell align="center">Delete</StyledTableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {products
-                                    .filter(product => product.name.toLowerCase().includes(filteredName.toLowerCase()))
-                                    .map(item => (
-                                        <TableRow key={item.id}>
-                                            <TableCell align="center" component="th" scope="row">
-                                                {item.id}
-                                            </TableCell>
-                                            <TableCell align="center">{item.name}</TableCell>
-                                            <TableCell align="center">{item.price}</TableCell>
-                                            <TableCell align="center">
-                                                <IconButton onClick={() => this.onUpdateClick(item.id)}>
-                                                    <UpdateIcon/>
-                                                </IconButton>
-                                            </TableCell>
-                                            <TableCell align="center">
-                                                <IconButton onClick={() => this.onDeleteClick(item.id)}>
-                                                    <DeleteIcon/>
-                                                </IconButton>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))
-                                }
-                            </TableBody>
-                        </Table>
+                        <ProductTable
+                            classes={classes}
+                            products={products}
+                            filteredName={filteredName}
+                            onUpdateClick={(id) => this.onUpdateClick(id)}
+                            onDeleteClick={(id) => this.onDeleteClick(id)}
+                        />
                     </TableContainer>
                 </Container>
             </div>

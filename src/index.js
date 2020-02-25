@@ -1,5 +1,10 @@
 import React from "react";
 import {render} from "react-dom";
-import SignIn from "./react/auth/SignUp"
+import App from "./react/products/App";
+import {BrowserRouter} from "react-router-dom";
 
-render(<SignIn/>, document.getElementById('root'));
+render(
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>,
+    document.getElementById('root'));
