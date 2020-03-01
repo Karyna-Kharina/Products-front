@@ -25,8 +25,6 @@ const MenuIcon = () => (
 
 function HeaderIcon(props) {
 
-    console.log(props);
-
     const {location: {pathname}} = props;
     const isNeedBackButton = pathname !== "/";
 

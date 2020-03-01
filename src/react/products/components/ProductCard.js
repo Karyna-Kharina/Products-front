@@ -82,7 +82,7 @@ export default ({product, onClickAddProduct}) => {
                             className={classes.content}
                             variant={"h5"}
                         >
-                            {price}
+                            {price % 1 > 0 ? price : price + '.0'}
                         </Typography>
                     </Box>
 
