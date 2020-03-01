@@ -1,4 +1,4 @@
-import productFixtures from "../../productFixtures";
+import productFixtures from "../productFixtures";
 
 const initialState = {products: productFixtures, productsInCart: []};
 

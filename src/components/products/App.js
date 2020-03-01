@@ -7,8 +7,8 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import {Link, Route, Switch} from "react-router-dom";
 import HeaderIcon from "./components/HeaderIcon";
-import Cards from "../redux/Cards";
-import Cart from "../redux/Cart";
+import Cards from "../../containers/Cards";
+import Cart from "../../containers/Cart";
 
 export default ({countProductsInCart}) => {
     return (
