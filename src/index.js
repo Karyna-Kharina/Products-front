@@ -5,8 +5,8 @@ import {Provider} from 'react-redux';
 import store from './store';
 import App from "./containers/App";
 import {Route} from "react-router";
-import SignUp from "./components/auth/SignUp";
-import SignIn from "./components/auth/SignIn";
+import SignUp from "./containers/SignUp";
+import SignIn from "./containers/SignIn";
 
 render(
     <Provider store={store}>

@@ -6,7 +6,7 @@ import {
     CHANGE_LAST_NAME,
     CHANGE_PASSWORD,
     CHANGE_PHONE,
-    LOG_IN
+    LOG_IN, SIGN_UP
 } from "../constants";
 
 export const changeFirstName = (firstName) => ({
@@ -46,5 +46,9 @@ export const changeCheckbox = (checkbox) => ({
 
 export const logIn = () => ({
     type: LOG_IN
+});
+
+export const signUp = () => ({
+    type: SIGN_UP
 });
 

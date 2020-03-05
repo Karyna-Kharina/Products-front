@@ -6,7 +6,8 @@ import {
     changeLastName,
     changePassword,
     changePhone,
-    logIn
+    logIn,
+    signUp
 } from "../actions/signActions";
 import {connect} from "react-redux";
 import SignUp from "../components/auth/SignUp";
@@ -37,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
         onChangePassword: (password) => dispatch(changePassword(password)),
         onChangeDate: (date) => dispatch(changeDate(date)),
         onChangeCheckbox: (checkbox) => dispatch(changeCheckbox(checkbox)),
-        onLogIn: () => dispatch(logIn())
+        onSignUp: () => dispatch(signUp())
     }
 };
 

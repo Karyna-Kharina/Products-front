@@ -25,7 +25,7 @@ const initialStateForSignUp = {
 };
 
 
-export default (state = initialStateForSignUp, action) => {
+export default  (state = initialStateForSignUp, action) => {
 
     switch (action.type) {
 

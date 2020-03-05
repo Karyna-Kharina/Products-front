@@ -19,7 +19,8 @@ export default ({
                     phoneNumber, isValidPhoneNumber, onChangePhone,
                     password, isValidPassword, onChangePassword,
                     isCheckedBox, onChangeCheckbox,
-                    selectedDate, onChangeDate
+                    selectedDate, onChangeDate,
+                    onSignUp
                 }) => {
 
     const classes = useStyles();
@@ -121,7 +122,7 @@ export default ({
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={console.log("SIGN_UP")}
+                        onClick={onSignUp}
                     >
                         Sign Up
                     </Button>

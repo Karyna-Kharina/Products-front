@@ -22,3 +22,4 @@ export const CHANGE_CHECKBOX = 'CHANGE_CHECKBOX';
 export const SWAP = 'SWAP';
 export const CREATE = 'CREATE';
 export const LOG_IN = 'LOG_IN';
+export const SIGN_UP = 'SIGN_UP';
