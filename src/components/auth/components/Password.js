@@ -1,7 +1,7 @@
 import {TextField} from "@material-ui/core";
 import React from "react";
 
-export default function ({password, passwordValid, onChangePassword}) {
+export default function ({password, isValidPassword, onChangePassword}) {
 
     return (
         <TextField
@@ -10,12 +10,12 @@ export default function ({password, passwordValid, onChangePassword}) {
             label="Password"
             autoComplete="password"
             value={password}
-            error={!passwordValid}
+            error={!isValidPassword}
             required
             fullWidth
             autoFocus
             variant="outlined"
-            onChange={onChangePassword}
+            onChange={(e) => onChangePassword(e.target.value)}
         />
     )
 }

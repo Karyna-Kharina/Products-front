@@ -1,95 +1,74 @@
-import React, {Component} from "react";
+import React from "react";
 import {Avatar, Button, Container, Grid, Typography} from "@material-ui/core";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
-import {isValidEmail, isValidPassword} from "./Validation";
 import {Email, Password} from "./components";
-import {withStyles} from '@material-ui/core/styles';
-import {styles} from "./AuthStyle";
+import {makeStyles} from '@material-ui/core/styles';
+import {styles} from "./components/AuthStyle";
+import {Link} from "react-router-dom";
+import {Route} from "react-router";
+import SignUp from "./SignUp";
 
+const useStyles = makeStyles(styles);
 
-class SignIn extends Component {
+export default ({email, isValidEmail, password, isValidPassword, onChangeEmail, onChangePassword, onLogIn}) => {
 
-    constructor(props) {
-        super(props);
+    const classes = useStyles();
 
-        this.state = {
-            email: '',
-            emailValid: true,
-            password: '',
-            passwordValid: true
-        }
-    }
+    const isDisabledButton = () => {
+        return !(isValidEmail && isValidPassword);
+    };
 
-    onChangeEmail(email) {
-        console.log("onChangeEmail()", email);
-        this.setState({email: email, emailValid: isValidEmail(email)});
-    }
+    return (
+        <Container component="main" maxWidth="xs">
+            <div className={classes.paper}>
 
-    onChangePassword(password) {
-        console.log("onChangePassword()", password);
-        this.setState({password: password, passwordValid: isValidPassword(password)});
-    }
+                <Avatar className={classes.avatar}>
+                    <LockOpenIcon/>
+                </Avatar>
 
-    getState() {
-        console.log(this.state);
-    }
+                <Typography component="h1" variant="h5">
+                    Sign In
+                </Typography>
 
-    render() {
-
-        const {classes} = this.props;
-        const {email, emailValid, password, passwordValid} = this.state;
-
-        const isDisabledButton = () => {
-            return !(isValidEmail(email) && isValidPassword(password));
-        };
-
-        return (
-            <Container component="main" maxWidth="xs">
-                <div className={classes.paper}>
-
-                    <Avatar className={classes.avatar}>
-                        <LockOpenIcon/>
-                    </Avatar>
-
-                    <Typography component="h1" variant="h5">
-                        Sign In
-                    </Typography>
-
-                    <form className={classes.form} noValidate>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <Email
-                                    email={email}
-                                    emailValid={emailValid}
-                                    onChangeEmail={(e) => this.onChangeEmail(e.target.value)}
-                                />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <Password
-                                    password={password}
-                                    passwordValid={passwordValid}
-                                    onChangePassword={(e) => this.onChangePassword(e.target.value)}
-                                />
-                            </Grid>
+                <form className={classes.form} noValidate>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <Email
+                                email={email}
+                                isValidEmail={isValidEmail}
+                                onChangeEmail={onChangeEmail}
+                            />
                         </Grid>
-                    </form>
 
-                    <Button
-                        fullWidth
-                        disabled={isDisabledButton()}
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                        onClick={() => this.getState()}
-                    >
-                        LogIn
-                    </Button>
+                        <Grid item xs={12}>
+                            <Password
+                                password={password}
+                                isValidPassword={isValidPassword}
+                                onChangePassword={onChangePassword}
+                            />
+                        </Grid>
+                    </Grid>
+                </form>
 
-                </div>
-            </Container>
-        )
-    }
+                <Button
+                    fullWidth
+                    disabled={isDisabledButton()}
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                    onClick={onLogIn}
+                >
+                    LogIn
+                </Button>
+
+                <Grid container justify="flex-end">
+                    <Grid item>
+                        <Link to="sign-up" href="#" variant="body2">
+                            Do you haven't an account? Sign up
+                        </Link>
+                    </Grid>
+                </Grid>
+            </div>
+        </Container>
+    )
 }
-
-export default withStyles(styles)(SignIn)

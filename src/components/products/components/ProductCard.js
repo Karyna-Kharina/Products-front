@@ -9,7 +9,6 @@ import IconButton from "@material-ui/core/IconButton";
 import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
 import {Box} from "@material-ui/core";
 
-
 const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 250,

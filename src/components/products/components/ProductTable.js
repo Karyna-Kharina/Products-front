@@ -7,6 +7,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Table from "@material-ui/core/Table";
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
+import {Link} from "react-router-dom";
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -20,7 +21,7 @@ const StyledTableCell = withStyles(theme => ({
     }
 }))(TableCell);
 
-export default ({classes, products, filteredName, onUpdateClick, onDeleteClick}) => {
+export default ({classes, products, filteredName, onDeleteClick, onClickPutProductToForm}) => {
 
     return (
         <Table className={classes.table} size="small" aria-label="a dense table">
@@ -47,13 +48,15 @@ export default ({classes, products, filteredName, onUpdateClick, onDeleteClick})
                             <TableCell align="center">{item.price}</TableCell>
 
                             <TableCell align="center">
-                                <IconButton onClick={() => onUpdateClick(item.id)}>
-                                    <UpdateIcon/>
-                                </IconButton>
+                                <Link to="/update">
+                                    <IconButton onClick={() => onClickPutProductToForm(item)}>
+                                        <UpdateIcon/>
+                                    </IconButton>
+                                </Link>
                             </TableCell>
 
                             <TableCell align="center">
-                                <IconButton onClick={() => onDeleteClick(item.id)}>
+                                <IconButton onClick={() => onDeleteClick(item)}>
                                     <DeleteIcon/>
                                 </IconButton>
                             </TableCell>

@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import React from "react";
 
-export default ({email, emailValid, onChangeEmail}) => {
+export default ({email, isValidEmail, onChangeEmail}) => {
 
     return (
         <TextField
@@ -10,11 +10,11 @@ export default ({email, emailValid, onChangeEmail}) => {
             label="Email Address"
             autoComplete="email"
             value={email}
-            error={!emailValid}
+            error={!isValidEmail}
             required
             fullWidth
             variant="outlined"
-            onChange={onChangeEmail}
+            onChange={(e) => onChangeEmail(e.target.value)}
         />
     )
 }

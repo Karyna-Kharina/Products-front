@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import React from "react";
 
-export default function ({phoneNumber, phoneNumberValid, onChangePhone}) {
+export default function ({phoneNumber, isValidPhoneNumber, onChangePhone}) {
 
     return (
         <TextField
@@ -10,11 +10,11 @@ export default function ({phoneNumber, phoneNumberValid, onChangePhone}) {
             label="Phone Number"
             autoComplete="phone"
             value={phoneNumber}
-            error={!phoneNumberValid}
+            error={!isValidPhoneNumber}
             required
             fullWidth
             variant="outlined"
-            onChange={onChangePhone}
+            onChange={(e) => onChangePhone(e.target.value)}
         />
     )
 }

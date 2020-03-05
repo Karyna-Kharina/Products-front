@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import React from "react";
 
-export default function ({lastName, lastNameValid, onChangeLastName}) {
+export default function ({lastName, isValidLastName, onChangeLastName}) {
 
     return (
         <TextField
@@ -10,11 +10,11 @@ export default function ({lastName, lastNameValid, onChangeLastName}) {
             label="Last Name"
             autoComplete="lname"
             value={lastName}
-            error={!lastNameValid}
+            error={!isValidLastName}
             required
             fullWidth
             variant="outlined"
-            onChange={onChangeLastName}
+            onChange={(e) => onChangeLastName(e.target.value)}
         />
     )
 }

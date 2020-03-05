@@ -1,216 +1,140 @@
-import React, {Component} from 'react';
-import {
-    Avatar,
-    Button,
-    Checkbox,
-    Container,
-    CssBaseline,
-    FormControlLabel,
-    Grid,
-    Link,
-    Typography
-} from '@material-ui/core';
+import React from 'react';
+import {Avatar, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Typography} from '@material-ui/core';
 import {MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "./Validation";
 import {DateComponent, Email, FirstName, LastName, Password, PhoneNumber} from "./components";
-import {withStyles} from '@material-ui/core/styles';
-import {styles} from "./AuthStyle";
+import {makeStyles} from '@material-ui/core/styles';
+import {styles} from "./components/AuthStyle";
+import {Link} from "react-router-dom";
+import {Route} from "react-router";
+import SignIn from "./SignIn";
 
+const useStyles = makeStyles(styles);
 
-class SignUp extends Component {
+export default ({
+                    firstName, isValidFirstName, onChangeFirstName,
+                    lastName, isValidLastName, onChangeLastName,
+                    email, isValidEmail, onChangeEmail,
+                    phoneNumber, isValidPhoneNumber, onChangePhone,
+                    password, isValidPassword, onChangePassword,
+                    isCheckedBox, onChangeCheckbox,
+                    selectedDate, onChangeDate
+                }) => {
 
-    constructor(props) {
-        super(props);
+    const classes = useStyles();
 
-        this.state = {
-            firstName: '',
-            firstNameValid: true,
-            lastName: '',
-            lastNameValid: true,
-            email: '',
-            emailValid: true,
-            phoneNumber: '',
-            phoneNumberValid: true,
-            password: '',
-            passwordValid: true,
-            isCheckedBox: false,
-            selectedDate: new Date()
-        }
-    }
+    const isDisabledButton = () => {
 
-    onChangeFirstName(firstName) {
-        console.log("onChangeFirstName()", firstName);
-        this.setState({firstName: firstName, firstNameValid: isValidName(firstName)});
-    }
-
-    onChangeLastName(lastName) {
-        console.log("onChangeLastName()", lastName);
-        this.setState({lastName: lastName, lastNameValid: isValidName(lastName)});
-    }
-
-    onChangeEmail(email) {
-        console.log("onChangeEmail()", email);
-        this.setState({email: email, emailValid: isValidEmail(email)});
-    }
-
-    onChangeDate(date) {
-        console.log("onChangeDate()", date);
-        this.setState({selectedDate: date});
+        return !(
+            isValidFirstName &&
+            isValidLastName &&
+            isValidEmail &&
+            isValidPhoneNumber &&
+            isValidPassword &&
+            isCheckedBox
+        );
     };
 
-    onChangePhone(phone) {
-        console.log("onChangePhone()", phone);
-        this.setState({phoneNumber: phone, phoneNumberValid: isValidPhoneNumber(phone)});
-    }
+    return (
+        <Container component="main" maxWidth="xs">
+            <CssBaseline/>
 
-    onChangePassword(password) {
-        console.log("onChangePassword()", password);
-        this.setState({password: password, passwordValid: isValidPassword(password)});
-    }
+            <div className={classes.paper}>
 
-    onChangeCheckbox(checkbox) {
-        console.log("onChangeCheckbox()", checkbox);
-        this.setState({checkedBox: checkbox});
-    }
+                <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon/>
+                </Avatar>
 
-    getState() {
-        console.log(this.state);
-    }
+                <Typography component="h1" variant="h5">
+                    Sign up
+                </Typography>
 
-    render() {
+                <form className={classes.form} noValidate>
 
-        const {classes} = this.props;
-        const {firstName, lastName, email, phoneNumber, password, checkedBox} = this.state;
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                            <FirstName
+                                firstName={firstName}
+                                isValidFirstName={isValidFirstName}
+                                onChangeFirstName={onChangeFirstName}
+                            />
+                        </Grid>
 
-        const {
-            selectedDate,
-            firstNameValid,
-            lastNameValid,
-            emailValid,
-            phoneNumberValid,
-            passwordValid,
-        } = this.state;
+                        <Grid item xs={12} sm={6}>
+                            <LastName
+                                lastName={lastName}
+                                isValidLastName={isValidLastName}
+                                onChangeLastName={onChangeLastName}
+                            />
+                        </Grid>
 
-        const isDisabledButton = () => {
-
-            const res = !(
-                isValidName(firstName)
-                && isValidName(lastName)
-                && isValidEmail(email)
-                && isValidPhoneNumber(phoneNumber)
-                && isValidPassword(password)
-                && checkedBox
-            );
-
-            console.log("RESULT: ", res);
-            return res;
-        };
-
-        return (
-            <Container component="main" maxWidth="xs">
-                <CssBaseline/>
-
-                <div className={classes.paper}>
-
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon/>
-                    </Avatar>
-
-                    <Typography component="h1" variant="h5">
-                        Sign up
-                    </Typography>
-
-                    <form className={classes.form} noValidate>
-
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <FirstName
-                                    firstName={firstName}
-                                    firstNameValid={firstNameValid}
-                                    onChangeFirstName={(e) => this.onChangeFirstName(e.target.value)}
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <Grid container justify="space-around">
+                                <DateComponent
+                                    selectedDate={selectedDate}
+                                    onChangeDate={onChangeDate}
                                 />
                             </Grid>
+                        </MuiPickersUtilsProvider>
 
-                            <Grid item xs={12} sm={6}>
-                                <LastName
-                                    lastName={lastName}
-                                    lastNameValid={lastNameValid}
-                                    onChangeLastName={(e) => this.onChangeLastName(e.target.value)}
-                                />
-                            </Grid>
+                        <Grid item xs={12}>
+                            <Email
+                                email={email}
+                                isValidEmail={isValidEmail}
+                                onChangeEmail={onChangeEmail}
+                            />
+                        </Grid>
 
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <Grid container justify="space-around">
-                                    <DateComponent
-                                        selectedDate={selectedDate}
-                                        onChangeDate={(e) => this.onChangeDate(e)}
+                        <Grid item xs={12}>
+                            <PhoneNumber
+                                phoneNumber={phoneNumber}
+                                isValidPhoneNumber={isValidPhoneNumber}
+                                onChangePhone={onChangePhone}
+                            />
+                        </Grid>
+
+                        <Grid item xs={12}>
+                            <Password
+                                password={password}
+                                isValidPassword={isValidPassword}
+                                onChangePassword={onChangePassword}
+                            />
+                        </Grid>
+
+                        <Grid item xs={12}>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        onChange={(e) => onChangeCheckbox(e.target.checked)}
+                                        color="primary"
                                     />
-                                </Grid>
-                            </MuiPickersUtilsProvider>
-
-                            <Grid item xs={12}>
-                                <Email
-                                    emailValid={emailValid}
-                                    email={email}
-                                    onChangeEmail={(e) => this.onChangeEmail(e.target.value)}
-                                />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <PhoneNumber
-                                    phoneNumber={phoneNumber}
-                                    phoneNumberValid={phoneNumberValid}
-                                    onChangePhone={(e) => this.onChangePhone(e.target.value)}
-                                />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <Password
-                                    password={password}
-                                    passwordValid={passwordValid}
-                                    onChangePassword={(e) => this.onChangePassword(e.target.value)}
-                                />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            onChange={(e) => this.onChangeCheckbox(e.target.checked)}
-                                            color="primary"
-                                        />
-                                    }
-                                    label="I want to receive inspiration, marketing promotions and updates via email."
-                                />
-                            </Grid>
+                                }
+                                label="I want to receive inspiration, marketing promotions and updates via email."
+                            />
                         </Grid>
+                    </Grid>
 
-                        <Button
-                            fullWidth
-                            disabled={isDisabledButton()}
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                            onClick={() => this.getState()}
-                        >
-                            Sign Up
-                        </Button>
+                    <Button
+                        fullWidth
+                        disabled={isDisabledButton()}
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick={console.log("SIGN_UP")}
+                    >
+                        Sign Up
+                    </Button>
 
-                        <Grid container justify="flex-end">
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    Already have an account? Sign in
-                                </Link>
-                            </Grid>
+                    <Grid container justify="flex-end">
+                        <Grid item>
+                            <Link to="sign-in" href="#" variant="body2">
+                                Already have an account? Sign in
+                            </Link>
                         </Grid>
-
-                    </form>
-                </div>
-            </Container>
-        );
-    }
+                    </Grid>
+                </form>
+            </div>
+        </Container>
+    );
 }
-
-export default withStyles(styles)(SignUp)
