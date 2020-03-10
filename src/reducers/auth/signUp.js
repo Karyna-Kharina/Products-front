@@ -6,24 +6,23 @@ import {
     CHANGE_LAST_NAME,
     CHANGE_PASSWORD,
     CHANGE_PHONE
-} from "../constants";
-import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "../validation";
+} from "../../constants";
+import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "../../validation";
 
 const initialStateForSignUp = {
-    firstName: '',
-    isValidFirstName: false,
-    lastName: '',
-    isValidLastName: false,
-    email: '',
-    isValidEmail: false,
-    phoneNumber: '',
-    isValidPhoneNumber: false,
-    password: '',
-    isValidPassword: false,
+    firstName: 'Businka',
+    isValidFirstName: true,
+    lastName: 'Lala',
+    isValidLastName: true,
+    email: 'blablabla@gmail.com',
+    isValidEmail: true,
+    phoneNumber: '+380996100899',
+    isValidPhoneNumber: true,
+    password: '123456789',
+    isValidPassword: true,
     isCheckedBox: false,
     selectedDate: new Date()
 };
-
 
 export default  (state = initialStateForSignUp, action) => {
 

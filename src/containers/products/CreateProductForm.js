@@ -1,14 +1,14 @@
 import {connect} from "react-redux";
-import CreateProductForm from "../components/products/CreateProductForm";
-import {updateId, updateImage, updateName, updatePrice} from "../actions/formAction";
-import {saveProduct} from "../actions/action";
+import CreateProductForm from "../../components/products/CreateProductForm";
+import {updateId, updateImage, updateName, updatePrice} from "../../actions/products/productFormAction";
+import {saveProduct} from "../../actions/products/productListAction";
 
 const mapStateToProps = (state) => {
     return {
-        id: state.form.product.id,
-        name: state.form.product.name,
-        price: state.form.product.price,
-        image: state.form.product.image
+        id: state.productForm.product.id,
+        name: state.productForm.product.name,
+        price: state.productForm.product.price,
+        image: state.productForm.product.image
     }
 };
 

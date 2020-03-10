@@ -9,6 +9,7 @@ export default function ({password, isValidPassword, onChangePassword}) {
             name="password"
             label="Password"
             autoComplete="password"
+            type="password"
             value={password}
             error={!isValidPassword}
             required

@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
-import App from "../components/products/App";
+import App from "../components/App";
 
 const mapStateToProps = (state) => ({
-    countProductsInCart: state.app.productsInCart.length
+    countProductsInCart: state.products.productsInCart.length
 });
 
 const mapDispatchToProps = (dispatch) => ({});

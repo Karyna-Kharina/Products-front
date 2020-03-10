@@ -1,5 +1,5 @@
-import {CHANGE_EMAIL, CHANGE_PASSWORD} from "../constants";
-import {isValidEmail, isValidPassword} from "../validation";
+import {CHANGE_EMAIL_IN, CHANGE_PASSWORD_IN} from "../../constants";
+import {isValidEmail, isValidPassword} from "../../validation";
 
 const initialStateForSignIn = {email: '', password: '', isValidEmail: false, isValidPassword: false};
 
@@ -7,14 +7,14 @@ export default (state = initialStateForSignIn, action) => {
 
     switch (action.type) {
 
-        case CHANGE_EMAIL: {
+        case CHANGE_EMAIL_IN: {
             return {
                 ...state,
                 email: action.email,
                 isValidEmail: isValidEmail(action.email)
             }
         }
-        case CHANGE_PASSWORD: {
+        case CHANGE_PASSWORD_IN: {
             return {
                 ...state,
                 password: action.password,

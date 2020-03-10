@@ -5,8 +5,7 @@ import {Email, Password} from "./components";
 import {makeStyles} from '@material-ui/core/styles';
 import {styles} from "./components/AuthStyle";
 import {Link} from "react-router-dom";
-import {Route} from "react-router";
-import SignUp from "./SignUp";
+import {SIGN_UP} from "../../links";
 
 const useStyles = makeStyles(styles);
 
@@ -63,7 +62,7 @@ export default ({email, isValidEmail, password, isValidPassword, onChangeEmail, 
 
                 <Grid container justify="flex-end">
                     <Grid item>
-                        <Link to="sign-up" href="#" variant="body2">
+                        <Link to={SIGN_UP} href="#" variant="body2">
                             Do you haven't an account? Sign up
                         </Link>
                     </Grid>

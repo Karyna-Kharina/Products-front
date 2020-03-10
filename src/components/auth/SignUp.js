@@ -7,8 +7,7 @@ import {DateComponent, Email, FirstName, LastName, Password, PhoneNumber} from "
 import {makeStyles} from '@material-ui/core/styles';
 import {styles} from "./components/AuthStyle";
 import {Link} from "react-router-dom";
-import {Route} from "react-router";
-import SignIn from "./SignIn";
+import {SIGN_IN} from "../../links";
 
 const useStyles = makeStyles(styles);
 
@@ -108,6 +107,7 @@ export default ({
                                 control={
                                     <Checkbox
                                         onChange={(e) => onChangeCheckbox(e.target.checked)}
+                                        checked={isCheckedBox}
                                         color="primary"
                                     />
                                 }
@@ -129,7 +129,7 @@ export default ({
 
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link to="sign-in" href="#" variant="body2">
+                            <Link to={SIGN_IN} href="#" variant="body2">
                                 Already have an account? Sign in
                             </Link>
                         </Grid>

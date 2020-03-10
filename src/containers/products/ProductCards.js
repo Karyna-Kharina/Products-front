@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
-import Cards from "../components/products/Cards";
-import {addProductToCart} from '../actions/action';
+import ProductCards from "../../components/products/ProductCards";
+import {addProductToCart} from '../../actions/products/productListAction';
 
 const mapStateToProps = (state) => ({
-    products: state.app.products
+    products: state.products.products
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Cards);
+)(ProductCards);

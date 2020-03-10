@@ -15,10 +15,8 @@ export default ({id, name, price, image, onChangeId, onChangeName, onChangePrice
     return (
 
         <form noValidate>
-
             <Container component="main" style={{marginTop: 15}}>
-                <Grid container justify="center" alignItems="center" spacing={4} xs={10}>
-
+                <Grid item container justify="center" alignItems="center" spacing={4} xs={10}>
                     <Grid item xs={12}>
                         <Typography variant="h2">
                             Product Creating

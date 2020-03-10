@@ -8,7 +8,7 @@ import Table from "@material-ui/core/Table";
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
-import {PRODUCT_UPDATE} from "../../../links";
+import {USER_UPDATE} from "../../links";
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -22,37 +22,41 @@ const StyledTableCell = withStyles(theme => ({
     }
 }))(TableCell);
 
-export default ({classes, products, filteredName, onDeleteClick, onClickPutProductToForm}) => {
-
-    console.log("FILTERED NAME: ", filteredName)
+export default ({classes, users, filteredName, onDeleteClick, onClickPutUserToForm}) => {
 
     return (
         <Table className={classes.table} size="small" aria-label="a dense table">
             <TableHead>
                 <TableRow>
                     <StyledTableCell align="center">ID</StyledTableCell>
-                    <StyledTableCell align="center">Name</StyledTableCell>
-                    <StyledTableCell align="center">Price</StyledTableCell>
+                    <StyledTableCell align="center">First Name</StyledTableCell>
+                    <StyledTableCell align="center">Last Name</StyledTableCell>
+                    <StyledTableCell align="center">Phone</StyledTableCell>
+                    <StyledTableCell align="center">Email</StyledTableCell>
                     <StyledTableCell align="center">Update</StyledTableCell>
                     <StyledTableCell align="center">Delete</StyledTableCell>
                 </TableRow>
             </TableHead>
 
             <TableBody>
-                {products
-                    .filter(product => product.name.toLowerCase().includes(filteredName.toLowerCase()))
+                {users
+                    .filter(user => user.firstName.toLowerCase().includes(filteredName.toLowerCase()) ||
+                        user.lastName.toLowerCase().includes(filteredName.toLowerCase())
+                    )
                     .map(item => (
                         <TableRow key={item.id}>
                             <TableCell align="center" component="th" scope="row">
                                 {item.id}
                             </TableCell>
 
-                            <TableCell align="center">{item.name}</TableCell>
-                            <TableCell align="center">{item.price}</TableCell>
+                            <TableCell align="center">{item.firstName}</TableCell>
+                            <TableCell align="center">{item.lastName}</TableCell>
+                            <TableCell align="center">{item.phoneNumber}</TableCell>
+                            <TableCell align="center">{item.email}</TableCell>
 
                             <TableCell align="center">
-                                <Link to={PRODUCT_UPDATE}>
-                                    <IconButton onClick={() => onClickPutProductToForm(item)}>
+                                <Link to={USER_UPDATE}>
+                                    <IconButton onClick={() => onClickPutUserToForm(item)}>
                                         <UpdateIcon/>
                                     </IconButton>
                                 </Link>

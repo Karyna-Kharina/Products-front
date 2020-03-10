@@ -1,6 +1,7 @@
-import {changeEmail, changePassword, logIn} from "../actions/signActions";
-import SignIn from "../components/auth/SignIn";
+import {changeEmail, changePassword,} from "../../actions/auth/signInAction";
+import SignIn from "../../components/auth/SignIn";
 import {connect} from "react-redux";
+import {logIn} from "../../actions/auth/signInAction";
 
 const mapStateToProps = (state) => {
     return {

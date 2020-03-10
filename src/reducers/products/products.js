@@ -1,5 +1,13 @@
-import productFixtures from "../productFixtures";
-import {ADD_PRODUCT_TO_CART, REMOVE_PRODUCT, REMOVE_PRODUCT_FROM_CART, SAVE_PRODUCT, SWAP} from "../constants";
+import productFixtures from "../../productFixtures";
+import {removeItemFrom, saveItemTo} from "../../methods";
+import {
+    ADD_PRODUCT_TO_CART,
+    CHANGE_FILTERED_NAME,
+    REMOVE_PRODUCT,
+    REMOVE_PRODUCT_FROM_CART,
+    SAVE_PRODUCT,
+    SWAP
+} from "../../constants";
 
 const initialState = {products: productFixtures, productsInCart: [], filteredName: ''};
 
@@ -16,7 +24,7 @@ export default (state = initialState, action) => {
         case REMOVE_PRODUCT_FROM_CART: {
             return {
                 ...state,
-                productsInCart: removeProductFrom(state.productsInCart, action.product)
+                productsInCart: removeItemFrom(state.productsInCart, action.product)
             }
         }
         case SAVE_PRODUCT: {
@@ -28,7 +36,7 @@ export default (state = initialState, action) => {
         case REMOVE_PRODUCT: {
             return {
                 ...state,
-                products: removeProductFrom(state.products, action.product)
+                products: removeItemFrom(state.products, action.product)
             }
         }
         case SWAP: {
@@ -37,36 +45,13 @@ export default (state = initialState, action) => {
                 products: [...state.products].reverse()
             }
         }
+        case CHANGE_FILTERED_NAME: {
+            return {
+                ...state,
+                filteredName: action.filteredName
+            }
+        }
         default:
             return state;
     }
-}
-
-function removeProductFrom(list, item) {
-
-    const index = list.findIndex((el) => el.id === item.id);
-
-    return [
-        ...list.slice(0, index),
-        ...list.slice(index + 1)
-    ];
-}
-
-function saveItemTo(list, item) {
-
-    const index = list.findIndex((el) => el.id === item.id);
-
-    let newList = [];
-
-    if (index === -1) {
-        newList = [...list, item];
-    } else {
-        newList = [
-            ...list.slice(0, index),
-            item,
-            ...list.slice(index + 1)
-        ];
-    }
-
-    return newList;
 }

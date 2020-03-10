@@ -7,8 +7,10 @@ import Button from "@material-ui/core/Button";
 import SwapVert from '@material-ui/icons/SwapVert';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import ProductTable from "./components/ProductTable";
+import {Search} from "@material-ui/icons";
+import InputBase from "@material-ui/core/InputBase";
 
-const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles(theme => ({
     grow: {
         flexGrow: 1,
     },
@@ -53,7 +55,7 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
-            width: 200,
+            width: 980,
         },
     },
     sectionDesktop: {
@@ -70,16 +72,10 @@ const useStyles = makeStyles(theme => ({
     },
     table: {
         minWidth: 650,
-    }
+    },
 }));
 
-export default ({products, filteredName, onSwapClick, onDeleteClick, onClickPutProductToForm}) => {
-
-    // onChangeFilteredName(name) {
-    //
-    //     console.log("onChangeFilteredName()", name);
-    //     this.setState({filteredName: name});
-    // }
+export default ({products, filteredName, onSwapClick, onDeleteClick, onClickPutProductToForm, onChangeFilteredName}) => {
 
     const classes = useStyles();
 
@@ -88,15 +84,30 @@ export default ({products, filteredName, onSwapClick, onDeleteClick, onClickPutP
         <div className={classes.grow}>
             <Container>
                 <Box mt={4} mb={4}>
-                    <Button
-                        variant="contained"
-                        size="large"
-                        color="inherit"
-                        startIcon={<SwapVert/>}
-                        onClick={() => onSwapClick()}
-                    >
-                        SWAP
-                    </Button>
+                    <div className={classes.search}>
+                        <div className={classes.searchIcon}>
+                            <Search/>
+                        </div>
+                        <InputBase
+                            placeholder="Search…"
+                            classes={{
+                                root: classes.inputRoot,
+                                input: classes.inputInput,
+                            }}
+                            inputProps={{'aria-label': 'search'}}
+                            onChange={(e) => onChangeFilteredName(e.target.value)}
+                        />
+
+                        <Button
+                            variant="contained"
+                            size="large"
+                            color="inherit"
+                            startIcon={<SwapVert/>}
+                            onClick={() => onSwapClick()}
+                        >
+                            SWAP
+                        </Button>
+                    </div>
                 </Box>
 
                 <TableContainer component={Paper}>

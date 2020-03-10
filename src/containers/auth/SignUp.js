@@ -6,11 +6,10 @@ import {
     changeLastName,
     changePassword,
     changePhone,
-    logIn,
     signUp
-} from "../actions/signActions";
+} from "../../actions/auth/signUpAction";
 import {connect} from "react-redux";
-import SignUp from "../components/auth/SignUp";
+import SignUp from "../../components/auth/SignUp";
 
 export const mapStateToProps = (state) => {
     return {
