@@ -1,12 +1,12 @@
 import React from "react";
 import {Route, Switch} from "react-router";
-import ProductCart from "../../containers/products/ProductCart";
-import ProductCards from "../../containers/products/ProductCards";
-import ProductList from "../../containers/products/ProductList";
-import UserList from "../../containers/users/UserList";
-import CreateUserForm from "../../containers/users/CreateUserForm";
-import CreateProductForm from "../../containers/products/CreateProductForm";
-import Profile from "../../components/users/Profile";
+import ProductCart from "../containers/products/ProductCart";
+import ProductCards from "../containers/products/ProductCards";
+import ProductList from "../containers/products/ProductList";
+import UserList from "../containers/users/UserList";
+import CreateUserForm from "../containers/users/CreateUserForm";
+import CreateProductForm from "../containers/products/CreateProductForm";
+import Profile from "../containers/users/Profile";
 import {
     APP,
     CREATE_PRODUCT_FORM,
@@ -18,7 +18,7 @@ import {
     USER_LIST,
     USER_PROFILE,
     USER_UPDATE
-} from "../../links";
+} from "../links";
 
 export default () => (
     <Switch>

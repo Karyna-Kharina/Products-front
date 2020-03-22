@@ -6,6 +6,7 @@ import productForm from "./reducers/products/productForm";
 import userForm from "./reducers/users/userForm";
 import signIn from "./reducers/auth/signIn";
 import signUp from "./reducers/auth/signUp";
+import profile from "./reducers/users/profile";
 
 export default createStore(combineReducers({
     signIn,
@@ -13,5 +14,6 @@ export default createStore(combineReducers({
     products,
     productForm,
     users,
+    profile,
     userForm
 }), composeWithDevTools());

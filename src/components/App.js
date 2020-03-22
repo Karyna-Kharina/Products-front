@@ -1,6 +1,5 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -14,13 +13,21 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Routers from "./products/Routers";
+import Routers from "./Routers";
 import IconButton from "@material-ui/core/IconButton";
 import Box from "@material-ui/core/Box";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
-import {CREATE_PRODUCT_FORM, CREATE_USER_FORM, PRODUCT_CARDS, PRODUCT_CART, PRODUCT_LIST, USER_LIST} from "../links";
+import {
+    CREATE_PRODUCT_FORM,
+    CREATE_USER_FORM,
+    PRODUCT_CARDS,
+    PRODUCT_CART,
+    PRODUCT_LIST,
+    USER_LIST,
+    USER_PROFILE
+} from "../links";
 
 const useStyles = makeStyles(theme => (
     {
@@ -42,29 +49,15 @@ const useStyles = makeStyles(theme => (
             flexGrow: 1,
             padding: theme.spacing(3),
         },
-        menuButton: {
-            marginRight: theme.spacing(2),
-        },
-        title: {
-            flexGrow: 1,
-            display: 'none',
-            [theme.breakpoints.up('sm')]: {
-                display: 'block',
-            },
-        },
     }));
 
 export default ({countProductsInCart}) => {
 
     const classes = useStyles();
 
-    const [auth, setAuth] = React.useState(true);
+    const [auth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-
-    const handleChange = event => {
-        setAuth(event.target.checked);
-    };
 
     const handleMenu = event => {
         setAnchorEl(event.currentTarget);
@@ -102,20 +95,16 @@ export default ({countProductsInCart}) => {
                                 <Menu
                                     id="menu-appbar"
                                     anchorEl={anchorEl}
-                                    anchorOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    keepMounted
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
                                     open={open}
                                     onClose={handleClose}
                                 >
-                                    <MenuItem onClick={handleClose}>My profile</MenuItem>
-                                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                    <Link to={USER_PROFILE}>
+                                        <MenuItem button>
+                                            My profile
+                                        </MenuItem>
+                                    </Link>
+
+                                    <MenuItem>Logout</MenuItem>
                                 </Menu>
                             </div>
                         )}
@@ -161,8 +150,6 @@ export default ({countProductsInCart}) => {
                             <ListItemText primary={'Add Product'}/>
                         </ListItem>
                     </Link>
-
-                    <Divider/>
 
                     <Link to={PRODUCT_CARDS}>
                         <ListItem button>
