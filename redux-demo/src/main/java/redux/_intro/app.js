@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Container} from "@material-ui/core";
-import {createStore} from "redux";
+import {createStore} from "redux/_intro/redux";
 
 const initialState = {count: 0};
 
