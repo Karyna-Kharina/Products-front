@@ -12,7 +12,13 @@ import {
 
 const initialStateForUserForm = {
     user: {
-        id: '', firstName: '', lastName: '', phoneNumber: '', email: '', photo: '', password: ''
+        id: '',
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        email: '',
+        photo: '',
+        password: ''
     }
 };
 

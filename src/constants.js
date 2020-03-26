@@ -40,5 +40,10 @@ export const REMOVE_USER = 'REMOVE_USER';
 export const CHANGE_FILTERED_USERNAME = 'CHANGE_FILTERED_USERNAME';
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-
 export const PUT_USER_TO_FORM = 'PUT_USER_TO_FORM';
+
+export const SET_NEWS = 'SET_NEWS';
+export const CHOOSE_COUNTRY = 'CHOOSE_COUNTRY';
+export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
+
+export const SEARCH_NEWS_SAGA = 'SEARCH_NEWS_SAGA';

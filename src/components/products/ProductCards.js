@@ -3,7 +3,6 @@ import ProductCard from "./components/ProductCard";
 import {Container, Grid} from "@material-ui/core";
 
 export default ({products, onClickAddProduct}) => {
-
     return (
         <div>
             <Container component="main" maxWidth="lg" style={{marginTop: 100}}>

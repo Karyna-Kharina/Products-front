@@ -14,9 +14,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
 
-    console.log("REDUCER: ");
-    console.log(action);
-
     switch (action.type) {
         case SET_CURRENT_USER: {
             return {

@@ -15,15 +15,17 @@ import {
     PRODUCT_CART,
     PRODUCT_LIST,
     PRODUCT_UPDATE,
+    SHOW_NEWS,
     USER_LIST,
     USER_PROFILE,
     USER_UPDATE
 } from "../links";
+import News from "../containers/news/News";
 
 export default () => (
     <Switch>
         <Route exact path={APP}>
-            <ProductCards/>{/* TODO MAIN PAGE */}
+            <ProductCards/>
         </Route>
 
         <Route path={PRODUCT_LIST}>
@@ -60,6 +62,10 @@ export default () => (
 
         <Route path={CREATE_USER_FORM}>
             <CreateUserForm/>
+        </Route>
+
+        <Route path={SHOW_NEWS}>
+            <News/>
         </Route>
     </Switch>
 );

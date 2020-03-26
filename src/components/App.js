@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
-import {AccountCircle, Create, GroupAdd, Lock, People, ViewModule} from "@material-ui/icons";
+import {AccountCircle, Create, FiberNew, GroupAdd, Lock, People, ViewModule} from "@material-ui/icons";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
@@ -25,6 +25,7 @@ import {
     PRODUCT_CARDS,
     PRODUCT_CART,
     PRODUCT_LIST,
+    SHOW_NEWS,
     USER_LIST,
     USER_PROFILE
 } from "../links";
@@ -51,7 +52,8 @@ const useStyles = makeStyles(theme => (
         },
     }));
 
-export default ({countProductsInCart}) => {
+export default ({countProductsInCart, logOut}) => {
+    console.log(logOut);
 
     const classes = useStyles();
 
@@ -104,7 +106,7 @@ export default ({countProductsInCart}) => {
                                         </MenuItem>
                                     </Link>
 
-                                    <MenuItem>Logout</MenuItem>
+                                    <MenuItem button onClick={logOut}>Logout</MenuItem>
                                 </Menu>
                             </div>
                         )}
@@ -166,6 +168,17 @@ export default ({countProductsInCart}) => {
                                 </Badge>
                             </ListItemIcon>
                             <ListItemText primary={'Cart'}/>
+                        </ListItem>
+                    </Link>
+
+                    <Link to={SHOW_NEWS}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <Badge badgeContent={countProductsInCart} color="secondary">
+                                    <FiberNew/>
+                                </Badge>
+                            </ListItemIcon>
+                            <ListItemText primary={'News'}/>
                         </ListItem>
                     </Link>
                 </List>

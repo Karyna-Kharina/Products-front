@@ -47,26 +47,26 @@ export default ({email, isValidEmail, password, isValidPassword, onChangeEmail, 
                             />
                         </Grid>
                     </Grid>
-                </form>
 
-                <Button
-                    fullWidth
-                    disabled={isDisabledButton()}
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                    onClick={onLogIn}
-                >
-                    LogIn
-                </Button>
+                    <Button
+                        fullWidth
+                        disabled={isDisabledButton()}
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick={onLogIn}
+                    >
+                        LogIn
+                    </Button>
 
-                <Grid container justify="flex-end">
-                    <Grid item>
-                        <Link to={SIGN_UP} href="#" variant="body2">
-                            Do you haven't an account? Sign up
-                        </Link>
+                    <Grid container justify="flex-end">
+                        <Grid item>
+                            <Link to={SIGN_UP} href="#" variant="body2">
+                                Do you haven't an account? Sign up
+                            </Link>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </form>
             </div>
         </Container>
     )

@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
 import {Box} from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 250,
         margin: "auto",
@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
     divider: {
         margin: '5%',
+        backgroundColor: theme.palette.error.light
     },
     heading: {
         fontWeight: "bold"

@@ -14,3 +14,4 @@ export const USER_UPDATE = "/user/update";
 export const CREATE_USER_FORM = "/user/add";
 export const USER_PROFILE = "/user/profile";
 
+export const SHOW_NEWS = "/news";
