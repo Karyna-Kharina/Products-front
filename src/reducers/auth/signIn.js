@@ -1,4 +1,4 @@
-import {CHANGE_EMAIL_IN, CHANGE_PASSWORD_IN, CLEAR} from "../../constants";
+import {CHANGE_EMAIL_IN, CHANGE_PASSWORD_IN, CLEAR_SIGN_IN} from "../../constants";
 import {isValidEmail, isValidPassword} from "../../validation";
 
 const initialStateForSignIn = {email: '', password: '', isValidEmail: false, isValidPassword: false};
@@ -21,7 +21,7 @@ export default (state = initialStateForSignIn, action) => {
                 isValidPassword: isValidPassword(action.password)
             }
         }
-        case CLEAR: {
+        case CLEAR_SIGN_IN: {
             return {
                 ...initialStateForSignIn
             }

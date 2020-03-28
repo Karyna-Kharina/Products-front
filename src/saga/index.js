@@ -1,10 +1,13 @@
 import {all} from "redux-saga/effects";
 import {watchSetNewsSaga} from "./setNewsSaga";
-import {watchAuthSaga} from "./authSaga";
+import {watchSignInSaga} from "./signInSaga";
+import {watchSignUpSaga} from "./signUpSaga";
 
 export default function* mainSaga() {
+
     yield all([
         watchSetNewsSaga(),
-        watchAuthSaga()
+        watchSignInSaga(),
+        watchSignUpSaga()
     ]);
 }

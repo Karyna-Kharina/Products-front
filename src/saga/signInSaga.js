@@ -1,9 +1,9 @@
 import {put, select, takeEvery} from "redux-saga/effects";
-import {CLEAR, LOG_IN} from "../constants";
+import {CLEAR_SIGN_IN, LOG_IN} from "../constants";
 import userFixtures from "../userFixtures";
 import {setCurrentUser} from "../actions/users/profile";
 
-export function* authSaga() {
+export function* signInSaga() {
 
     const {email, password} = yield select(state => state.signIn);
 
@@ -19,9 +19,9 @@ export function* authSaga() {
         yield put(setCurrentUser(user));
     }
 
-    yield put({type: CLEAR});
+    yield put({type: CLEAR_SIGN_IN});
 }
 
-export function* watchAuthSaga() {
-    yield takeEvery(LOG_IN, authSaga);
+export function* watchSignInSaga() {
+    yield takeEvery(LOG_IN, signInSaga);
 }

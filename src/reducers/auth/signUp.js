@@ -5,7 +5,8 @@ import {
     CHANGE_FIRST_NAME,
     CHANGE_LAST_NAME,
     CHANGE_PASSWORD,
-    CHANGE_PHONE
+    CHANGE_PHONE,
+    CLEAR_SIGN_UP
 } from "../../constants";
 import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "../../validation";
 
@@ -24,7 +25,7 @@ const initialStateForSignUp = {
     selectedDate: new Date()
 };
 
-export default  (state = initialStateForSignUp, action) => {
+export default (state = initialStateForSignUp, action) => {
 
     switch (action.type) {
 
@@ -73,6 +74,11 @@ export default  (state = initialStateForSignUp, action) => {
             return {
                 ...state,
                 isCheckedBox: action.checkbox
+            }
+        }
+        case CLEAR_SIGN_UP: {
+            return {
+                ...initialStateForSignUp
             }
         }
         default:
