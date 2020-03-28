@@ -1,8 +1,9 @@
 import {call, put, select, takeEvery} from "redux-saga/effects";
 import * as axios from "axios";
 import {SEARCH_NEWS_SAGA, SET_NEWS} from "../constants";
+import {setNews} from "../actions/news/newsAction";
 
-export function* hello() {
+export function* setNewsSaga() {
 
     const {country, pageSize} = yield select(state => state.news);
 
@@ -18,9 +19,9 @@ export function* hello() {
         }
     );
 
-    yield put({type: SET_NEWS, newsList: result.data.articles});
+    yield put(setNews(result.data.articles));
 }
 
-export function* watchHelloSaga() {
-    yield takeEvery(SEARCH_NEWS_SAGA, hello);
+export function* watchSetNewsSaga() {
+    yield takeEvery(SEARCH_NEWS_SAGA, setNewsSaga);
 }

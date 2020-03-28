@@ -61,7 +61,7 @@ export default ({email, isValidEmail, password, isValidPassword, onChangeEmail, 
 
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link to={SIGN_UP} href="#" variant="body2">
+                            <Link to={SIGN_UP} variant="body2">
                                 Do you haven't an account? Sign up
                             </Link>
                         </Grid>

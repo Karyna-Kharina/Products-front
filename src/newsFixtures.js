@@ -1,6 +1,9 @@
 export default [
     {
-        "sourceName":"Mashable",
+        "source": {
+            "id": null,
+            "name": "Mashable"
+        },
         "author": "Stan Schroeder",
         "title": "Revolut finally launches debit card and app in the United States",
         "description": "Revolut, one of Europe's hottest fintech startups, is launching in the U.S. The London-based company made a name for itself by consolidating numerous aspects of a user's financial life into a single mobile app, including a bank account, an investment account …",
@@ -10,7 +13,10 @@ export default [
         "content": "Revolut, one of Europe's hottest fintech startups, is launching in the U.S. \r\nThe London-based company made a name for itself by consolidating numerous aspects of a user's financial life into a single mobile app, including a bank account, an investment accoun… [+2579 chars]"
     },
     {
-        "sourceName": "Newsbtc.com",
+        "source": {
+            "id": null,
+            "name": "Newsbtc.com"
+        },
         "author": "Yashu Gola",
         "title": "Goldman Sachs’ Call to Buy Gold Cheers Bitcoin Bulls; Here’s Why",
         "description": "Bitcoin bulls were cheerful this Tuesday as a top analyst’s call to purchase gold amidst the Coronavirus-induced market turmoil created similar opportunities for the cryptocurrency. Jeffrey Currie, a commodity researcher at Goldman Sachs, said in a note that …",
@@ -20,7 +26,10 @@ export default [
         "content": "Bitcoin bulls were cheerful this Tuesday as a top analyst’s call to purchase gold amidst the Coronavirus-induced market turmoil created similar opportunities for the cryptocurrency.\r\nJeffrey Currie, a commodity researcher at Goldman Sachs, said in a note that… [+2451 chars]"
     },
     {
-        "sourceName": "Cointelegraph.com",
+        "source": {
+            "id": null,
+            "name": "Cointelegraph.com"
+        },
         "author": "Cointelegraph By Marie Huillet",
         "title": "Mt. Gox Creditors to Meet Tomorrow As Reimbursement Process Inches Forward",
         "description": "With creditors and investors still awaiting reimbursement, Mt. Gox creditors are due to meet for the fourth time tomorrow",
@@ -30,7 +39,10 @@ export default [
         "content": "In the latest sign of a step forward in a lengthy compensation process, the infamous hacked Bitcoin (BTC) exchange Mt. Gox appears to be hosting a new meeting for its creditors tomorrow, March 25.\r\nIn an official announcement posted to the now-defunct exchang… [+2234 chars]"
     },
     {
-        "sourceName": "Cointelegraph.com",
+        "source": {
+            "id": null,
+            "name": "Cointelegraph.com"
+        },
         "author": "Cointelegraph By Gareth Jenkinson",
         "title": "Blockchain Africa Conference: Education Is Key Crypto Adoption Driver",
         "description": "Cryptocurrency trading is prevalent in certain pockets of Africa — but experts believe education is key to driving more adoption across the continent",

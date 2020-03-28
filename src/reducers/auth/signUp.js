@@ -10,16 +10,16 @@ import {
 import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "../../validation";
 
 const initialStateForSignUp = {
-    firstName: 'Businka',
-    isValidFirstName: true,
-    lastName: 'Lala',
-    isValidLastName: true,
-    email: 'blablabla@gmail.com',
-    isValidEmail: true,
-    phoneNumber: '+380996100899',
-    isValidPhoneNumber: true,
-    password: '123456789',
-    isValidPassword: true,
+    firstName: '',
+    isValidFirstName: false,
+    lastName: '',
+    isValidLastName: false,
+    email: '',
+    isValidEmail: false,
+    phoneNumber: '',
+    isValidPhoneNumber: false,
+    password: '',
+    isValidPassword: false,
     isCheckedBox: false,
     selectedDate: new Date()
 };

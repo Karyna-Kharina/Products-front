@@ -47,3 +47,4 @@ export const CHOOSE_COUNTRY = 'CHOOSE_COUNTRY';
 export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
 
 export const SEARCH_NEWS_SAGA = 'SEARCH_NEWS_SAGA';
+export const CLEAR = 'CLEAR';

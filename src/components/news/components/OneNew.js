@@ -2,7 +2,8 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core/styles";
-import {Box} from "@material-ui/core";
+import {Box, Link} from "@material-ui/core";
+import CardMedia from "@material-ui/core/CardMedia";
 
 export const useStyles = makeStyles(theme => ({
     card: {
@@ -12,32 +13,35 @@ export const useStyles = makeStyles(theme => ({
     },
     content: {
         textAlign: "left",
+        overflowWrap: "break-word"
     },
     divider: {
         margin: '1%',
         backgroundColor: theme.palette.primary.light
+    },
+    media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
     },
 }));
 
 export default ({oneNew}) => {
 
     const classes = useStyles();
-    const {sourceName, author, title, description, url, urlToImage, publishedAt, content} = oneNew;
+    const {source, author, title, description, url, urlToImage, publishedAt, content} = oneNew;
 
     return (
-        <Box border={1} p={5}>
+        <Box border={1} p={5} className={classes.content}>
             <Typography
-                className={classes.content}
                 variant={"subtitle1"}
                 color="secondary"
             >
-                {sourceName}
+                {source.name}
             </Typography>
 
             <Divider className={classes.divider}/>
 
             <Typography
-                className={classes.content}
                 variant={"h6"}
                 color="primary"
             >
@@ -47,8 +51,7 @@ export default ({oneNew}) => {
             <Divider className={classes.divider}/>
 
             <Typography
-                className={classes.content}
-                variant={"h6"}
+                variant={"h4"}
                 color="inherit"
             >
                 {title}
@@ -57,7 +60,6 @@ export default ({oneNew}) => {
             <Divider className={classes.divider}/>
 
             <Typography
-                className={classes.content}
                 variant={"subtitle2"}
                 color="inherit"
             >
@@ -66,29 +68,24 @@ export default ({oneNew}) => {
 
             <Divider className={classes.divider}/>
 
-            <Typography
-                className={classes.content}
+            <Link
                 variant={"subtitle2"}
                 color="secondary"
+                href={url}
             >
                 {url}
-            </Typography>
+            </Link>
+
+            <Divider className={classes.divider}/>
+
+            <CardMedia
+                className={classes.media}
+                image={urlToImage}
+            />
 
             <Divider className={classes.divider}/>
 
             <Typography
-                className={classes.content}
-                variant={"subtitle2"}
-                color="secondary"
-                noWrap
-            >
-                {urlToImage}
-            </Typography>
-
-            <Divider className={classes.divider}/>
-
-            <Typography
-                className={classes.content}
                 variant={"subtitle2"}
                 color="primary"
             >
@@ -98,7 +95,6 @@ export default ({oneNew}) => {
             <Divider className={classes.divider}/>
 
             <Typography
-                className={classes.content}
                 variant={"subtitle1"}
                 color="inherit"
             >

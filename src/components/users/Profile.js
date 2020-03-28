@@ -47,7 +47,7 @@ export default ({firstName, lastName, phoneNumber, email, photo}) => {
                         </Typography>
                     </Grid>
 
-                    <Divider dark />
+                    <Divider/>
                     <Grid item xs={12}>
                         <Typography
                             variant={"h5"}

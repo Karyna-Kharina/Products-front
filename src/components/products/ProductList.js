@@ -83,7 +83,7 @@ export default ({products, filteredName, onSwapClick, onDeleteClick, onClickPutP
 
         <div className={classes.grow}>
             <Container>
-                <Box mt={4} mb={4}>
+                <Box mt={4}>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <Search/>
@@ -97,17 +97,19 @@ export default ({products, filteredName, onSwapClick, onDeleteClick, onClickPutP
                             inputProps={{'aria-label': 'search'}}
                             onChange={(e) => onChangeFilteredName(e.target.value)}
                         />
-
-                        <Button
-                            variant="contained"
-                            size="large"
-                            color="inherit"
-                            startIcon={<SwapVert/>}
-                            onClick={() => onSwapClick()}
-                        >
-                            SWAP
-                        </Button>
                     </div>
+                </Box>
+
+                <Box p={3}>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        color="inherit"
+                        startIcon={<SwapVert/>}
+                        onClick={() => onSwapClick()}
+                    >
+                        SWAP
+                    </Button>
                 </Box>
 
                 <TableContainer component={Paper}>
