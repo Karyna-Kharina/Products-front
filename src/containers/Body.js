@@ -14,13 +14,13 @@ const mapDispatchToProps = (dispatch) => ({});
 
 const Body = ({currentUser}) => console.log(currentUser) || (
     <Switch>
-        
+
         <Route path={SIGN_UP}>
-            <SignUp/>
+            {currentUser ? <App/> : <SignUp/>}
         </Route>
 
         <Route path={SIGN_IN}>
-            <SignIn/>
+            {currentUser ? <App/> : <SignIn/>}
         </Route>
 
         <Route path={APP}>
