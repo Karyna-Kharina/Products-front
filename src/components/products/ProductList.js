@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Container from "@material-ui/core/Container";
 import {TableContainer} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
@@ -53,7 +53,7 @@ export const useStyles = makeStyles(theme => ({
     inputInput: {
         padding: theme.spacing(1, 1, 1, 7),
         transition: theme.transitions.create('width'),
-        width: '100%',
+        width: '80%',
         [theme.breakpoints.up('md')]: {
             width: 980,
         },
@@ -75,9 +75,16 @@ export const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default ({products, filteredName, onSwapClick, onDeleteClick, onClickPutProductToForm, onChangeFilteredName}) => {
+export default ({
+                    products, filteredName, onSwapClick, onDeleteClick, onClickPutProductToForm,
+                    onChangeFilteredName, fetchProduct
+                }) => {
 
     const classes = useStyles();
+
+    useEffect(() => {
+        fetchProduct()
+    }, []);
 
     return (
 

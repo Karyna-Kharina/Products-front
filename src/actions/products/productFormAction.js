@@ -12,7 +12,7 @@ export const updateName = (name) => ({
 
 export const updatePrice = (price) => ({
     type: UPDATE_PRICE,
-    price: parseInt(price)
+    price
 });
 
 export const updateImage = (image) => ({

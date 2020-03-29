@@ -1,8 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ProductCard from "./components/ProductCard";
 import {Container, Grid} from "@material-ui/core";
 
-export default ({products, onClickAddProduct}) => {
+export default ({products, fetchProduct, onClickAddProduct}) => {
+
+    useEffect(() => {
+        fetchProduct()
+    }, []);
+
     return (
         <div>
             <Container component="main" maxWidth="lg" style={{marginTop: 100}}>

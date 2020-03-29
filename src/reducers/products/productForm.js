@@ -1,4 +1,11 @@
-import {PUT_PRODUCT_TO_FORM, SAVE_PRODUCT, UPDATE_ID, UPDATE_IMAGE, UPDATE_NAME, UPDATE_PRICE} from "../../constants";
+import {
+    CLEAR_PRODUCT_FORM,
+    PUT_PRODUCT_TO_FORM,
+    UPDATE_ID,
+    UPDATE_IMAGE,
+    UPDATE_NAME,
+    UPDATE_PRICE
+} from "../../constants";
 
 const initialStateForProductForm = {product: {id: '', name: '', price: '', image: ''}};
 
@@ -48,7 +55,7 @@ export default (state = initialStateForProductForm, action) => {
                 product: {...action.product}
             }
         }
-        case SAVE_PRODUCT: {
+        case CLEAR_PRODUCT_FORM: {
             return {
                 ...state,
                 product: {...initialStateForProductForm.product}

@@ -1,12 +1,13 @@
 import {connect} from "react-redux";
 import ProductCards from "../../components/products/ProductCards";
-import {addProductToCart} from '../../actions/products/productListAction';
+import {addProductToCart, getProductsSaga} from '../../actions/products/productListAction';
 
 const mapStateToProps = (state) => ({
     products: state.products.products
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    fetchProduct: () => dispatch(getProductsSaga()),
     onClickAddProduct: (product) => dispatch(addProductToCart(product))
 });
 

@@ -1,7 +1,7 @@
 import {put, select, takeEvery} from "redux-saga/effects";
-import {CLEAR_SIGN_IN, LOG_IN} from "../constants";
-import userFixtures from "../userFixtures";
-import {setCurrentUser} from "../actions/users/profile";
+import {CLEAR_SIGN_IN, LOG_IN_SAGA} from "../../constants";
+import userFixtures from "../../userFixtures";
+import {setCurrentUser} from "../../actions/users/profile";
 
 export function* signInSaga() {
 
@@ -23,5 +23,5 @@ export function* signInSaga() {
 }
 
 export function* watchSignInSaga() {
-    yield takeEvery(LOG_IN, signInSaga);
+    yield takeEvery(LOG_IN_SAGA, signInSaga);
 }

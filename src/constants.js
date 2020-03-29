@@ -1,20 +1,6 @@
-export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
-export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
-
-export const SAVE_PRODUCT = 'SAVE_PRODUCT';
-export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
-export const CHANGE_FILTERED_NAME = 'CHANGE_FILTERED_NAME';
-
-export const UPDATE_ID = 'UPDATE_ID';
-export const UPDATE_NAME = 'UPDATE_NAME';
-export const UPDATE_PRICE = 'UPDATE_PRICE';
-export const UPDATE_IMAGE = 'UPDATE_IMAGE';
-
-export const PUT_PRODUCT_TO_FORM = 'PUT_PRODUCT_TO_FORM';
-
+// auth
 export const CHANGE_EMAIL_IN = 'CHANGE_EMAIL_IN';
 export const CHANGE_PASSWORD_IN = 'CHANGE_PASSWORD_IN';
-
 export const CHANGE_FIRST_NAME = 'CHANGE_FIRST_NAME';
 export const CHANGE_LAST_NAME = 'CHANGE_LAST_NAME';
 export const CHANGE_EMAIL = 'CHANGE_EMAIL';
@@ -23,11 +9,10 @@ export const CHANGE_DATE = 'CHANGE_DATE';
 export const CHANGE_PHONE = 'CHANGE_PHONE';
 export const CHANGE_CHECKBOX = 'CHANGE_CHECKBOX';
 
-export const SWAP = 'SWAP';
 export const LOG_IN = 'LOG_IN';
 export const SIGN_UP = 'SIGN_UP';
-
 export const CHANGE_USER_ID = 'CHANGE_USER_ID';
+
 export const CHANGE_USER_FIRST_NAME = 'CHANGE_USER_FIRST_NAME';
 export const CHANGE_USER_LAST_NAME = 'CHANGE_USER_LAST_NAME';
 export const CHANGE_USER_PHONE_NUMBER = 'CHANGE_USER_PHONE_NUMBER';
@@ -35,18 +20,54 @@ export const CHANGE_USER_EMAIL = 'CHANGE_USER_EMAIL';
 export const CHANGE_USER_PHOTO = 'CHANGE_USER_PHOTO';
 export const CHANGE_USER_PASSWORD = 'CHANGE_USER_PASSWORD';
 
+export const CLEAR_SIGN_IN = 'CLEAR_SIGN_IN';
+export const CLEAR_SIGN_UP = 'CLEAR_SIGN_UP';
+
+export const LOG_IN_SAGA = 'LOG_IN_SAGA';
+export const SIGN_UP_SAGA = 'SIGN_UP_SAGA';
+
+//products
+export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
+export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
+
+export const SAVE_PRODUCT = 'SAVE_PRODUCT';
+export const SET_PRODUCTS = 'SET_PRODUCTS';
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
+export const CHANGE_FILTERED_NAME = 'CHANGE_FILTERED_NAME';
+
+export const UPDATE_ID = 'UPDATE_ID';
+export const UPDATE_NAME = 'UPDATE_NAME';
+export const UPDATE_PRICE = 'UPDATE_PRICE';
+export const UPDATE_IMAGE = 'UPDATE_IMAGE';
+
+export const SWAP = 'SWAP';
+
+export const PUT_PRODUCT_TO_FORM = 'PUT_PRODUCT_TO_FORM';
+export const CLEAR_PRODUCT_FORM = 'CLEAR_PRODUCT_FORM';
+
+export const GET_PRODUCTS_SAGA = 'GET_PRODUCTS_SAGA';
+export const GET_PRODUCT_BY_ID_SAGA = 'GET_PRODUCT_BY_ID_SAGA';
+export const SAVE_PRODUCT_SAGA = 'SAVE_PRODUCT_SAGA';
+export const DELETE_PRODUCT_SAGA = 'UPDATE_PRODUCT_SAGA';
+
+// users
+export const SET_USERS = 'SET_USERS';
 export const SAVE_USER = 'SAVE_USER';
 export const REMOVE_USER = 'REMOVE_USER';
-export const CHANGE_FILTERED_USERNAME = 'CHANGE_FILTERED_USERNAME';
 
+export const CHANGE_FILTERED_USERNAME = 'CHANGE_FILTERED_USERNAME';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+
 export const PUT_USER_TO_FORM = 'PUT_USER_TO_FORM';
 
+export const GET_USERS_SAGA = 'GET_USERS_SAGA';
+export const SAVE_USER_SAGA = 'SAVE_USER_SAGA';
+export const DELETE_USER_SAGA = 'DELETE_USER_SAGA';
+
+// news
 export const SET_NEWS = 'SET_NEWS';
 export const CHOOSE_COUNTRY = 'CHOOSE_COUNTRY';
 export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
 
+export const GET_NEWS_SAGA = 'GET_NEWS_SAGA';
 export const SEARCH_NEWS_SAGA = 'SEARCH_NEWS_SAGA';
-
-export const CLEAR_SIGN_IN = 'CLEAR_SIGN_IN';
-export const CLEAR_SIGN_UP = 'CLEAR_SIGN_UP';

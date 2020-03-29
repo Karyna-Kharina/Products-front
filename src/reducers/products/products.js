@@ -1,15 +1,7 @@
-import productFixtures from "../../productFixtures";
-import {removeItemFrom, saveItemTo} from "../../methods";
-import {
-    ADD_PRODUCT_TO_CART,
-    CHANGE_FILTERED_NAME,
-    REMOVE_PRODUCT,
-    REMOVE_PRODUCT_FROM_CART,
-    SAVE_PRODUCT,
-    SWAP
-} from "../../constants";
+import {removeItemFrom} from "../../methods";
+import {ADD_PRODUCT_TO_CART, CHANGE_FILTERED_NAME, REMOVE_PRODUCT_FROM_CART, SET_PRODUCTS, SWAP} from "../../constants";
 
-const initialState = {products: productFixtures, productsInCart: [], filteredName: ''};
+const initialState = {products: [], productsInCart: [], filteredName: ''};
 
 export default (state = initialState, action) => {
 
@@ -27,18 +19,6 @@ export default (state = initialState, action) => {
                 productsInCart: removeItemFrom(state.productsInCart, action.product)
             }
         }
-        case SAVE_PRODUCT: {
-            return {
-                ...state,
-                products: saveItemTo(state.products, action.product)
-            }
-        }
-        case REMOVE_PRODUCT: {
-            return {
-                ...state,
-                products: removeItemFrom(state.products, action.product)
-            }
-        }
         case SWAP: {
             return {
                 ...state,
@@ -49,6 +29,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 filteredName: action.filteredName
+            }
+        }
+        case SET_PRODUCTS: {
+            return {
+                ...state,
+                products: action.products
             }
         }
         default:

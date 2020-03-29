@@ -1,7 +1,12 @@
 import {connect} from "react-redux";
 import ProductList from "../../components/products/ProductList";
-import {changeFilteredName, removeProduct, swapProducts} from "../../actions/products/productListAction";
 import {putProductToForm} from "../../actions/products/productFormAction";
+import {
+    changeFilteredName,
+    getProductsSaga,
+    removeProduct,
+    swapProducts
+} from "../../actions/products/productListAction";
 
 const mapStateToProps = (state) => {
     return {
@@ -13,6 +18,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSwapClick: () => dispatch(swapProducts()),
+        fetchProduct: () => dispatch(getProductsSaga()),
         onDeleteClick: (product) => dispatch(removeProduct(product)),
         onClickPutProductToForm: (product) => dispatch(putProductToForm(product)),
         onChangeFilteredName: (filteredName) => dispatch(changeFilteredName(filteredName))

@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 export default ({id, name, price, image, onChangeId, onChangeName, onChangePrice, onChangeImage, onCreate}) => {
 
     const isDisabledButtonSave = () => {
-        return !(id >= 0 && name.length > 0 && price > 0 && image.length > 10);
+        return !(name.length > 0 && price > 0);
     };
 
     return (
@@ -30,7 +30,7 @@ export default ({id, name, price, image, onChangeId, onChangeName, onChangePrice
                             label="ID"
                             size="medium"
                             variant="outlined"
-                            type="number"
+                            disabled
                             value={id}
                             onChange={(e) => onChangeId(e.target.value)}
                         />

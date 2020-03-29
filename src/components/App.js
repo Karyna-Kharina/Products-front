@@ -173,11 +173,7 @@ export default ({countProductsInCart, logOut}) => {
 
                     <Link to={SHOW_NEWS}>
                         <ListItem button>
-                            <ListItemIcon>
-                                <Badge badgeContent={countProductsInCart} color="secondary">
-                                    <FiberNew/>
-                                </Badge>
-                            </ListItemIcon>
+                            <ListItemIcon><FiberNew/></ListItemIcon>
                             <ListItemText primary={'News'}/>
                         </ListItem>
                     </Link>

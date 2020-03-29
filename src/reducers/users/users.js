@@ -1,8 +1,7 @@
-import userFixtures from "../../userFixtures";
-import {CHANGE_FILTERED_USERNAME, REMOVE_USER, SAVE_USER, SWAP} from "../../constants";
+import {CHANGE_FILTERED_USERNAME, REMOVE_USER, SAVE_USER, SET_USERS, SWAP} from "../../constants";
 import {removeItemFrom, saveItemTo} from "../../methods";
 
-const initialState = {users: userFixtures, filteredName: ''};
+const initialState = {users: [], filteredName: ''};
 
 export default (state = initialState, action) => {
 
@@ -30,6 +29,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 filteredName: action.filteredName
+            }
+        }
+        case SET_USERS: {
+            return {
+                ...state,
+                users: action.users
             }
         }
         default:
