@@ -1,7 +1,7 @@
 import {put, select, takeEvery} from "redux-saga/effects";
 import {CLEAR_SIGN_UP, SIGN_UP_SAGA} from "../../constants";
 import userFixtures from "../../userFixtures";
-import {createUser} from "../../actions/users/userFormAction";
+import {saveUser} from "../../actions/users/userFormAction";
 import {setCurrentUser} from "../../actions/users/profile";
 
 export function* signUpSaga() {
@@ -21,7 +21,7 @@ export function* signUpSaga() {
         currentUser.phoneNumber = phoneNumber;
         currentUser.password = password;
 
-        yield put(createUser(currentUser));
+        yield put(saveUser(currentUser));
         yield put(setCurrentUser(currentUser));
     }
 

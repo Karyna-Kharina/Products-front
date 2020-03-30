@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSwapClick: () => dispatch(swapProducts()),
-        fetchProduct: () => dispatch(getProductsSaga()),
+        fetchProducts: () => dispatch(getProductsSaga()),
         onDeleteClick: (product) => dispatch(removeProduct(product)),
         onClickPutProductToForm: (product) => dispatch(putProductToForm(product)),
         onChangeFilteredName: (filteredName) => dispatch(changeFilteredName(filteredName))

@@ -40,9 +40,9 @@ export default ({classes, users, filteredName, onDeleteClick, onClickPutUserToFo
 
             <TableBody>
                 {users
-                    .filter(user => user.firstName.toLowerCase().includes(filteredName.toLowerCase()) ||
-                        user.lastName.toLowerCase().includes(filteredName.toLowerCase())
-                    )
+                    // .filter(user => user.firstName.toLowerCase().includes(filteredName.toLowerCase()) ||
+                    //     user.lastName.toLowerCase().includes(filteredName.toLowerCase())
+                    // )
                     .map(item => (
                         <TableRow key={item.id}>
                             <TableCell align="center" component="th" scope="row">

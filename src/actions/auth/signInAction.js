@@ -1,4 +1,4 @@
-import {CHANGE_EMAIL_IN, CHANGE_PASSWORD_IN, LOG_IN} from "../../constants";
+import {CHANGE_EMAIL_IN, CHANGE_PASSWORD_IN, LOG_IN_SAGA} from "../../constants";
 
 export const changeEmail = (email) => ({
     type: CHANGE_EMAIL_IN,
@@ -11,5 +11,5 @@ export const changePassword = (password) => ({
 });
 
 export const logIn = () => ({
-    type: LOG_IN
+    type: LOG_IN_SAGA
 });

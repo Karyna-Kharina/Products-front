@@ -2,11 +2,12 @@ import {
     CHANGE_USER_EMAIL,
     CHANGE_USER_FIRST_NAME,
     CHANGE_USER_ID,
-    CHANGE_USER_LAST_NAME, CHANGE_USER_PASSWORD,
+    CHANGE_USER_LAST_NAME,
+    CHANGE_USER_PASSWORD,
     CHANGE_USER_PHONE_NUMBER,
     CHANGE_USER_PHOTO,
     PUT_USER_TO_FORM,
-    SAVE_USER
+    SAVE_USER_SAGA
 } from "../../constants";
 
 export const changeId = (id) => ({
@@ -44,8 +45,8 @@ export const changePassword = (password) => ({
     password
 });
 
-export const createUser = (user) => ({
-    type: SAVE_USER,
+export const saveUser = (user) => ({
+    type: SAVE_USER_SAGA,
     user
 });
 

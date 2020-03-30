@@ -29,6 +29,7 @@ import {
     USER_LIST,
     USER_PROFILE
 } from "../links";
+import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles(theme => (
     {
@@ -52,8 +53,7 @@ const useStyles = makeStyles(theme => (
         },
     }));
 
-export default ({countProductsInCart, logOut}) => {
-    console.log(logOut);
+export default ({countProductsInCart, photo, logOut}) => {
 
     const classes = useStyles();
 
@@ -91,7 +91,7 @@ export default ({countProductsInCart, logOut}) => {
                                     onClick={handleMenu}
                                     color="inherit"
                                 >
-                                    <AccountCircle/>
+                                    <Avatar src={photo}/>
                                 </IconButton>
 
                                 <Menu

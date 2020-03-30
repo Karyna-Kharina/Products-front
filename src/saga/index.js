@@ -6,6 +6,9 @@ import {watchGetProductListSaga} from "./products/getProductListSaga";
 import {watchSaveProductSaga} from "./products/saveProductSaga";
 import {watchDeleteProductSaga} from "./products/deleteProductSaga";
 import {watchGetUserListSaga} from "./users/getUserListSaga";
+import {watchSaveUserSaga} from "./users/saveUserSaga";
+import {watchDeleteUserSaga} from "./users/deleteUserSaga";
+import {watchGetUsersByNameSaga} from "./users/getUsersByNameSaga";
 
 export default function* mainSaga() {
 
@@ -18,6 +21,9 @@ export default function* mainSaga() {
         watchSaveProductSaga(),
         watchDeleteProductSaga(),
         watchGetUserListSaga(),
+        watchSaveUserSaga(),
+        watchDeleteUserSaga(),
+        watchGetUsersByNameSaga(),
 
     ]);
 }

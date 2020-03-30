@@ -1,16 +1,20 @@
 import Container from "@material-ui/core/Container";
 import {TableContainer} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-import React from "react";
+import React, {useEffect} from "react";
 import {useStyles} from "../products/ProductList"
 import UserTable from "./UserTable";
 import {Search} from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
 import Box from "@material-ui/core/Box";
 
-export default ({users, filteredName, onDeleteClick, onClickPutUserToForm, onChangeFilteredUsername}) => {
+export default ({users, filteredName, fetchUsers, onDeleteClick, onClickPutUserToForm, onChangeFilteredUsername}) => {
 
     const classes = useStyles();
+
+    useEffect(() => {
+        fetchUsers()
+    }, []);
 
     return (
 

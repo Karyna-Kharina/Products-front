@@ -1,6 +1,11 @@
 import {connect} from "react-redux";
 import UserList from "../../components/users/UserList";
-import {changeFilteredUsername, removeUser} from "../../actions/users/userListAction";
+import {
+    changeFilteredUsername,
+    getUsersByFilteredNameSaga,
+    getUsersSaga,
+    removeUser
+} from "../../actions/users/userListAction";
 import {putUserToForm} from "../../actions/users/userFormAction";
 
 const mapStateToProps = (state) => {
@@ -12,9 +17,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        fetchUsers: () => dispatch(getUsersSaga()),
         onDeleteClick: (user) => dispatch(removeUser(user)),
         onClickPutUserToForm: (user) => dispatch(putUserToForm(user)),
-        onChangeFilteredUsername: (filteredName) => dispatch(changeFilteredUsername(filteredName))
+        onChangeFilteredUsername: (filteredName) => {
+            dispatch(changeFilteredUsername(filteredName));
+            dispatch(getUsersByFilteredNameSaga(filteredName))
+        }
     }
 };
 

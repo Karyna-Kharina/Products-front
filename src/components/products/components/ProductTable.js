@@ -24,8 +24,6 @@ const StyledTableCell = withStyles(theme => ({
 
 export default ({classes, products, filteredName, onDeleteClick, onClickPutProductToForm}) => {
 
-    console.log("FILTERED NAME: ", filteredName)
-
     return (
         <Table className={classes.table} size="small" aria-label="a dense table">
             <TableHead>

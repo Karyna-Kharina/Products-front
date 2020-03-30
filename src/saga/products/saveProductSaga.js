@@ -14,7 +14,6 @@ export function* saveProductSaga() {
     );
 
     console.log(result);
-
     yield put({type: CLEAR_PRODUCT_FORM});
 }
 

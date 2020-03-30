@@ -2,10 +2,10 @@ import React, {useEffect} from "react";
 import ProductCard from "./components/ProductCard";
 import {Container, Grid} from "@material-ui/core";
 
-export default ({products, fetchProduct, onClickAddProduct}) => {
+export default ({products, fetchProducts, onClickAddProduct}) => {
 
     useEffect(() => {
-        fetchProduct()
+        fetchProducts()
     }, []);
 
     return (

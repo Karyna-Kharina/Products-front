@@ -1,3 +1,4 @@
+import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber, isValidPhoto} from "../../validation";
 import {
     CHANGE_USER_EMAIL,
     CHANGE_USER_FIRST_NAME,
@@ -6,19 +7,25 @@ import {
     CHANGE_USER_PASSWORD,
     CHANGE_USER_PHONE_NUMBER,
     CHANGE_USER_PHOTO,
-    PUT_USER_TO_FORM,
-    SAVE_USER
+    CLEAR_USER_FORM,
+    PUT_USER_TO_FORM
 } from "../../constants";
 
 const initialStateForUserForm = {
     user: {
         id: '',
         firstName: '',
+        isValidFirstName: false,
         lastName: '',
-        phoneNumber: '',
+        isValidLastName: false,
         email: '',
+        isValidEmail: false,
+        phoneNumber: '',
+        isValidPhoneNumber: false,
         photo: '',
-        password: ''
+        isValidPhoto: false,
+        password: '',
+        isValidPassword: false,
     }
 };
 
@@ -40,7 +47,8 @@ export default (state = initialStateForUserForm, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    firstName: action.firstName
+                    firstName: action.firstName,
+                    isValidFirstName: isValidName(action.firstName)
                 }
             }
         }
@@ -49,7 +57,8 @@ export default (state = initialStateForUserForm, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    lastName: action.lastName
+                    lastName: action.lastName,
+                    isValidLastName: isValidName(action.lastName)
                 }
             }
         }
@@ -58,7 +67,8 @@ export default (state = initialStateForUserForm, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    phoneNumber: action.phoneNumber
+                    phoneNumber: action.phoneNumber,
+                    isValidPhoneNumber: isValidPhoneNumber(action.phoneNumber)
                 }
             }
         }
@@ -67,7 +77,8 @@ export default (state = initialStateForUserForm, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    email: action.email
+                    email: action.email,
+                    isValidEmail: isValidEmail(action.email)
                 }
             }
         }
@@ -76,7 +87,8 @@ export default (state = initialStateForUserForm, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    photo: action.photo
+                    photo: action.photo,
+                    isValidPhoto: isValidPhoto(action.photo)
                 }
             }
         }
@@ -85,17 +97,26 @@ export default (state = initialStateForUserForm, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    password: action.password
+                    password: action.password,
+                    isValidPassword: isValidPassword(action.password)
                 }
             }
         }
         case PUT_USER_TO_FORM: {
             return {
                 ...state,
-                user: {...action.user}
+                user: {
+                    ...action.user,
+                    isValidFirstName: isValidName(action.user.firstName),
+                    isValidLastName: isValidName(action.user.lastName),
+                    isValidEmail: isValidEmail(action.user.email),
+                    isValidPhoneNumber: isValidPhoneNumber(action.user.phoneNumber),
+                    isValidPhoto: isValidPhoto(action.user.photo),
+                    isValidPassword: isValidPassword(action.user.password)
+                }
             }
         }
-        case SAVE_USER: {
+        case CLEAR_USER_FORM: {
             return {
                 ...state,
                 user: {...initialStateForUserForm.user}

@@ -5,7 +5,6 @@ import {PRODUCTS_API} from "../../links";
 
 export function* deleteProductSaga(action) {
 
-    console.log("delete saga")
     const {id} = action.product;
 
     const result = yield call(
@@ -14,7 +13,6 @@ export function* deleteProductSaga(action) {
     );
 
     console.log(result);
-
     yield put({type: GET_PRODUCTS_SAGA});
 }
 

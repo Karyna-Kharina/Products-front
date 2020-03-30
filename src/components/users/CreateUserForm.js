@@ -7,22 +7,26 @@ import Update from "@material-ui/icons/Update";
 import Save from "@material-ui/icons/Save";
 
 export default ({
-                    id, firstName, lastName, phoneNumber, email, photo, password, onChangeId, onChangeFirstName,
-                    onChangeLastName, onChangePhoneNumber, onChangeEmail, onChangePhoto, onChangePassword, onCreate
+                    id, onChangeId,
+                    firstName, isValidFirstName, onChangeFirstName,
+                    lastName, isValidLastName, onChangeLastName,
+                    email, isValidEmail, onChangeEmail,
+                    phoneNumber, isValidPhoneNumber, onChangePhoneNumber,
+                    photo, isValidPhoto, onChangePhoto,
+                    password, isValidPassword, onChangePassword,
+                    onCreate
                 }) => {
 
-    // const isDisabledButtonSave = () => {
-    //     return !(
-    //         id >= 0 &&
-    //         firstName.length > 0 &&
-    //         lastName.length > 0 &&
-    //         phoneNumber.length > 9 &&
-    //         email.length > 10 &&
-    //         photo.length > 10
-    //     );
-    // };
-
-    console.log("USER: ", id, firstName, lastName, phoneNumber, email, photo, password);
+    const isDisabledButtonSave = () => {
+        return !(
+            isValidFirstName &&
+            isValidLastName &&
+            isValidEmail &&
+            isValidPhoneNumber &&
+            isValidPhoto &&
+            isValidPassword
+        );
+    };
 
     return (
 
@@ -38,11 +42,11 @@ export default ({
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
+                            disabled
                             id="margin-normal"
                             label="ID"
                             size="medium"
                             variant="outlined"
-                            type="number"
                             value={id}
                             onChange={(e) => onChangeId(e.target.value)}
                         />
@@ -51,12 +55,14 @@ export default ({
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
+                            required
                             id="margin-normal"
                             label="First Name"
                             size="medium"
                             variant="outlined"
                             type="text"
                             value={firstName}
+                            error={!isValidFirstName}
                             onChange={(e) => onChangeFirstName(e.target.value)}
                         />
                     </Grid>
@@ -64,12 +70,14 @@ export default ({
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
+                            required
                             id="margin-normal"
                             label="Last Name"
                             size="medium"
                             variant="outlined"
                             type="text"
                             value={lastName}
+                            error={!isValidLastName}
                             onChange={(e) => onChangeLastName(e.target.value)}
                         />
                     </Grid>
@@ -77,12 +85,14 @@ export default ({
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
+                            required
                             id="margin-normal"
                             label="Phone Number"
                             size="medium"
                             variant="outlined"
                             type="text"
                             value={phoneNumber}
+                            error={!isValidPhoneNumber}
                             onChange={(e) => onChangePhoneNumber(e.target.value)}
                         />
                     </Grid>
@@ -90,12 +100,14 @@ export default ({
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
+                            required
                             id="margin-normal"
                             label="Email"
                             size="medium"
                             variant="outlined"
                             type="text"
                             value={email}
+                            error={!isValidEmail}
                             onChange={(e) => onChangeEmail(e.target.value)}
                         />
                     </Grid>
@@ -103,12 +115,14 @@ export default ({
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
+                            required
                             id="margin-normal"
                             label="Photo"
                             size="medium"
                             variant="outlined"
                             type="text"
                             value={photo}
+                            error={!isValidPhoto}
                             onChange={(e) => onChangePhoto(e.target.value)}
                         />
                     </Grid>
@@ -116,12 +130,14 @@ export default ({
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
+                            required
                             id="margin-normal"
                             label="Password"
                             size="medium"
                             variant="outlined"
                             type="password"
                             value={password}
+                            error={!isValidPassword}
                             onChange={(e) => onChangePassword(e.target.value)}
                         />
                     </Grid>
@@ -132,7 +148,7 @@ export default ({
                             size="large"
                             color="primary"
                             variant="contained"
-                            disabled={false}
+                            disabled={isDisabledButtonSave()}
                             startIcon={id ? <Update/> : <Save/>}
                             onClick={() => onCreate({id, firstName, lastName, phoneNumber, email, photo, password})}
                         >

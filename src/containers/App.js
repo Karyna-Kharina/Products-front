@@ -3,7 +3,8 @@ import App from "../components/App";
 import {logOut} from "../actions/users/profile";
 
 const mapStateToProps = (state) => ({
-    countProductsInCart: state.products.productsInCart.length
+    countProductsInCart: state.products.productsInCart.length,
+    photo: state.profile.current.photo
 });
 
 const mapDispatchToProps = (dispatch) => {

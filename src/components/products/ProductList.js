@@ -77,13 +77,13 @@ export const useStyles = makeStyles(theme => ({
 
 export default ({
                     products, filteredName, onSwapClick, onDeleteClick, onClickPutProductToForm,
-                    onChangeFilteredName, fetchProduct
+                    onChangeFilteredName, fetchProducts
                 }) => {
 
     const classes = useStyles();
 
     useEffect(() => {
-        fetchProduct()
+        fetchProducts()
     }, []);
 
     return (

@@ -18,6 +18,8 @@ export default ({firstName, lastName, phoneNumber, email, photo}) => {
 
     const classes = useStyles();
 
+    console.log(photo);
+
     return (
         <Container component="main" maxWidth="lg" className={classes.root}>
             <Grid container spacing={10}>
