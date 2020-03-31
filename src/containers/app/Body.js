@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
-import App from "../containers/App";
+import App from "./App";
 import {Route, Switch} from "react-router";
-import {APP, SIGN_IN, SIGN_UP} from "../links";
-import SignUp from "./auth/SignUp";
-import SignIn from "./auth/SignIn";
+import {APP, SIGN_IN, SIGN_UP} from "../../additionalData/links/front";
+import SignUp from "../auth/SignUp";
+import SignIn from "../auth/SignIn";
 import React from "react";
 
 const mapStateToProps = (state) => ({

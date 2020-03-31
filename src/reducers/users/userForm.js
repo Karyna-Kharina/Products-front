@@ -1,4 +1,10 @@
-import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber, isValidPhoto} from "../../validation";
+import {
+    isValidEmail,
+    isValidName,
+    isValidPassword,
+    isValidPhoneNumber,
+    isValidPhoto
+} from "../../additionalData/validation";
 import {
     CHANGE_USER_EMAIL,
     CHANGE_USER_FIRST_NAME,
@@ -9,7 +15,7 @@ import {
     CHANGE_USER_PHOTO,
     CLEAR_USER_FORM,
     PUT_USER_TO_FORM
-} from "../../constants";
+} from "../../additionalData/constants/user";
 
 const initialStateForUserForm = {
     user: {

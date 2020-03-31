@@ -8,7 +8,7 @@ import Table from "@material-ui/core/Table";
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
-import {PRODUCT_UPDATE} from "../../../links";
+import {PRODUCT_UPDATE} from "../../../additionalData/links/front";
 
 const StyledTableCell = withStyles(theme => ({
     head: {

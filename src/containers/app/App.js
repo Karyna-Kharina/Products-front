@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import App from "../components/App";
-import {logOut} from "../actions/users/profile";
+import App from "../../components/App";
+import {logOut} from "../../actions/users/profile";
 
 const mapStateToProps = (state) => ({
     countProductsInCart: state.products.productsInCart.length,

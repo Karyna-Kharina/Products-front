@@ -7,6 +7,7 @@ import UserList from "../containers/users/UserList";
 import CreateUserForm from "../containers/users/CreateUserForm";
 import CreateProductForm from "../containers/products/CreateProductForm";
 import Profile from "../containers/users/Profile";
+import News from "../containers/news/News";
 import {
     APP,
     CREATE_PRODUCT_FORM,
@@ -19,8 +20,7 @@ import {
     USER_LIST,
     USER_PROFILE,
     USER_UPDATE
-} from "../links";
-import News from "../containers/news/News";
+} from "../additionalData/links/front";
 
 export default () => (
     <Switch>

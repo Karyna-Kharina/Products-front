@@ -1,4 +1,5 @@
-import {CHANGE_FILTERED_USERNAME, SET_USERS, SWAP} from "../../constants";
+import {SWAP} from "../../additionalData/constants/product";
+import {CHANGE_FILTERED_USERNAME, SET_USERS} from "../../additionalData/constants/user";
 
 const initialState = {users: [], filteredName: ''};
 

@@ -5,9 +5,16 @@ import {
     UPDATE_IMAGE,
     UPDATE_NAME,
     UPDATE_PRICE
-} from "../../constants";
+} from "../../additionalData/constants/product";
 
-const initialStateForProductForm = {product: {id: '', name: '', price: '', image: ''}};
+const initialStateForProductForm = {
+    product: {
+        id: '',
+        name: '',
+        price: '',
+        image: ''
+    }
+};
 
 export default (state = initialStateForProductForm, action) => {
 

@@ -1,6 +1,6 @@
 import {call, put, select, takeEvery} from "redux-saga/effects";
 import * as axios from "axios";
-import {SEARCH_NEWS_SAGA} from "../../constants";
+import {SEARCH_NEWS_SAGA} from "../../additionalData/constants/news";
 import {setNews} from "../../actions/news/newsAction";
 
 export function* setNewsSaga() {

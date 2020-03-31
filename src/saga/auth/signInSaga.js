@@ -1,8 +1,9 @@
 import {call, put, select, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {CLEAR_SIGN_IN, LOG_IN_SAGA} from "../../constants";
 import {setCurrentUser} from "../../actions/users/profile";
-import {USERS_API} from "../../links";
+import {USERS_API} from "../../additionalData/links/back";
+import {CLEAR_SIGN_IN, LOG_IN_SAGA} from "../../additionalData/constants/auth";
+import {setMessageInfo} from "../../actions/info/infoAction";
 
 export function* signInSaga() {
 
@@ -23,6 +24,13 @@ export function* signInSaga() {
     );
 
     console.log("result", result);
+
+    if (!result.data) {
+        const type = "error";
+        const text = "Your login or password are not valid!";
+
+        yield put(setMessageInfo({type, text}));
+    }
 
     yield put(setCurrentUser(result.data));
     yield put({type: CLEAR_SIGN_IN});

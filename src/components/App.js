@@ -8,13 +8,14 @@ import {Link} from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
-import {AccountCircle, Create, FiberNew, GroupAdd, Lock, People, ViewModule} from "@material-ui/icons";
+import {Create, FiberNew, GroupAdd, Lock, People, ViewModule} from "@material-ui/icons";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Routers from "./Routers";
 import IconButton from "@material-ui/core/IconButton";
+import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -28,8 +29,7 @@ import {
     SHOW_NEWS,
     USER_LIST,
     USER_PROFILE
-} from "../links";
-import Avatar from "@material-ui/core/Avatar";
+} from "../additionalData/links/front";
 
 const useStyles = makeStyles(theme => (
     {

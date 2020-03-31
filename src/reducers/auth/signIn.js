@@ -1,7 +1,12 @@
-import {CHANGE_EMAIL_IN, CHANGE_PASSWORD_IN, CLEAR_SIGN_IN} from "../../constants";
-import {isValidEmail, isValidPassword} from "../../validation";
+import {CHANGE_EMAIL_IN, CHANGE_PASSWORD_IN, CLEAR_SIGN_IN} from "../../additionalData/constants/auth";
+import {isValidEmail, isValidPassword} from "../../additionalData/validation";
 
-const initialStateForSignIn = {email: '', password: '', isValidEmail: false, isValidPassword: false};
+const initialStateForSignIn = {
+    email: '',
+    password: '',
+    isValidEmail: false,
+    isValidPassword: false
+};
 
 export default (state = initialStateForSignIn, action) => {
 

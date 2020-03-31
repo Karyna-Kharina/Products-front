@@ -1,8 +1,8 @@
 import {put, select, takeEvery} from "redux-saga/effects";
-import {CLEAR_SIGN_UP, SIGN_UP_SAGA} from "../../constants";
-import userFixtures from "../../userFixtures";
+import userFixtures from "../../additionalData/fixtures/userFixtures";
 import {saveUser} from "../../actions/users/userFormAction";
 import {setCurrentUser} from "../../actions/users/profile";
+import {CLEAR_SIGN_UP, SIGN_UP_SAGA} from "../../additionalData/constants/auth";
 
 export function* signUpSaga() {
 

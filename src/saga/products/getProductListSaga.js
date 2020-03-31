@@ -1,8 +1,8 @@
-import {call, takeEvery, put} from "redux-saga/effects";
+import {call, put, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {GET_PRODUCTS_SAGA} from "../../constants";
-import {PRODUCTS_API} from "../../links";
 import {setProductList} from "../../actions/products/productListAction";
+import {PRODUCTS_API} from "../../additionalData/links/back";
+import {GET_PRODUCTS_SAGA} from "../../additionalData/constants/product";
 
 export function* getProductListSaga() {
 

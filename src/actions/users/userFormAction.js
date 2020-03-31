@@ -7,8 +7,8 @@ import {
     CHANGE_USER_PHONE_NUMBER,
     CHANGE_USER_PHOTO,
     PUT_USER_TO_FORM,
-    SAVE_USER_SAGA
-} from "../../constants";
+    SAVE_USER_SAGA,
+} from "../../additionalData/constants/user";
 
 export const changeId = (id) => ({
     type: CHANGE_USER_ID,

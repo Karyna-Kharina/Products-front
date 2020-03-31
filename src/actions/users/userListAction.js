@@ -5,7 +5,7 @@ import {
     GET_USERS_SAGA,
     SAVE_USER,
     SET_USERS
-} from "../../constants";
+} from "../../additionalData/constants/user";
 
 export const saveUser = (user) => ({
     type: SAVE_USER,

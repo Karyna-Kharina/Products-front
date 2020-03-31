@@ -1,5 +1,5 @@
-import newsFixtures from "../../newsFixtures";
-import {CHOOSE_COUNTRY, SEARCH_NEWS_SAGA, SET_NEWS, SET_PAGE_SIZE} from "../../constants";
+import newsFixtures from "../../additionalData/fixtures/newsFixtures";
+import {CHOOSE_COUNTRY, SEARCH_NEWS_SAGA, SET_NEWS, SET_PAGE_SIZE} from "../../additionalData/constants/news";
 
 const initialState = {newsList: newsFixtures, country: '', pageSize: ''};
 

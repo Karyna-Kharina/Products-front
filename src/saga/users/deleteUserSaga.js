@@ -1,7 +1,7 @@
 import {call, put, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {DELETE_USER_SAGA, GET_USERS_SAGA} from "../../constants";
-import {USERS_API} from "../../links";
+import {USERS_API} from "../../additionalData/links/back";
+import {DELETE_USER_SAGA, GET_USERS_SAGA} from "../../additionalData/constants/user";
 
 export function* deleteUserSaga(action) {
 

@@ -1,7 +1,7 @@
 import {call, put, select, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {CLEAR_PRODUCT_FORM, SAVE_PRODUCT_SAGA} from "../../constants";
-import {PRODUCTS_API} from "../../links";
+import {PRODUCTS_API} from "../../additionalData/links/back";
+import {CLEAR_PRODUCT_FORM, SAVE_PRODUCT_SAGA} from "../../additionalData/constants/product";
 
 export function* saveProductSaga() {
 

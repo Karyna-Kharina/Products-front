@@ -5,7 +5,7 @@ import {Email, Password} from "./components";
 import {makeStyles} from '@material-ui/core/styles';
 import {styles} from "./components/AuthStyle";
 import {Link} from "react-router-dom";
-import {SIGN_UP} from "../../links";
+import {SIGN_UP} from "../../additionalData/links/front";
 
 const useStyles = makeStyles(styles);
 

@@ -1,4 +1,10 @@
-import {PUT_PRODUCT_TO_FORM, UPDATE_ID, UPDATE_IMAGE, UPDATE_NAME, UPDATE_PRICE} from "../../constants";
+import {
+    PUT_PRODUCT_TO_FORM,
+    UPDATE_ID,
+    UPDATE_IMAGE,
+    UPDATE_NAME,
+    UPDATE_PRICE
+} from "../../additionalData/constants/product";
 
 export const updateId = (id) => ({
     type: UPDATE_ID,

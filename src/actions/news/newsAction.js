@@ -1,4 +1,4 @@
-import {CHOOSE_COUNTRY, SEARCH_NEWS_SAGA, SET_NEWS, SET_PAGE_SIZE} from "../../constants";
+import {CHOOSE_COUNTRY, SEARCH_NEWS_SAGA, SET_NEWS, SET_PAGE_SIZE} from "../../additionalData/constants/news";
 
 export const setNews = (newsList) => ({
     type: SET_NEWS,

@@ -1,5 +1,11 @@
-import {removeItemFrom} from "../../methods";
-import {ADD_PRODUCT_TO_CART, CHANGE_FILTERED_NAME, REMOVE_PRODUCT_FROM_CART, SET_PRODUCTS, SWAP} from "../../constants";
+import {removeItemFrom} from "../../additionalData/methods";
+import {
+    ADD_PRODUCT_TO_CART,
+    CHANGE_FILTERED_NAME,
+    REMOVE_PRODUCT_FROM_CART,
+    SET_PRODUCTS,
+    SWAP
+} from "../../additionalData/constants/product";
 
 const initialState = {products: [], productsInCart: [], filteredName: ''};
 

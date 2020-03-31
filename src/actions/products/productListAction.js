@@ -7,7 +7,7 @@ import {
     SAVE_PRODUCT_SAGA,
     SET_PRODUCTS,
     SWAP
-} from "../../constants";
+} from "../../additionalData/constants/product";
 
 export const addProductToCart = (product) => ({
     type: ADD_PRODUCT_TO_CART,

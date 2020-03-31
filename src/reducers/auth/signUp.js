@@ -7,8 +7,8 @@ import {
     CHANGE_PASSWORD,
     CHANGE_PHONE,
     CLEAR_SIGN_UP
-} from "../../constants";
-import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "../../validation";
+} from "../../additionalData/constants/auth";
+import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "../../additionalData/validation";
 
 const initialStateForSignUp = {
     firstName: '',

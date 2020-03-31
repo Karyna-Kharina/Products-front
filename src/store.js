@@ -1,5 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import createSagaMiddleware from 'redux-saga';
+import {composeWithDevTools} from "redux-devtools-extension";
 import mainSaga from './saga';
 import users from "./reducers/users/users";
 import products from "./reducers/products/products";
@@ -9,7 +10,7 @@ import signIn from "./reducers/auth/signIn";
 import signUp from "./reducers/auth/signUp";
 import profile from "./reducers/users/profile";
 import news from "./reducers/news/news";
-import {composeWithDevTools} from "redux-devtools-extension";
+import messageInfo from "./reducers/info/messageInfo";
 
 const reducers = {
     signIn,
@@ -19,7 +20,8 @@ const reducers = {
     users,
     profile,
     userForm,
-    news
+    news,
+    messageInfo
 };
 
 const rootReducer = combineReducers(reducers);
