@@ -1,5 +1,5 @@
 import {all} from "redux-saga/effects";
-import {watchSetNewsSaga} from "./news/setNewsSaga";
+import {watchGetNewsSaga} from "./news/getNewsSaga";
 import {watchSignInSaga} from "./auth/signInSaga";
 import {watchSignUpSaga} from "./auth/signUpSaga";
 import {watchGetProductListSaga} from "./products/getProductListSaga";
@@ -9,11 +9,11 @@ import {watchGetUserListSaga} from "./users/getUserListSaga";
 import {watchSaveUserSaga} from "./users/saveUserSaga";
 import {watchDeleteUserSaga} from "./users/deleteUserSaga";
 import {watchGetUsersByNameSaga} from "./users/getUsersByNameSaga";
+import {watchGetProductByNameSaga} from "./products/getProductByNameSaga";
 
 export default function* mainSaga() {
 
     yield all([
-        watchSetNewsSaga(),
         watchSignInSaga(),
         watchSignUpSaga(),
         watchGetProductListSaga(),
@@ -24,6 +24,8 @@ export default function* mainSaga() {
         watchSaveUserSaga(),
         watchDeleteUserSaga(),
         watchGetUsersByNameSaga(),
+        watchGetProductByNameSaga(),
+        watchGetNewsSaga(),
 
     ]);
 }

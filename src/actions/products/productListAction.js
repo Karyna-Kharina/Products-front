@@ -2,6 +2,7 @@ import {
     ADD_PRODUCT_TO_CART,
     CHANGE_FILTERED_NAME,
     DELETE_PRODUCT_SAGA,
+    GET_PRODUCTS_BY_NAME_SAGA,
     GET_PRODUCTS_SAGA,
     REMOVE_PRODUCT_FROM_CART,
     SAVE_PRODUCT_SAGA,
@@ -45,4 +46,9 @@ export const setProductList = (products) => ({
 
 export const getProductsSaga = () => ({
     type: GET_PRODUCTS_SAGA
+});
+
+export const getProductsByFilteredNameSaga = (filteredName) => ({
+    type: GET_PRODUCTS_BY_NAME_SAGA,
+    filteredName
 });

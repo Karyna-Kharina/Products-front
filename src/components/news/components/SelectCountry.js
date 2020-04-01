@@ -33,8 +33,9 @@ export default ({country, onChooseCountry}) => {
                 option: classes.option,
             }}
             autoHighlight
-            getOptionLabel={option => option.label}
+            getOptionLabel={option => option.label ? option.label : ''}
             onChange={(e, v) => onChooseCountry(v ? v : '')}
+            value={country}
 
             renderOption={option => (
                 <React.Fragment>
@@ -46,7 +47,6 @@ export default ({country, onChooseCountry}) => {
             renderInput={params => (
                 <TextField
                     {...params}
-                    value={country}
                     label="Choose a country"
                     variant="outlined"
                     inputProps={{

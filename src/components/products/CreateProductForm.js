@@ -6,10 +6,13 @@ import {Container, Grid} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
-export default ({id, name, price, image, onChangeId, onChangeName, onChangePrice, onChangeImage, onCreate}) => {
+export default ({
+                    id, name, isValidName, price, isValidPrice, image, isValidImage,
+                    onChangeId, onChangeName, onChangePrice, onChangeImage, onCreate
+                }) => {
 
     const isDisabledButtonSave = () => {
-        return !(name.length > 0 && price > 0);
+        return !(isValidName && isValidPrice && isValidImage);
     };
 
     return (
@@ -45,6 +48,7 @@ export default ({id, name, price, image, onChangeId, onChangeName, onChangePrice
                             variant="outlined"
                             type="text"
                             value={name}
+                            error={!isValidName}
                             onChange={(e) => onChangeName(e.target.value)}
                         />
                     </Grid>
@@ -58,6 +62,7 @@ export default ({id, name, price, image, onChangeId, onChangeName, onChangePrice
                             variant="outlined"
                             type="number"
                             value={price}
+                            error={!isValidPrice}
                             onChange={(e) => onChangePrice(e.target.value)}
                         />
                     </Grid>
@@ -71,6 +76,7 @@ export default ({id, name, price, image, onChangeId, onChangeName, onChangePrice
                             variant="outlined"
                             type="text"
                             value={image}
+                            error={!isValidImage}
                             onChange={(e) => onChangeImage(e.target.value)}
                         />
                     </Grid>

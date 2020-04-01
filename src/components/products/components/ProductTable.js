@@ -38,7 +38,7 @@ export default ({classes, products, filteredName, onDeleteClick, onClickPutProdu
 
             <TableBody>
                 {products
-                    .filter(product => product.name.toLowerCase().includes(filteredName.toLowerCase()))
+                    // .filter(product => product.name.toLowerCase().includes(filteredName.toLowerCase()))
                     .map(item => (
                         <TableRow key={item.id}>
                             <TableCell align="center" component="th" scope="row">

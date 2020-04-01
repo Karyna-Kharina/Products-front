@@ -9,9 +9,6 @@ export function* signInSaga() {
 
     const {email, password} = yield select(state => state.signIn);
 
-    console.log("EMAIL: ", email);
-    console.log("PASSWORD: ", password);
-
     const result = yield call(
         axios.get,
         USERS_API + "/profile",
@@ -23,12 +20,9 @@ export function* signInSaga() {
         }
     );
 
-    console.log("result", result);
-
     if (!result.data) {
         const type = "error";
         const text = "Your login or password are not valid!";
-
         yield put(setMessageInfo({type, text}));
     }
 

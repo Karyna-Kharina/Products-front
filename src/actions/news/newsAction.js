@@ -1,4 +1,10 @@
-import {CHOOSE_COUNTRY, SEARCH_NEWS_SAGA, SET_NEWS, SET_PAGE_SIZE} from "../../additionalData/constants/news";
+import {
+    CHOOSE_CATEGORY,
+    CHOOSE_COUNTRY,
+    GET_NEWS_SAGA,
+    SET_NEWS,
+    SET_PAGE_SIZE
+} from "../../additionalData/constants/news";
 
 export const setNews = (newsList) => ({
     type: SET_NEWS,
@@ -15,6 +21,11 @@ export const setPageSize = (pageSize) => ({
     pageSize
 });
 
-export const searchNews = () => ({
-    type: SEARCH_NEWS_SAGA
+export const chooseCategory = (category) => ({
+    type: CHOOSE_CATEGORY,
+    category
+});
+
+export const getNews = () => ({
+    type: GET_NEWS_SAGA
 });

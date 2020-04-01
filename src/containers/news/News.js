@@ -1,20 +1,31 @@
 import News from "../../components/news/News";
 import {connect} from "react-redux";
-import {chooseCountry, searchNews, setPageSize} from "../../actions/news/newsAction";
+import {chooseCategory, chooseCountry, getNews, setPageSize} from "../../actions/news/newsAction";
 
 const mapStateToProps = (state) => {
     return {
         newsList: state.news.newsList,
         country: state.news.country,
-        pageSize: state.news.pageSize
+        pageSize: state.news.pageSize,
+        category: state.news.category
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onChooseCountry: (country) => dispatch(chooseCountry(country)),
-        onChangePageSize: (pageSize) => dispatch(setPageSize(pageSize)),
-        onClickApply: (news) => dispatch(searchNews(news))
+        fetchNews: () => dispatch(getNews()),
+        onChooseCountry: (country) => {
+            dispatch(chooseCountry(country));
+            dispatch(getNews())
+        },
+        onChooseCategory: (category) => {
+            dispatch(chooseCategory(category));
+            dispatch(getNews())
+        },
+        onChangePageSize: (pageSize) => {
+            dispatch(setPageSize(pageSize));
+            dispatch(getNews())
+        }
     }
 };
 

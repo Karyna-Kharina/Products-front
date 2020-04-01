@@ -78,10 +78,12 @@ export default ({oneNew}) => {
 
             <Divider className={classes.divider}/>
 
-            <CardMedia
-                className={classes.media}
-                image={urlToImage}
-            />
+            {urlToImage && (
+                <CardMedia
+                    className={classes.media}
+                    image={urlToImage}
+                />
+            )}
 
             <Divider className={classes.divider}/>
 

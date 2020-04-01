@@ -1,6 +1,6 @@
 import {SET_MESSAGE_INFO} from "../../additionalData/constants/info";
 
-const initialState = {message: {type: '', text: ''}};
+const initialState = {message: null};
 
 export default (state = initialState, action) => {
 

@@ -3,7 +3,7 @@ import {
     isValidName,
     isValidPassword,
     isValidPhoneNumber,
-    isValidPhoto
+    isValidImageUrl
 } from "../../additionalData/validation";
 import {
     CHANGE_USER_EMAIL,
@@ -94,7 +94,7 @@ export default (state = initialStateForUserForm, action) => {
                 user: {
                     ...state.user,
                     photo: action.photo,
-                    isValidPhoto: isValidPhoto(action.photo)
+                    isValidPhoto: isValidImageUrl(action.photo)
                 }
             }
         }
@@ -117,7 +117,7 @@ export default (state = initialStateForUserForm, action) => {
                     isValidLastName: isValidName(action.user.lastName),
                     isValidEmail: isValidEmail(action.user.email),
                     isValidPhoneNumber: isValidPhoneNumber(action.user.phoneNumber),
-                    isValidPhoto: isValidPhoto(action.user.photo),
+                    isValidPhoto: isValidImageUrl(action.user.photo),
                     isValidPassword: isValidPassword(action.user.password)
                 }
             }
