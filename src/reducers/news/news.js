@@ -1,7 +1,11 @@
-import newsFixtures from "../../additionalData/fixtures/newsFixtures";
-import {CHOOSE_COUNTRY, SEARCH_NEWS_SAGA, SET_NEWS, SET_PAGE_SIZE} from "../../additionalData/constants/news";
+import {CHOOSE_CATEGORY, CHOOSE_COUNTRY, SET_NEWS, SET_PAGE_SIZE} from "../../additionalData/constants/news";
 
-const initialState = {newsList: newsFixtures, country: '', pageSize: ''};
+const initialState = {
+    newsList: [],
+    country:  {code: 'UA', label: 'Ukraine', phone: '380'},
+    category: {},
+    pageSize: ''
+};
 
 export default (state = initialState, action) => {
 
@@ -10,9 +14,7 @@ export default (state = initialState, action) => {
         case SET_NEWS: {
             return {
                 ...state,
-                newsList: action.newsList,
-                country: initialState.country,
-                pageSize: initialState.country
+                newsList: action.newsList
             }
         }
         case CHOOSE_COUNTRY: {
@@ -21,15 +23,16 @@ export default (state = initialState, action) => {
                 country: action.country
             }
         }
+        case CHOOSE_CATEGORY: {
+            return {
+                ...state,
+                category: action.category
+            }
+        }
         case SET_PAGE_SIZE: {
             return {
                 ...state,
                 pageSize: action.pageSize
-            }
-        }
-        case SEARCH_NEWS_SAGA: {
-            return {
-                ...state
             }
         }
         default:
