@@ -6,13 +6,17 @@ import {
     UPDATE_NAME,
     UPDATE_PRICE
 } from "../../additionalData/constants/product";
+import {isValidName, isValidImageUrl, isValidPrice} from "../../additionalData/validation";
 
 const initialStateForProductForm = {
     product: {
         id: '',
         name: '',
+        isValidName: false,
         price: '',
-        image: ''
+        isValidPrice: false,
+        image: '',
+        isValidImage: false
     }
 };
 
@@ -34,7 +38,8 @@ export default (state = initialStateForProductForm, action) => {
                 ...state,
                 product: {
                     ...state.product,
-                    name: action.name
+                    name: action.name,
+                    isValidName: isValidName(action.name)
                 }
             }
         }
@@ -43,7 +48,8 @@ export default (state = initialStateForProductForm, action) => {
                 ...state,
                 product: {
                     ...state.product,
-                    price: action.price
+                    price: action.price,
+                    isValidPrice: isValidPrice(action.price)
                 }
             }
         }
@@ -52,14 +58,20 @@ export default (state = initialStateForProductForm, action) => {
                 ...state,
                 product: {
                     ...state.product,
-                    image: action.image
+                    image: action.image,
+                    isValidImage: isValidImageUrl(action.image)
                 }
             }
         }
         case PUT_PRODUCT_TO_FORM: {
             return {
                 ...state,
-                product: {...action.product}
+                product: {
+                    ...action.product,
+                    isValidName: isValidName(action.product.name),
+                    isValidPrice: isValidPrice(action.product.price),
+                    isValidImage: isValidImageUrl(action.product.image)
+                }
             }
         }
         case CLEAR_PRODUCT_FORM: {
