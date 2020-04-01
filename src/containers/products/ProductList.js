@@ -3,6 +3,7 @@ import ProductList from "../../components/products/ProductList";
 import {putProductToForm} from "../../actions/products/productFormAction";
 import {
     changeFilteredName,
+    getProductsByFilteredNameSaga,
     getProductsSaga,
     removeProduct,
     swapProducts
@@ -21,7 +22,10 @@ const mapDispatchToProps = (dispatch) => {
         fetchProducts: () => dispatch(getProductsSaga()),
         onDeleteClick: (product) => dispatch(removeProduct(product)),
         onClickPutProductToForm: (product) => dispatch(putProductToForm(product)),
-        onChangeFilteredName: (filteredName) => dispatch(changeFilteredName(filteredName))
+        onChangeFilteredName: (filteredName) => {
+            dispatch(changeFilteredName(filteredName));
+            dispatch(getProductsByFilteredNameSaga(filteredName))
+        }
     }
 };
 
