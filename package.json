@@ -20,7 +20,14 @@
     "react-resource": "^2.0.7",
     "react-router": "^5.1.2",
     "react-scripts": "3.3.1",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "@material-ui/lab": "^4.0.0-alpha.46",
+    "@material-ui/pickers": "^3.2.10",
+    "axios": "^0.19.2",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
+    "weak-key": "^1.0.2"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,12 +51,5 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/lab": "^4.0.0-alpha.46",
-    "@material-ui/pickers": "^3.2.10",
-    "axios": "^0.19.2",
-    "react-router-dom": "^5.1.2",
-    "redux": "^4.0.5",
-    "redux-saga": "^1.1.3",
-    "weak-key": "^1.0.2"
   }
 }
