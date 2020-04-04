@@ -10,7 +10,7 @@ export default function ({selectedDate, onChangeDate}) {
             format="MM/dd/yyyy"
             value={selectedDate}
             margin="normal"
-            style={{"margin-left": 10, "margin-right": 10}}
+            style={{"marginLeft": 10, "marginRight": 10}}
             fullWidth
             onChange={onChangeDate}
             KeyboardButtonProps={{

@@ -26,14 +26,17 @@ export function* getNewsSaga() {
 
         const type = "success";
         const text = "Request completed successfully!";
-        yield put(setMessageInfo({type, text}));
 
+        yield put(setMessageInfo({type, text}));
         yield put(setNews(result.data.articles));
 
     } catch (e) {
-        const type = "error";
-        const text = "Request failed! Error occurred!";
-        yield put(setMessageInfo({type, text}));
+        yield put(setMessageInfo(
+            {
+                type: "error",
+                text: "Request failed! Error occurred!"
+            }
+        ));
     }
 }
 

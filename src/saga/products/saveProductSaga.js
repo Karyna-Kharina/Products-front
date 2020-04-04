@@ -2,18 +2,28 @@ import {call, put, select, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
 import {PRODUCTS_API} from "../../additionalData/links/back";
 import {CLEAR_PRODUCT_FORM, SAVE_PRODUCT_SAGA} from "../../additionalData/constants/product";
+import {setMessageInfo} from "../../actions/info/infoAction";
 
 export function* saveProductSaga() {
 
-    const {product} = yield select(state => state.productForm);
+    try {
+        const {product} = yield select(state => state.productForm);
 
-    const result = yield call(
-        axios.post,
-        PRODUCTS_API,
-        product
-    );
+        yield call(
+            axios.post,
+            PRODUCTS_API,
+            product
+        );
 
-    console.log(result);
+    } catch (e) {
+        yield put(setMessageInfo(
+            {
+                type: "error",
+                text: "Incorrect value!"
+            }
+        ));
+    }
+
     yield put({type: CLEAR_PRODUCT_FORM});
 }
 

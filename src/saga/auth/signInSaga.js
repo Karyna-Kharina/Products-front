@@ -24,10 +24,14 @@ export function* signInSaga() {
         yield put(setMessageInfo({type: "success", text: "log ok"}));
         yield put(setCurrentUser(result.data));
         yield put({type: CLEAR_SIGN_IN});
+
     } catch (e) {
-        const type = "error";
-        const text = "Your login or password are not valid!";
-        yield put(setMessageInfo({type, text}));
+        yield put(setMessageInfo(
+            {
+                type: "error",
+                text: "Your login or password are not valid!"
+            }
+        ));
     }
 
 }

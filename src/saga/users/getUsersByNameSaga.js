@@ -3,23 +3,33 @@ import *  as axios from "axios";
 import {setUserList} from "../../actions/users/userListAction";
 import {USERS_API_SEARCH} from "../../additionalData/links/back";
 import {GET_USERS_BY_NAME_SAGA} from "../../additionalData/constants/user";
+import {setMessageInfo} from "../../actions/info/infoAction";
 
 export function* getUsersByNameSaga() {
 
-    const {filteredName} = yield select(state => state.users);
+    try {
+        const {filteredName} = yield select(state => state.users);
 
-    const result = yield call(
-        axios.get,
-        USERS_API_SEARCH,
-        {
-            params: {
-                name: filteredName
+        const result = yield call(
+            axios.get,
+            USERS_API_SEARCH,
+            {
+                params: {
+                    name: filteredName
+                }
             }
-        }
-    );
+        );
 
-    console.log(result);
-    yield put(setUserList(result.data))
+        yield put(setUserList(result.data));
+
+    } catch (e) {
+        yield put(setMessageInfo(
+            {
+                type: "error",
+                text: "Incorrect value!"
+            }
+        ));
+    }
 }
 
 export function* watchGetUsersByNameSaga() {

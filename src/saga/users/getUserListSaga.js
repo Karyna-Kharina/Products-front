@@ -3,16 +3,26 @@ import *  as axios from "axios";
 import {setUserList} from "../../actions/users/userListAction";
 import {USERS_API} from "../../additionalData/links/back";
 import {GET_USERS_SAGA} from "../../additionalData/constants/user";
+import {setMessageInfo} from "../../actions/info/infoAction";
 
 export function* getUserListSaga() {
 
-    const result = yield call(
-        axios.get,
-        USERS_API
-    );
+    try {
+        const result = yield call(
+            axios.get,
+            USERS_API
+        );
 
-    console.log(result);
-    yield put(setUserList(result.data));
+        yield put(setUserList(result.data));
+
+    } catch (e) {
+        yield put(setMessageInfo(
+            {
+                type: "warning",
+                text: "User list is empty!"
+            }
+        ));
+    }
 }
 
 export function* watchGetUserListSaga() {

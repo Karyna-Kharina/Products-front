@@ -2,17 +2,27 @@ import {call, put, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
 import {USERS_API} from "../../additionalData/links/back";
 import {DELETE_USER_SAGA, GET_USERS_SAGA} from "../../additionalData/constants/user";
+import {setMessageInfo} from "../../actions/info/infoAction";
 
 export function* deleteUserSaga(action) {
 
-    const {id} = action.user;
+    try {
+        const {id} = action.user;
 
-    const result = yield call(
-        axios.delete,
-        USERS_API + "/" + id
-    );
+        yield call(
+            axios.delete,
+            USERS_API + "/" + id
+        );
 
-    console.log(result);
+    } catch (e) {
+        yield put(setMessageInfo(
+            {
+                type: "error",
+                text: "Error occurred!"
+            }
+        ));
+    }
+
     yield put({type: GET_USERS_SAGA});
 }
 

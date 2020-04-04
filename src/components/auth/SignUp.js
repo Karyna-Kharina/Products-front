@@ -69,14 +69,14 @@ export default ({
                             />
                         </Grid>
 
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <Grid container justify="space-around">
-                                <DateComponent
-                                    selectedDate={selectedDate}
-                                    onChangeDate={onChangeDate}
-                                />
-                            </Grid>
-                        </MuiPickersUtilsProvider>
+                        {/*<MuiPickersUtilsProvider utils={DateFnsUtils}>*/}
+                        {/*    <Grid container justify="space-around">*/}
+                        {/*        <DateComponent*/}
+                        {/*            selectedDate={selectedDate}*/}
+                        {/*            onChangeDate={onChangeDate}*/}
+                        {/*        />*/}
+                        {/*    </Grid>*/}
+                        {/*</MuiPickersUtilsProvider>*/}
 
                         <Grid item xs={12}>
                             <Email

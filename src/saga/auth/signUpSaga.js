@@ -1,28 +1,36 @@
-import {put, select, takeEvery} from "redux-saga/effects";
-import userFixtures from "../../additionalData/fixtures/userFixtures";
+import {call, put, select, takeEvery} from "redux-saga/effects";
+import *  as axios from "axios";
 import {saveUser} from "../../actions/users/userFormAction";
 import {setCurrentUser} from "../../actions/users/profile";
+import {setMessageInfo} from "../../actions/info/infoAction";
+import {USERS_API} from "../../additionalData/links/back";
 import {CLEAR_SIGN_UP, SIGN_UP_SAGA} from "../../additionalData/constants/auth";
 
 export function* signUpSaga() {
 
-    const {firstName, lastName, email, phoneNumber, password} =
-        yield select(state => state.signUp);
+    try {
+        const {firstName, lastName, email, phoneNumber, password} =
+            yield select(state => state.signUp);
 
-    const userList = userFixtures;
-    const user = userList.find((user) => user.email === email);
+        const result = yield call(
+            axios.post,
+            USERS_API,
+            {firstName, lastName, email, phoneNumber, password}
+        );
 
-    if (!user) {
+        console.log(result);
 
-        const currentUser = {};
-        currentUser.firstName = firstName;
-        currentUser.lastName = lastName;
-        currentUser.email = email;
-        currentUser.phoneNumber = phoneNumber;
-        currentUser.password = password;
+        yield put(saveUser(result.data));
+        yield put(setCurrentUser(result.data));
 
-        yield put(saveUser(currentUser));
-        yield put(setCurrentUser(currentUser));
+    } catch (e) {
+
+        yield put(setMessageInfo(
+            {
+                type: "error",
+                text: "Your login or password are not valid!"
+            }
+        ));
     }
 
     yield put({type: CLEAR_SIGN_UP});
