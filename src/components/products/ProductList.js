@@ -84,7 +84,7 @@ export default ({
 
     useEffect(() => {
         fetchProducts()
-    }, []);
+    }, [fetchProducts]);
 
     return (
 

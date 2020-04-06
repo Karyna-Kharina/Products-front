@@ -6,7 +6,7 @@ export default ({products, fetchProducts, onClickAddProduct}) => {
 
     useEffect(() => {
         fetchProducts()
-    }, []);
+    }, [fetchProducts]);
 
     return (
         <div>

@@ -14,7 +14,7 @@ export default ({users, filteredName, fetchUsers, onDeleteClick, onClickPutUserT
 
     useEffect(() => {
         fetchUsers()
-    }, []);
+    }, [fetchUsers]);
 
     return (
 

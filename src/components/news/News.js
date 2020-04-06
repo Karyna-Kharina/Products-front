@@ -7,14 +7,14 @@ import SelectCountry from "./components/SelectCountry";
 import TextField from "@material-ui/core/TextField";
 import SelectCategory from "./components/SelectCategory";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
     root: {
         flexGrow: 1,
     },
     inputForm: {
         width: 300
     }
-}));
+});
 
 export default ({
                     newsList, country, pageSize, category,
@@ -25,7 +25,7 @@ export default ({
 
     useEffect(() => {
         fetchNews()
-    }, []);
+    }, [fetchNews]);
 
     return (
         <Container>
