@@ -1,17 +1,18 @@
 import {connect} from "react-redux";
 import UserList from "../../components/users/UserList";
+import {putUserToForm} from "../../actions/users/userFormAction";
 import {
     changeFilteredUsername,
     getUsersByFilteredNameSaga,
     getUsersSaga,
     removeUser
 } from "../../actions/users/userListAction";
-import {putUserToForm} from "../../actions/users/userFormAction";
 
 const mapStateToProps = (state) => {
     return {
         users: state.users.users,
-        filteredName: state.users.filteredName
+        filteredName: state.users.filteredName,
+        current: state.profile.current
     }
 };
 

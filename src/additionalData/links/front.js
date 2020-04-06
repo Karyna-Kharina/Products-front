@@ -15,3 +15,5 @@ export const CREATE_USER_FORM = "/user/add";
 export const USER_PROFILE = "/user/profile";
 
 export const SHOW_NEWS = "/news";
+
+export const EMPTY_AVATAR = "https://offvkontakte.ru/wp-content/uploads/avatarka-pustaya-vk_0.jpg";

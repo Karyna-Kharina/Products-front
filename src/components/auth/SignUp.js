@@ -111,7 +111,7 @@ export default ({
                                         color="primary"
                                     />
                                 }
-                                label="I want to receive inspiration, marketing promotions and updates via email."
+                                label="I want to receive marketing promotions and updates via email."
                             />
                         </Grid>
                     </Grid>

@@ -4,15 +4,16 @@ import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import Divider from "@material-ui/core/Divider";
+import {EMPTY_AVATAR} from "../../additionalData/links/front";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
     root: {
         marginTop: 100
     },
     media: {
         paddingTop: '70%',
     },
-}));
+});
 
 export default ({firstName, lastName, phoneNumber, email, photo}) => {
 
@@ -24,7 +25,7 @@ export default ({firstName, lastName, phoneNumber, email, photo}) => {
                 <Grid item xs={5}>
                     <CardMedia
                         className={classes.media}
-                        image={photo}
+                        image={photo ? photo : EMPTY_AVATAR}
                     />
                 </Grid>
 

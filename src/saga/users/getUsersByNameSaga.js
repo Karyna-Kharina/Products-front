@@ -9,6 +9,7 @@ export function* getUsersByNameSaga() {
 
     try {
         const {filteredName} = yield select(state => state.users);
+        console.log(filteredName);
 
         const result = yield call(
             axios.get,
@@ -25,7 +26,7 @@ export function* getUsersByNameSaga() {
     } catch (e) {
         yield put(setMessageInfo(
             {
-                type: "error",
+                type: "warning",
                 text: "Incorrect value!"
             }
         ));

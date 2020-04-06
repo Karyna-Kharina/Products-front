@@ -8,7 +8,7 @@ import {Search} from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
 import Box from "@material-ui/core/Box";
 
-export default ({users, filteredName, fetchUsers, onDeleteClick, onClickPutUserToForm, onChangeFilteredUsername}) => {
+export default ({users, current, fetchUsers, onDeleteClick, onClickPutUserToForm, onChangeFilteredUsername}) => {
 
     const classes = useStyles();
 
@@ -41,7 +41,7 @@ export default ({users, filteredName, fetchUsers, onDeleteClick, onClickPutUserT
                     <UserTable
                         classes={classes}
                         users={users}
-                        filteredName={filteredName}
+                        current={current}
                         onDeleteClick={(user) => onDeleteClick(user)}
                         onClickPutUserToForm={(user) => onClickPutUserToForm(user)}
                     />

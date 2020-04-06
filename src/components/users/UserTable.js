@@ -9,6 +9,7 @@ import React from "react";
 import {withStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
 import {USER_UPDATE} from "../../additionalData/links/front";
+import Avatar from "@material-ui/core/Avatar";
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -22,12 +23,13 @@ const StyledTableCell = withStyles(theme => ({
     }
 }))(TableCell);
 
-export default ({classes, users, filteredName, onDeleteClick, onClickPutUserToForm}) => {
+export default ({classes, users, current, onDeleteClick, onClickPutUserToForm}) => {
 
     return (
         <Table className={classes.table} size="small" aria-label="a dense table">
             <TableHead>
                 <TableRow>
+                    <StyledTableCell align="left">Photo</StyledTableCell>
                     <StyledTableCell align="center">ID</StyledTableCell>
                     <StyledTableCell align="center">First Name</StyledTableCell>
                     <StyledTableCell align="center">Last Name</StyledTableCell>
@@ -40,12 +42,13 @@ export default ({classes, users, filteredName, onDeleteClick, onClickPutUserToFo
 
             <TableBody>
                 {users
-                    // .filter(user => user.firstName.toLowerCase().includes(filteredName.toLowerCase()) ||
-                    //     user.lastName.toLowerCase().includes(filteredName.toLowerCase())
-                    // )
                     .map(item => (
                         <TableRow key={item.id}>
                             <TableCell align="center" component="th" scope="row">
+                                <Avatar src={item.photo}/>
+                            </TableCell>
+
+                            <TableCell align="center">
                                 {item.id}
                             </TableCell>
 
@@ -63,7 +66,10 @@ export default ({classes, users, filteredName, onDeleteClick, onClickPutUserToFo
                             </TableCell>
 
                             <TableCell align="center">
-                                <IconButton onClick={() => onDeleteClick(item)}>
+                                <IconButton
+                                    disabled={item.id === current.id}
+                                    onClick={() => onDeleteClick(item)}
+                                >
                                     <DeleteIcon/>
                                 </IconButton>
                             </TableCell>

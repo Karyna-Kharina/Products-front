@@ -1,6 +1,5 @@
 import {call, put, select, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {saveUser} from "../../actions/users/userFormAction";
 import {setCurrentUser} from "../../actions/users/profile";
 import {setMessageInfo} from "../../actions/info/infoAction";
 import {USERS_API} from "../../additionalData/links/back";
@@ -18,9 +17,6 @@ export function* signUpSaga() {
             {firstName, lastName, email, phoneNumber, password}
         );
 
-        console.log(result);
-
-        yield put(saveUser(result.data));
         yield put(setCurrentUser(result.data));
 
     } catch (e) {
