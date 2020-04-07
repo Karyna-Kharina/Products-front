@@ -1,16 +1,11 @@
 import {
     CHANGE_FILTERED_USERNAME,
     DELETE_USER_SAGA,
-    GET_USERS_BY_NAME_SAGA,
     GET_USERS_SAGA,
-    SAVE_USER,
+    SET_NUMBER_OF_PAGE,
+    SET_TOTAL_PAGES,
     SET_USERS
 } from "../../additionalData/constants/user";
-
-export const saveUser = (user) => ({
-    type: SAVE_USER,
-    user
-});
 
 export const removeUser = (user) => ({
     type: DELETE_USER_SAGA,
@@ -31,7 +26,12 @@ export const getUsersSaga = () => ({
     type: GET_USERS_SAGA
 });
 
-export const getUsersByFilteredNameSaga = (filteredName) => ({
-    type: GET_USERS_BY_NAME_SAGA,
-    filteredName
+export const setNumberOfPage = (page) => ({
+    type: SET_NUMBER_OF_PAGE,
+    page
+});
+
+export const setTotalPages = (totalPages) => ({
+    type: SET_TOTAL_PAGES,
+    totalPages
 });

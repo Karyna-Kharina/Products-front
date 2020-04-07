@@ -1,18 +1,16 @@
 import {connect} from "react-redux";
 import UserList from "../../components/users/UserList";
 import {putUserToForm} from "../../actions/users/userFormAction";
-import {
-    changeFilteredUsername,
-    getUsersByFilteredNameSaga,
-    getUsersSaga,
-    removeUser
-} from "../../actions/users/userListAction";
+import {changeFilteredUsername, setNumberOfPage, getUsersSaga, removeUser} from "../../actions/users/userListAction";
 
 const mapStateToProps = (state) => {
     return {
         users: state.users.users,
         filteredName: state.users.filteredName,
-        current: state.profile.current
+        current: state.profile.current,
+        page: state.users.page,
+        size: state.users.size,
+        totalPages: state.users.totalPages
     }
 };
 
@@ -21,9 +19,13 @@ const mapDispatchToProps = (dispatch) => {
         fetchUsers: () => dispatch(getUsersSaga()),
         onDeleteClick: (user) => dispatch(removeUser(user)),
         onClickPutUserToForm: (user) => dispatch(putUserToForm(user)),
-        onChangeFilteredUsername: (filteredName) => {
+        onChangeFilteredName: (filteredName) => {
             dispatch(changeFilteredUsername(filteredName));
-            dispatch(getUsersByFilteredNameSaga(filteredName))
+            dispatch(getUsersSaga())
+        },
+        onClickPage: (page) => {
+            dispatch(setNumberOfPage(page));
+            dispatch(getUsersSaga())
         }
     }
 };

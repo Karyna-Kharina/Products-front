@@ -1,7 +1,12 @@
 import {SWAP} from "../../additionalData/constants/product";
-import {CHANGE_FILTERED_USERNAME, SET_USERS} from "../../additionalData/constants/user";
+import {
+    CHANGE_FILTERED_USERNAME,
+    SET_NUMBER_OF_PAGE,
+    SET_TOTAL_PAGES,
+    SET_USERS
+} from "../../additionalData/constants/user";
 
-const initialState = {users: [], filteredName: ''};
+const initialState = {users: [], filteredName: '', page: 0, size: 10, totalPages: 0};
 
 export default (state = initialState, action) => {
 
@@ -23,6 +28,18 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 users: action.users
+            }
+        }
+        case SET_NUMBER_OF_PAGE: {
+            return {
+                ...state,
+                page: action.page
+            }
+        }
+        case SET_TOTAL_PAGES: {
+            return {
+                ...state,
+                totalPages: action.totalPages
             }
         }
         default:
