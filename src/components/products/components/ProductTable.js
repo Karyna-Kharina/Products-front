@@ -22,7 +22,7 @@ const StyledTableCell = withStyles(theme => ({
     }
 }))(TableCell);
 
-export default ({classes, products, filteredName, onDeleteClick, onClickPutProductToForm}) => {
+export default ({classes, products, onDeleteClick, onClickPutProductToForm}) => {
 
     return (
         <Table className={classes.table} size="small" aria-label="a dense table">

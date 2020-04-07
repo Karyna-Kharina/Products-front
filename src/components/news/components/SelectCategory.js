@@ -8,7 +8,6 @@ export default ({category, onChooseCategory}) => {
     return (
         <Autocomplete
             id="category-select-demo"
-            style={{width: 300}}
             options={categories}
             autoHighlight
             getOptionLabel={option => option.label ? option.label : ''}

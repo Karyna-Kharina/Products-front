@@ -8,9 +8,6 @@ export const CHANGE_DATE = 'CHANGE_DATE';
 export const CHANGE_PHONE = 'CHANGE_PHONE';
 export const CHANGE_CHECKBOX = 'CHANGE_CHECKBOX';
 
-export const LOG_IN = 'LOG_IN';
-export const SIGN_UP = 'SIGN_UP';
-
 export const CLEAR_SIGN_IN = 'CLEAR_SIGN_IN';
 export const CLEAR_SIGN_UP = 'CLEAR_SIGN_UP';
 

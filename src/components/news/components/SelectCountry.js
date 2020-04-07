@@ -27,7 +27,6 @@ export default ({country, onChooseCountry}) => {
     return (
         <Autocomplete
             id="country-select-demo"
-            style={{width: 300}}
             options={countries}
             classes={{
                 option: classes.option,

@@ -97,6 +97,7 @@ export default ({
                         </div>
                         <InputBase
                             placeholder="Search…"
+                            value={filteredName}
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
@@ -123,7 +124,6 @@ export default ({
                     <ProductTable
                         classes={classes}
                         products={products}
-                        filteredName={filteredName}
                         onDeleteClick={(product) => onDeleteClick(product)}
                         onClickPutProductToForm={(product) => onClickPutProductToForm(product)}
                     />
