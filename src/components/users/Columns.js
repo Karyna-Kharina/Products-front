@@ -9,7 +9,6 @@ import {
     isValidPassword,
     isValidPhoneNumber
 } from "../../additionalData/validation";
-import Birthday from "../auth/components/Birthday";
 import TextField from "@material-ui/core/TextField";
 
 export const columns = [
