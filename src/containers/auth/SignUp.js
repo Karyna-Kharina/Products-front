@@ -6,6 +6,7 @@ import {
     changeLastName,
     changePassword,
     changePhone,
+    changePhoto,
     signUp
 } from "../../actions/auth/signUpAction";
 import {connect} from "react-redux";
@@ -17,13 +18,16 @@ export const mapStateToProps = (state) => {
         isValidFirstName: state.signUp.isValidFirstName,
         lastName: state.signUp.lastName,
         isValidLastName: state.signUp.isValidLastName,
+        date: state.signUp.date,
+        isValidDate: state.signUp.isValidDate,
         email: state.signUp.email,
         isValidEmail: state.signUp.isValidEmail,
         phoneNumber: state.signUp.phoneNumber,
         isValidPhoneNumber: state.signUp.isValidPhoneNumber,
+        photo: state.signUp.photo,
+        isValidPhoto: state.signUp.isValidPhoto,
         password: state.signUp.password,
         isValidPassword: state.signUp.isValidPassword,
-        selectedDate: state.signUp.selectedDate,
         isCheckedBox: state.signUp.isCheckedBox
     }
 };
@@ -34,6 +38,7 @@ const mapDispatchToProps = (dispatch) => {
         onChangeLastName: (lastName) => dispatch(changeLastName(lastName)),
         onChangeEmail: (email) => dispatch(changeEmail(email)),
         onChangePhone: (phone) => dispatch(changePhone(phone)),
+        onChangePhoto: (photo) => dispatch(changePhoto(photo)),
         onChangePassword: (password) => dispatch(changePassword(password)),
         onChangeDate: (date) => dispatch(changeDate(date)),
         onChangeCheckbox: (checkbox) => dispatch(changeCheckbox(checkbox)),

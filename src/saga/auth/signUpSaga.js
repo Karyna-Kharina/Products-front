@@ -8,13 +8,13 @@ import {CLEAR_SIGN_UP, SIGN_UP_SAGA} from "../../additionalData/constants/auth";
 export function* signUpSaga() {
 
     try {
-        const {firstName, lastName, email, phoneNumber, password} =
+        const {firstName, lastName, date, email, phoneNumber, photo, password} =
             yield select(state => state.signUp);
 
         const result = yield call(
             axios.post,
             USERS_API,
-            {firstName, lastName, email, phoneNumber, password}
+            {firstName, lastName, date, email, phoneNumber, photo, password}
         );
 
         yield put(setCurrentUser(result.data));
@@ -24,7 +24,7 @@ export function* signUpSaga() {
         yield put(setMessageInfo(
             {
                 type: "error",
-                text: "Your login or password are not valid!"
+                text: "This email already exists!"
             }
         ));
     }

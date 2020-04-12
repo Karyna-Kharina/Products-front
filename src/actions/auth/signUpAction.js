@@ -6,6 +6,7 @@ import {
     CHANGE_LAST_NAME,
     CHANGE_PASSWORD,
     CHANGE_PHONE,
+    CHANGE_PHOTO,
     SIGN_UP_SAGA
 } from "../../additionalData/constants/auth";
 
@@ -37,6 +38,11 @@ export const changeDate = (date) => ({
 export const changePhone = (phone) => ({
     type: CHANGE_PHONE,
     phone
+});
+
+export const changePhoto = (photo) => ({
+    type: CHANGE_PHOTO,
+    photo
 });
 
 export const changeCheckbox = (checkbox) => ({

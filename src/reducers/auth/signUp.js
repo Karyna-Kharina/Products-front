@@ -6,23 +6,34 @@ import {
     CHANGE_LAST_NAME,
     CHANGE_PASSWORD,
     CHANGE_PHONE,
+    CHANGE_PHOTO,
     CLEAR_SIGN_UP
 } from "../../additionalData/constants/auth";
-import {isValidEmail, isValidName, isValidPassword, isValidPhoneNumber} from "../../additionalData/validation";
+import {
+    isValidDate,
+    isValidEmail,
+    isValidImageUrl,
+    isValidName,
+    isValidPassword,
+    isValidPhoneNumber
+} from "../../additionalData/validation";
 
 const initialStateForSignUp = {
     firstName: '',
     isValidFirstName: false,
     lastName: '',
     isValidLastName: false,
+    date: new Date(),
+    isValidDate: false,
     email: '',
     isValidEmail: false,
     phoneNumber: '',
     isValidPhoneNumber: false,
+    photo: '',
+    isValidPhoto: false,
     password: '',
     isValidPassword: false,
-    isCheckedBox: false,
-    selectedDate: new Date()
+    isCheckedBox: false
 };
 
 export default (state = initialStateForSignUp, action) => {
@@ -60,7 +71,8 @@ export default (state = initialStateForSignUp, action) => {
         case CHANGE_DATE: {
             return {
                 ...state,
-                selectedDate: action.date,
+                date: action.date,
+                isValidDate: isValidDate(action.date)
             }
         }
         case CHANGE_PHONE: {
@@ -68,6 +80,13 @@ export default (state = initialStateForSignUp, action) => {
                 ...state,
                 phoneNumber: action.phone,
                 isValidPhoneNumber: isValidPhoneNumber(action.phone)
+            }
+        }
+        case CHANGE_PHOTO: {
+            return {
+                ...state,
+                photo: action.photo,
+                isValidPhoto: isValidImageUrl(action.photo)
             }
         }
         case CHANGE_CHECKBOX: {

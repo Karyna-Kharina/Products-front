@@ -1,4 +1,5 @@
 import {
+    CHANGE_USER_DATE,
     CHANGE_USER_EMAIL,
     CHANGE_USER_FIRST_NAME,
     CHANGE_USER_ID,
@@ -23,6 +24,11 @@ export const changeFirstName = (firstName) => ({
 export const changeLastName = (lastName) => ({
     type: CHANGE_USER_LAST_NAME,
     lastName
+});
+
+export const changeDate = (date) => ({
+    type: CHANGE_USER_DATE,
+    date
 });
 
 export const changePhoneNumber = (phoneNumber) => ({
