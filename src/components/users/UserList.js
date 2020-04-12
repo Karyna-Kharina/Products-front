@@ -51,17 +51,6 @@ export default ({filteredName, current, users, fetchUsers, onChangeFilteredName}
 
                 }}
 
-                components={{
-                    // Body: props =>
-                    //     <MTableBody
-                    //         {...props}
-                    //         onFilterChanged={(columnId, value) => {
-                    //             onChangeFilteredName(value);
-                    //             console.log(value);
-                    //         }}
-                    //     />
-                }}
-
                 editable={{
                     isDeletable: rowData => rowData.id !== current.id,
                     onRowAdd: (user) => axios.post(USERS_API, user),

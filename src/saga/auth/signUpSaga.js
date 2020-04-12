@@ -29,7 +29,7 @@ export function* signUpSaga() {
         ));
     }
 
-    yield put({type: CLEAR_SIGN_UP});
+    // yield put({type: CLEAR_SIGN_UP});
 }
 
 export function* watchSignUpSaga() {

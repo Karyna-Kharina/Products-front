@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => (
             flexShrink: 0,
         },
         drawerPaper: {
-            width: 200,
+            width: 250,
             backgroundColor: 'rgba(40,106,153,0.02)',
         },
         content: {
