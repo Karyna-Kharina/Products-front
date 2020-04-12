@@ -1,11 +1,13 @@
 import {
+    isValidDate,
     isValidEmail,
+    isValidImageUrl,
     isValidName,
     isValidPassword,
-    isValidPhoneNumber,
-    isValidImageUrl
+    isValidPhoneNumber
 } from "../../additionalData/validation";
 import {
+    CHANGE_USER_DATE,
     CHANGE_USER_EMAIL,
     CHANGE_USER_FIRST_NAME,
     CHANGE_USER_ID,
@@ -24,6 +26,8 @@ const initialStateForUserForm = {
         isValidFirstName: false,
         lastName: '',
         isValidLastName: false,
+        date: new Date(),
+        isValidDate: false,
         email: '',
         isValidEmail: false,
         phoneNumber: '',
@@ -65,6 +69,16 @@ export default (state = initialStateForUserForm, action) => {
                     ...state.user,
                     lastName: action.lastName,
                     isValidLastName: isValidName(action.lastName)
+                }
+            }
+        }
+        case CHANGE_USER_DATE: {
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    date: action.date,
+                    isValidDate: isValidDate(action.date)
                 }
             }
         }
@@ -115,6 +129,7 @@ export default (state = initialStateForUserForm, action) => {
                     ...action.user,
                     isValidFirstName: isValidName(action.user.firstName),
                     isValidLastName: isValidName(action.user.lastName),
+                    isValidDate: isValidDate(action.user.date),
                     isValidEmail: isValidEmail(action.user.email),
                     isValidPhoneNumber: isValidPhoneNumber(action.user.phoneNumber),
                     isValidPhoto: isValidImageUrl(action.user.photo),

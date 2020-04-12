@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
-import {Create, FiberNew, GroupAdd, Lock, People, ViewModule} from "@material-ui/icons";
+import {Create, FiberNew, Lock, People, ViewModule} from "@material-ui/icons";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
@@ -19,17 +19,18 @@ import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import Grid from "@material-ui/core/Grid";
 import {
     CREATE_PRODUCT_FORM,
-    CREATE_USER_FORM,
     PRODUCT_CARDS,
     PRODUCT_CART,
     PRODUCT_LIST,
     SHOW_NEWS,
+    SIGN_IN,
     USER_LIST,
     USER_PROFILE
 } from "../additionalData/links/front";
+import {Button} from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(theme => (
     {
@@ -45,11 +46,22 @@ const useStyles = makeStyles(theme => (
             flexShrink: 0,
         },
         drawerPaper: {
-            width: 250,
+            width: 200,
+            backgroundColor: 'rgba(40,106,153,0.02)',
         },
         content: {
             flexGrow: 1,
             padding: theme.spacing(3),
+        },
+        menuButton: {
+            marginRight: theme.spacing(2),
+        },
+        title: {
+            flexGrow: 1,
+        },
+        divider: {
+            margin: '1%',
+            backgroundColor: theme.palette.primary.light
         },
     }));
 
@@ -75,11 +87,9 @@ export default ({countProductsInCart, photo, logOut}) => {
 
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <Grid item sm={12}>
-                        <Typography variant="h6" noWrap>
-                            Products
-                        </Typography>
-                    </Grid>
+                    <Typography variant="h5" className={classes.title}>
+                        Products
+                    </Typography>
 
                     <Box ml={8}>
                         {auth && (
@@ -100,13 +110,17 @@ export default ({countProductsInCart, photo, logOut}) => {
                                     open={open}
                                     onClose={handleClose}
                                 >
-                                    <Link to={USER_PROFILE}>
-                                        <MenuItem button>
-                                            My profile
-                                        </MenuItem>
-                                    </Link>
+                                    <MenuItem>
+                                        <Button color='inherit' to={USER_PROFILE} component={Link}>
+                                            Profile
+                                        </Button>
+                                    </MenuItem>
 
-                                    <MenuItem button onClick={logOut}>Logout</MenuItem>
+                                    <MenuItem>
+                                        <Button color='inherit' onClick={logOut} to={SIGN_IN} component={Link}>
+                                            Log Out
+                                        </Button>
+                                    </MenuItem>
                                 </Menu>
                             </div>
                         )}
@@ -124,59 +138,83 @@ export default ({countProductsInCart, photo, logOut}) => {
             >
                 <div className={classes.toolbar}/>
 
-                <List>
-                    <Link to={USER_LIST}>
-                        <ListItem button>
-                            <ListItemIcon><People/></ListItemIcon>
-                            <ListItemText primary={'Users'}/>
-                        </ListItem>
-                    </Link>
-
-                    <Link to={CREATE_USER_FORM}>
-                        <ListItem button>
-                            <ListItemIcon><GroupAdd/></ListItemIcon>
-                            <ListItemText primary={'Add User'}/>
-                        </ListItem>
-                    </Link>
-
-                    <Link to={PRODUCT_LIST}>
-                        <ListItem button>
+                <List style={{color: "#64d1ff"}}>
+                    <Button color='inherit' fullWidth to={PRODUCT_LIST} component={Link}>
+                        <ListItem>
                             <ListItemIcon><Lock/></ListItemIcon>
-                            <ListItemText primary={'Products'}/>
+                            <ListItemText primary={
+                                <Typography variant="subtitle2">
+                                    Products
+                                </Typography>}
+                            />
                         </ListItem>
-                    </Link>
+                    </Button>
 
-                    <Link to={CREATE_PRODUCT_FORM}>
-                        <ListItem button>
+                    <Button color='inherit' fullWidth to={CREATE_PRODUCT_FORM} component={Link}>
+                        <ListItem>
                             <ListItemIcon><Create/></ListItemIcon>
-                            <ListItemText primary={'Add Product'}/>
+                            <ListItemText primary={
+                                <Typography variant="subtitle2">
+                                    Add Product
+                                </Typography>}
+                            />
                         </ListItem>
-                    </Link>
+                    </Button>
 
-                    <Link to={PRODUCT_CARDS}>
-                        <ListItem button>
+                    <Button color='inherit' fullWidth to={PRODUCT_CARDS} component={Link}>
+                        <ListItem>
                             <ListItemIcon><ViewModule/></ListItemIcon>
-                            <ListItemText primary={'Product Cards'}/>
+                            <ListItemText primary={
+                                <Typography variant="subtitle2">
+                                    Product Cards
+                                </Typography>}
+                            />
                         </ListItem>
-                    </Link>
+                    </Button>
 
-                    <Link to={PRODUCT_CART}>
-                        <ListItem button>
+                    <Button color='inherit' fullWidth to={PRODUCT_CART} component={Link}>
+                        <ListItem>
                             <ListItemIcon>
                                 <Badge badgeContent={countProductsInCart} color="secondary">
                                     <ShoppingCart/>
                                 </Badge>
                             </ListItemIcon>
-                            <ListItemText primary={'Cart'}/>
-                        </ListItem>
-                    </Link>
 
-                    <Link to={SHOW_NEWS}>
-                        <ListItem button>
-                            <ListItemIcon><FiberNew/></ListItemIcon>
-                            <ListItemText primary={'News'}/>
+                            <ListItemText primary={
+                                <Typography variant="subtitle2">
+                                    Cart
+                                </Typography>}
+                            />
                         </ListItem>
-                    </Link>
+                    </Button>
+
+                    <Divider className={classes.divider}/>
+
+                    <Button color='inherit' fullWidth to={USER_LIST} component={Link}>
+                        <ListItem>
+                            <ListItemIcon><People/></ListItemIcon>
+                            <ListItemText primary={
+                                <Typography variant="subtitle2">
+                                    Users
+                                </Typography>}
+                            />
+                        </ListItem>
+                    </Button>
+
+                    <Divider className={classes.divider}/>
+
+                    <Button color='inherit' fullWidth to={SHOW_NEWS} component={Link}>
+                        <ListItem>
+                            <ListItemIcon><FiberNew/></ListItemIcon>
+                            <ListItemText primary={
+                                <Typography variant="subtitle2">
+                                    News
+                                </Typography>}
+                            />
+                        </ListItem>
+                    </Button>
+
+                    <Divider className={classes.divider}/>
                 </List>
             </Drawer>
 

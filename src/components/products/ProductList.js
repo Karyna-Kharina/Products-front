@@ -1,19 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useEffect} from "react";
 import Container from "@material-ui/core/Container";
-import {TableContainer} from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import SwapVert from '@material-ui/icons/SwapVert';
-import {fade, makeStyles} from '@material-ui/core/styles';
-import ProductTable from "./components/ProductTable";
-import {Search} from "@material-ui/icons";
+import {Search, SwapVert} from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
+import Button from "@material-ui/core/Button";
+import TableContainer from "@material-ui/core/TableContainer";
+import Paper from "@material-ui/core/Paper";
+import ProductTable from "./components/ProductTable";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import {fade} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 
-export const useStyles = makeStyles(theme => ({
-    grow: {
-        flexGrow: 1,
-    },
+const useStyles = makeStyles(theme => ({
     menuButton: {
         marginRight: theme.spacing(2),
     },
@@ -53,9 +50,9 @@ export const useStyles = makeStyles(theme => ({
     inputInput: {
         padding: theme.spacing(1, 1, 1, 7),
         transition: theme.transitions.create('width'),
-        width: '80%',
+        width: '50%',
         [theme.breakpoints.up('md')]: {
-            width: 980,
+            width: 500,
         },
     },
     sectionDesktop: {
@@ -70,33 +67,41 @@ export const useStyles = makeStyles(theme => ({
             display: 'none',
         },
     },
-    table: {
-        minWidth: 650,
-    },
 }));
 
 export default ({
-                    products, filteredName, onSwapClick, onDeleteClick, onClickPutProductToForm,
-                    onChangeFilteredName, fetchProducts
+                    products, filteredName, fetchProducts,
+                    onSwapClick, onDeleteClick, onClickPutProductToForm, onChangeFilteredName
                 }) => {
-
-    const classes = useStyles();
 
     useEffect(() => {
         fetchProducts()
     }, [fetchProducts]);
 
-    return (
+    const classes = useStyles();
 
-        <div className={classes.grow}>
-            <Container>
-                <Box mt={4}>
+    return (
+        <Container style={{marginTop: 5}}>
+            <Grid container style={{padding: 15}}>
+                <Grid item xs={12} sm={7}>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        color="default"
+                        startIcon={<SwapVert/>}
+                        onClick={() => onSwapClick()}
+                    >
+                        SWAP
+                    </Button>
+                </Grid>
+
+                <Grid item xs={12} sm={5}>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <Search/>
                         </div>
                         <InputBase
-                            placeholder="Search…"
+                            placeholder="Search by name…"
                             value={filteredName}
                             classes={{
                                 root: classes.inputRoot,
@@ -106,29 +111,17 @@ export default ({
                             onChange={(e) => onChangeFilteredName(e.target.value)}
                         />
                     </div>
-                </Box>
+                </Grid>
+            </Grid>
 
-                <Box p={3}>
-                    <Button
-                        variant="contained"
-                        size="large"
-                        color="inherit"
-                        startIcon={<SwapVert/>}
-                        onClick={() => onSwapClick()}
-                    >
-                        SWAP
-                    </Button>
-                </Box>
-
-                <TableContainer component={Paper}>
-                    <ProductTable
-                        classes={classes}
-                        products={products}
-                        onDeleteClick={(product) => onDeleteClick(product)}
-                        onClickPutProductToForm={(product) => onClickPutProductToForm(product)}
-                    />
-                </TableContainer>
-            </Container>
-        </div>
+            <TableContainer component={Paper}>
+                <ProductTable
+                    classes={classes}
+                    products={products}
+                    onDeleteClick={(product) => onDeleteClick(product)}
+                    onClickPutProductToForm={(product) => onClickPutProductToForm(product)}
+                />
+            </TableContainer>
+        </Container>
     )
 }

@@ -3,7 +3,6 @@ import {Container, Grid} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
-import Divider from "@material-ui/core/Divider";
 import {EMPTY_AVATAR} from "../../additionalData/links/front";
 
 const useStyles = makeStyles({
@@ -15,7 +14,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default ({firstName, lastName, phoneNumber, email, photo}) => {
+export default ({firstName, lastName, date, phoneNumber, email, photo}) => {
 
     const classes = useStyles();
 
@@ -29,10 +28,10 @@ export default ({firstName, lastName, phoneNumber, email, photo}) => {
                     />
                 </Grid>
 
-                <Grid item container xs={7}>
-                    <Grid item xs={6}>
+                <Grid item container xs={7} spacing={2}>
+                    <Grid item xs={12}>
                         <Typography
-                            variant={"h2"}
+                            variant={"h1"}
                             color="primary"
                         >
                             {firstName}
@@ -41,30 +40,73 @@ export default ({firstName, lastName, phoneNumber, email, photo}) => {
 
                     <Grid item xs={12}>
                         <Typography
-                            variant={"h2"}
+                            variant={"h1"}
                             color="primary"
                         >
                             {lastName}
                         </Typography>
                     </Grid>
+                </Grid>
 
-                    <Divider/>
-                    <Grid item xs={12}>
-                        <Typography
-                            variant={"h5"}
-                            color="secondary"
-                        >
-                            {phoneNumber}
-                        </Typography>
+                <Grid container style={{marginLeft: 5}}>
+                    <Grid container spacing={5} style={{marginTop: 5}}>
+                        <Grid item xs={12} sm={5}>
+                            <Typography
+                                variant={"h3"}
+                                color="inherit"
+                            >
+                                Birthday:
+                            </Typography>
+                        </Grid>
+
+                        <Grid item xs={12} sm={5}>
+                            <Typography
+                                variant={"h3"}
+                                color="secondary"
+                            >
+                                {date}
+                            </Typography>
+                        </Grid>
                     </Grid>
 
-                    <Grid item xs={12}>
-                        <Typography
-                            variant={"h5"}
-                            color="initial"
-                        >
-                            {email}
-                        </Typography>
+                    <Grid container spacing={5}>
+                        <Grid item xs={12} sm={5}>
+                            <Typography
+                                variant={"h3"}
+                                color="inherit"
+                            >
+                                Phone:
+                            </Typography>
+                        </Grid>
+
+                        <Grid item xs={12} sm={5}>
+                            <Typography
+                                variant={"h3"}
+                                color="secondary"
+                            >
+                                {phoneNumber}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container spacing={5}>
+                        <Grid item xs={12} sm={5}>
+                            <Typography
+                                variant={"h3"}
+                                color="inherit"
+                            >
+                                Email:
+                            </Typography>
+                        </Grid>
+
+                        <Grid item xs={12} sm={5}>
+                            <Typography
+                                variant={"h3"}
+                                color="secondary"
+                            >
+                                {email}
+                            </Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

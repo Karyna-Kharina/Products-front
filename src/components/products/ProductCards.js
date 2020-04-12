@@ -10,7 +10,7 @@ export default ({products, fetchProducts, onClickAddProduct}) => {
 
     return (
         <div>
-            <Container component="main" maxWidth="lg" style={{marginTop: 100}}>
+            <Container component="main" maxWidth="lg" style={{marginTop: 25}}>
                 <Grid container spacing={2}>
                     {
                         products

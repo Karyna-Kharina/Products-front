@@ -12,9 +12,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({});
 
-const Body = ({currentUser}) => console.log(currentUser) || (
+const Body = ({currentUser}) => (
     <Switch>
-
         <Route path={SIGN_UP}>
             {currentUser ? <App/> : <SignUp/>}
         </Route>

@@ -7,13 +7,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import {styles} from "./components/AuthStyle";
 import {Link} from "react-router-dom";
 import {SIGN_IN} from "../../additionalData/links/front";
-import PhotoUrl from "./components/PhotoUrl";
-import FirstName from "./components/FirstName";
-import LastName from "./components/LastName";
-import Email from "./components/Email";
-import PhoneNumber from "./components/PhoneNumber";
-import Birthday from "./components/Birthday";
-import Password from "./components/Password";
+import {Birthday, Email, FirstName, LastName, Password, PhoneNumber, PhotoUrl} from "./components";
 
 const useStyles = makeStyles(styles);
 

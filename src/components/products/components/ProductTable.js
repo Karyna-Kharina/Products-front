@@ -25,7 +25,7 @@ const StyledTableCell = withStyles(theme => ({
 export default ({classes, products, onDeleteClick, onClickPutProductToForm}) => {
 
     return (
-        <Table className={classes.table} size="small" aria-label="a dense table">
+        <Table size="small" aria-label="a dense table">
             <TableHead>
                 <TableRow>
                     <StyledTableCell align="center">ID</StyledTableCell>
@@ -38,7 +38,6 @@ export default ({classes, products, onDeleteClick, onClickPutProductToForm}) => 
 
             <TableBody>
                 {products
-                    // .filter(product => product.name.toLowerCase().includes(filteredName.toLowerCase()))
                     .map(item => (
                         <TableRow key={item.id}>
                             <TableCell align="center" component="th" scope="row">

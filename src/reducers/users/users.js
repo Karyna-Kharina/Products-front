@@ -1,7 +1,7 @@
 import {SWAP} from "../../additionalData/constants/product";
 import {
     CHANGE_FILTERED_USERNAME,
-    SET_NUMBER_OF_PAGE,
+    CLICK_ON_PAGE,
     SET_TOTAL_PAGES,
     SET_USERS
 } from "../../additionalData/constants/user";
@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
                 users: action.users
             }
         }
-        case SET_NUMBER_OF_PAGE: {
+        case CLICK_ON_PAGE: {
             return {
                 ...state,
                 page: action.page

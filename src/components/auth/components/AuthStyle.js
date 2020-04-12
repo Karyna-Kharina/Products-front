@@ -1,6 +1,6 @@
 export const styles = theme => ({
     paper: {
-        marginTop: theme.spacing(15),
+        marginTop: theme.spacing(10),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -9,7 +9,7 @@ export const styles = theme => ({
         margin: theme.spacing(2),
         backgroundColor: "pink",
     },
-    form: {
+    grid: {
         width: '100%',
         marginTop: theme.spacing(5),
     },
