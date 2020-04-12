@@ -1,8 +1,8 @@
 import {
     CHANGE_FILTERED_USERNAME,
+    CLICK_ON_PAGE,
     DELETE_USER_SAGA,
     GET_USERS_SAGA,
-    SET_NUMBER_OF_PAGE,
     SET_TOTAL_PAGES,
     SET_USERS
 } from "../../additionalData/constants/user";
@@ -26,8 +26,8 @@ export const getUsersSaga = () => ({
     type: GET_USERS_SAGA
 });
 
-export const setNumberOfPage = (page) => ({
-    type: SET_NUMBER_OF_PAGE,
+export const clickOnPage = (page) => ({
+    type: CLICK_ON_PAGE,
     page
 });
 
