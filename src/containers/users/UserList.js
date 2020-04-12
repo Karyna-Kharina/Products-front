@@ -1,10 +1,36 @@
 import {connect} from "react-redux";
 import UserList from "../../components/users/UserList";
-import {putUserToForm} from "../../actions/users/userFormAction";
-import {changeFilteredUsername, setNumberOfPage, getUsersSaga, removeUser} from "../../actions/users/userListAction";
+import {
+    changeDate,
+    changeEmail,
+    changeFirstName,
+    changeId,
+    changeLastName,
+    changePassword,
+    changePhoneNumber,
+    changePhoto,
+    putUserToForm,
+    saveUser
+} from "../../actions/users/userFormAction";
+import {changeFilteredUsername, clickOnPage, getUsersSaga, removeUser} from "../../actions/users/userListAction";
 
 const mapStateToProps = (state) => {
     return {
+        id: state.userForm.user.id,
+        firstName: state.userForm.user.firstName,
+        isValidFirstName: state.userForm.user.isValidFirstName,
+        lastName: state.userForm.user.lastName,
+        isValidLastName: state.userForm.user.isValidLastName,
+        date: state.userForm.user.date,
+        isValidDate: state.userForm.user.isValidDate,
+        email: state.userForm.user.email,
+        isValidEmail: state.userForm.user.isValidEmail,
+        phoneNumber: state.userForm.user.phoneNumber,
+        isValidPhoneNumber: state.userForm.user.isValidPhoneNumber,
+        photo: state.userForm.user.photo,
+        isValidPhoto: state.userForm.user.isValidPhoto,
+        password: state.userForm.user.password,
+        isValidPassword: state.userForm.user.isValidPassword,
         users: state.users.users,
         filteredName: state.users.filteredName,
         current: state.profile.current,
@@ -24,9 +50,18 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(getUsersSaga())
         },
         onClickPage: (page) => {
-            dispatch(setNumberOfPage(page));
+            dispatch(clickOnPage(page));
             dispatch(getUsersSaga())
-        }
+        },
+        onChangeId: (id) => dispatch(changeId(id)),
+        onChangeFirstName: (firstName) => dispatch(changeFirstName(firstName)),
+        onChangeLastName: (lastName) => dispatch(changeLastName(lastName)),
+        onChangeDate: (date) => dispatch(changeDate(date)),
+        onChangePhoneNumber: (phoneNumber) => dispatch(changePhoneNumber(phoneNumber)),
+        onChangeEmail: (email) => dispatch(changeEmail(email)),
+        onChangePhoto: (photo) => dispatch(changePhoto(photo)),
+        onChangePassword: (password) => dispatch(changePassword(password)),
+        onSave: (user) => dispatch(saveUser(user))
     }
 };
 

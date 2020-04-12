@@ -1,63 +1,74 @@
-import {TableContainer} from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import React, {useEffect} from "react";
-import {useStyles} from "../products/ProductList"
-import UserTable from "./UserTable";
-import {Search} from "@material-ui/icons";
-import InputBase from "@material-ui/core/InputBase";
-import Box from "@material-ui/core/Box";
-import Pagination from "@material-ui/lab/Pagination";
+import React, {useEffect} from 'react';
+import MaterialTable from 'material-table';
+import * as axios from "axios";
+import {USERS_API} from "../../additionalData/links/back";
+import {columns} from "./Columns";
+import Container from "@material-ui/core/Container";
 
-export default ({
-                    users, filteredName, current, page, size, totalPages, fetchUsers,
-                    onDeleteClick, onClickPutUserToForm, onChangeFilteredName, onClickPage
-                }) => {
-
-    const classes = useStyles();
+export default ({filteredName, current, users, fetchUsers, onChangeFilteredName}) => {
 
     useEffect(() => {
         fetchUsers()
     }, [fetchUsers]);
 
     return (
-        <div className={classes.grow}>
-            <Box mt={4} mb={4}>
-                <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                        <Search/>
-                    </div>
-                    <InputBase
-                        placeholder="Search…"
-                        value={filteredName}
-                        classes={{
-                            root: classes.inputRoot,
-                            input: classes.inputInput,
-                        }}
-                        inputProps={{'aria-label': 'search'}}
-                        onChange={(e) => onChangeFilteredName(e.target.value)}
-                    />
-                </div>
-            </Box>
+        <Container style={{marginTop: 25}}>
+            <MaterialTable
+                title="Users"
+                columns={columns}
 
-            <TableContainer component={Paper}>
-                <UserTable
-                    classes={classes}
-                    users={users}
-                    current={current}
-                    onDeleteClick={(user) => onDeleteClick(user)}
-                    onClickPutUserToForm={(user) => onClickPutUserToForm(user)}
-                />
-            </TableContainer>
+                data={query =>
+                    new Promise((resolve, reject) => {
+                        axios.get(USERS_API,
+                            {
+                                params: {
+                                    page: query.page,
+                                    size: query.pageSize,
+                                    filteredName: query.search
+                                }
+                            }
+                        ).then(result => {
+                            resolve({
+                                data: result.data.content,
+                                page: result.data.pageable.pageNumber,
+                                totalCount: result.data.totalElements,
+                            })
+                        }).catch(reject)
+                    })
+                }
 
-            <Box display="flex" justifyContent="center" mt={2}>
-                <Pagination
-                    count={totalPages}
-                    variant="outlined"
-                    color="primary"
-                    size="large"
-                    onChange={(e, page) => onClickPage(page - 1)}
-                />
-            </Box>
-        </div>
-    )
+                options={{
+                    search: true,
+                    draggable: false,
+                    actionsColumnIndex: 7,
+                    addRowPosition: "first",
+                    paginationType: "stepped",
+                    pageSize: 10,
+                    headerStyle: {
+                        backgroundColor: '#101010',
+                        fontWeight: 'bold',
+                    },
+
+                }}
+
+                components={{
+                    // Body: props =>
+                    //     <MTableBody
+                    //         {...props}
+                    //         onFilterChanged={(columnId, value) => {
+                    //             onChangeFilteredName(value);
+                    //             console.log(value);
+                    //         }}
+                    //     />
+                }}
+
+                editable={{
+                    isDeletable: rowData => rowData.id !== current.id,
+                    onRowAdd: (user) => axios.post(USERS_API, user),
+                    onRowUpdate: (user) => axios.post(USERS_API, user),
+                    onRowDelete: (user) => axios.delete(USERS_API + "/" + user.id),
+                }}
+            />
+        </Container>
+    );
 }
