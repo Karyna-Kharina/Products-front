@@ -7,24 +7,23 @@ import {setMessageInfo} from "../../actions/info/infoAction";
 
 export function* signInSaga() {
 
-    const {email, password} = yield select(state => state.signIn);
+    try {
+        const {email, password} = yield select(state => state.signIn);
 
-    const result = yield call(
-        axios.get,
-        USERS_API + "/profile",
-        {
-            params: {
-                email,
-                password
+        const result = yield call(
+            axios.get,
+            USERS_API + "/profile",
+            {
+                params: {
+                    email,
+                    password
+                }
             }
-        }
-    );
-
-    if (result.data) {
+        );
         yield put(setMessageInfo({type: "success", text: "Login OK"}));
         yield put(setCurrentUser(result.data));
 
-    } else {
+    } catch {
         yield put(setMessageInfo(
             {
                 type: "error",
