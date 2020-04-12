@@ -48,11 +48,11 @@ export default ({firstName, lastName, date, phoneNumber, email, photo}) => {
                     </Grid>
                 </Grid>
 
-                <Grid container style={{marginLeft: 5}}>
+                <Grid container style={{marginLeft: 50}}>
                     <Grid container spacing={5} style={{marginTop: 5}}>
                         <Grid item xs={12} sm={5}>
                             <Typography
-                                variant={"h3"}
+                                variant={"h4"}
                                 color="inherit"
                             >
                                 Birthday:
@@ -61,7 +61,7 @@ export default ({firstName, lastName, date, phoneNumber, email, photo}) => {
 
                         <Grid item xs={12} sm={5}>
                             <Typography
-                                variant={"h3"}
+                                variant={"h4"}
                                 color="secondary"
                             >
                                 {date}
@@ -69,10 +69,10 @@ export default ({firstName, lastName, date, phoneNumber, email, photo}) => {
                         </Grid>
                     </Grid>
 
-                    <Grid container spacing={5}>
+                    <Grid container spacing={5} style={{marginTop: 5}}>
                         <Grid item xs={12} sm={5}>
                             <Typography
-                                variant={"h3"}
+                                variant={"h4"}
                                 color="inherit"
                             >
                                 Phone:
@@ -81,7 +81,7 @@ export default ({firstName, lastName, date, phoneNumber, email, photo}) => {
 
                         <Grid item xs={12} sm={5}>
                             <Typography
-                                variant={"h3"}
+                                variant={"h4"}
                                 color="secondary"
                             >
                                 {phoneNumber}
@@ -89,10 +89,10 @@ export default ({firstName, lastName, date, phoneNumber, email, photo}) => {
                         </Grid>
                     </Grid>
 
-                    <Grid container spacing={5}>
+                    <Grid container spacing={5} style={{marginTop: 5}}>
                         <Grid item xs={12} sm={5}>
                             <Typography
-                                variant={"h3"}
+                                variant={"h4"}
                                 color="inherit"
                             >
                                 Email:
@@ -101,7 +101,7 @@ export default ({firstName, lastName, date, phoneNumber, email, photo}) => {
 
                         <Grid item xs={12} sm={5}>
                             <Typography
-                                variant={"h3"}
+                                variant={"h4"}
                                 color="secondary"
                             >
                                 {email}
