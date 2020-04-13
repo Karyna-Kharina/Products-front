@@ -12,7 +12,7 @@ import {Box} from "@material-ui/core";
 export const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 250,
-        margin: "auto",
+        margin: "5",
         transition: "0.3s",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
         "&:hover": {
@@ -20,7 +20,7 @@ export const useStyles = makeStyles(theme => ({
         }
     },
     media: {
-        paddingTop: "50%"
+        paddingTop: "70%"
     },
     content: {
         textAlign: "left",
@@ -76,11 +76,14 @@ export default ({product, onClickAddProduct}) => {
                     {name}
                 </Typography>
 
+                <Divider className={classes.divider} light/>
+
                 <Box display="flex" alignItems="center">
-                    <Box flexGrow={1} bgcolor="darkgreen">
+                    <Box flexGrow={1} bgcolor="#">
                         <Typography
                             className={classes.content}
                             variant={"h5"}
+                            color="error"
                         >
                             {price % 1 > 0 ? price : price + '.0'}
                         </Typography>
@@ -92,8 +95,6 @@ export default ({product, onClickAddProduct}) => {
                         </IconButton>
                     </Box>
                 </Box>
-
-                <Divider className={classes.divider} light/>
             </CardContent>
         </Card>
     );
