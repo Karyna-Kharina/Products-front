@@ -3,20 +3,37 @@ export function isValidName(name = "") {
     return pattern.test(name) && name.length > 1;
 }
 
+const daysInMonth = (m, y) => {
+    switch (m) {
+        case 1 :
+            return (y % 4 === 0 && y % 100) || y % 400 === 0 ? 29 : 28;
+        case 8 :
+        case 3 :
+        case 5 :
+        case 10 :
+            return 30;
+        default :
+            return 31
+    }
+};
+
 export function isValidDate(date = new Date()) {
 
-    if (date) {
-        const day = date.getDate;
-        const month = date.getMonth;
-        const year = date.getFullYear;
+    console.log("VALIDATION");
+    console.log(date);
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
 
-        const isValidDay = day > 0 && day <= 31;
-        const isValidMonth = month >= 0 && month < 12;
-        const isValidYear = year < new Date().getFullYear - 10;
+    month = parseInt(month, 10) - 1;
+    console.log("day: " + day);
+    console.log("month: " + month);
+    console.log("year: " + year);
 
-        return isValidDay && isValidMonth && isValidYear;
-    }
-    return false;
+    const isValid = month >= 0 && month < 12 && day > 0 && day <= daysInMonth(month, year);
+    console.log("isValid = " + isValid);
+
+    return isValid;
 }
 
 export function isValidEmail(email = "") {

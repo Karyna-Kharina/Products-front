@@ -23,7 +23,7 @@ const initialStateForSignUp = {
     isValidFirstName: false,
     lastName: '',
     isValidLastName: false,
-    date: new Date(),
+    date: new Date("1990-01-01"),
     isValidDate: false,
     email: '',
     isValidEmail: false,

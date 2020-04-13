@@ -2,14 +2,14 @@ import React from "react";
 import {Input} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
 import {
     isValidEmail,
     isValidImageUrl,
     isValidName,
     isValidPassword,
     isValidPhoneNumber
-} from "../../additionalData/validation";
-import TextField from "@material-ui/core/TextField";
+} from "../../../additionalData/validation";
 
 export const columns = [
     {

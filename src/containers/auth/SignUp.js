@@ -1,3 +1,5 @@
+import {connect} from "react-redux";
+import SignUp from "../../components/auth/SignUp";
 import {
     changeCheckbox,
     changeDate,
@@ -9,8 +11,6 @@ import {
     changePhoto,
     signUp
 } from "../../actions/auth/signUpAction";
-import {connect} from "react-redux";
-import SignUp from "../../components/auth/SignUp";
 
 export const mapStateToProps = (state) => {
     return {

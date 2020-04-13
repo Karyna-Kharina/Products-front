@@ -20,14 +20,24 @@ export function* signInSaga() {
                 }
             }
         );
-        yield put(setMessageInfo({type: "success", text: "Login OK"}));
-        yield put(setCurrentUser(result.data));
 
-    } catch {
+        if (result.data) {
+            yield put(setMessageInfo({type: "success", text: "Login OK"}));
+            yield put(setCurrentUser(result.data));
+        } else {
+            yield put(setMessageInfo(
+                {
+                    type: "error",
+                    text: "Your login or password are not valid!"
+                }
+            ));
+        }
+
+    } catch (e) {
         yield put(setMessageInfo(
             {
                 type: "error",
-                text: "Your login or password are not valid!"
+                text: e.message
             }
         ));
     }

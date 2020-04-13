@@ -72,7 +72,7 @@ export default ({
                         <Grid container justify="space-around">
                             <Birthday
                                 date={date}
-                                isValidDate={true}
+                                isValidDate={isValidDate}
                                 onChangeDate={onChangeDate}
                             />
                         </Grid>

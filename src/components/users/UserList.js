@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import MaterialTable from 'material-table';
 import * as axios from "axios";
 import {USERS_API} from "../../additionalData/links/back";
-import {columns} from "./Columns";
+import {columns} from "./components/Columns";
 import Container from "@material-ui/core/Container";
 
 export default ({filteredName, current, users, fetchUsers, onChangeFilteredName}) => {
