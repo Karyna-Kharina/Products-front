@@ -30,6 +30,7 @@ export default ({
         return !(
             isValidFirstName &&
             isValidLastName &&
+            isValidDate &&
             isValidEmail &&
             isValidPhoneNumber &&
             isValidPassword &&

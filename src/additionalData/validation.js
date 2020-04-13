@@ -21,19 +21,30 @@ export function isValidDate(date = new Date()) {
 
     console.log("VALIDATION");
     console.log(date);
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
 
-    month = parseInt(month, 10) - 1;
-    console.log("day: " + day);
-    console.log("month: " + month);
-    console.log("year: " + year);
+    if (date) {
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
 
-    const isValid = month >= 0 && month < 12 && day > 0 && day <= daysInMonth(month, year);
-    console.log("isValid = " + isValid);
+        month = parseInt(month, 10) - 1;
+        console.log("day: " + day);
+        console.log("month: " + month);
+        console.log("year: " + year);
 
-    return isValid;
+        const isValid =
+            month >= 0 &&
+            month < 12 &&
+            day > 0 &&
+            day <= daysInMonth(month, year) &&
+            year >= 1950 &&
+            year <= 2010;
+
+        console.log("isValid = " + isValid);
+
+        return isValid;
+    }
+    return false;
 }
 
 export function isValidEmail(email = "") {
