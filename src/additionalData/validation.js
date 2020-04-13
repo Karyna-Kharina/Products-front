@@ -19,9 +19,6 @@ const daysInMonth = (m, y) => {
 
 export function isValidDate(date = new Date()) {
 
-    console.log("VALIDATION");
-    console.log(date);
-
     if (date) {
 
         let day = date.getDate();
