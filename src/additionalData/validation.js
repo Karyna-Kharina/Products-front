@@ -23,26 +23,19 @@ export function isValidDate(date = new Date()) {
     console.log(date);
 
     if (date) {
+
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
 
         month = parseInt(month, 10) - 1;
-        console.log("day: " + day);
-        console.log("month: " + month);
-        console.log("year: " + year);
 
-        const isValid =
-            month >= 0 &&
-            month < 12 &&
-            day > 0 &&
-            day <= daysInMonth(month, year) &&
-            year >= 1950 &&
-            year <= 2010;
-
-        console.log("isValid = " + isValid);
-
-        return isValid;
+        return month >= 0
+            && month < 12
+            && day > 0
+            && day <= daysInMonth(month, year)
+            && year >= 1950
+            && year <= 2010;
     }
     return false;
 }
