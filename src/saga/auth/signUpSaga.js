@@ -20,16 +20,15 @@ export function* signUpSaga() {
         yield put(setCurrentUser(result.data));
 
     } catch (e) {
-
         yield put(setMessageInfo(
             {
                 type: "error",
-                text: "This email already exists!"
+                text: e.message
             }
         ));
     }
 
-    // yield put({type: CLEAR_SIGN_UP});
+    yield put({type: CLEAR_SIGN_UP});
 }
 
 export function* watchSignUpSaga() {
