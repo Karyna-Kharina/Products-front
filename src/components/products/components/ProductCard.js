@@ -12,6 +12,7 @@ import {Box} from "@material-ui/core";
 export const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 250,
+        maxHeight: 290,
         margin: "5",
         transition: "0.3s",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
@@ -24,10 +25,10 @@ export const useStyles = makeStyles(theme => ({
     },
     content: {
         textAlign: "left",
-        padding: "6%"
+        padding: "1%"
     },
     divider: {
-        margin: '5%',
+        margin: '2%',
         backgroundColor: theme.palette.error.light
     },
     heading: {
