@@ -3,6 +3,11 @@
 
 ![products-react-app](https://user-images.githubusercontent.com/45922206/79670185-d595df00-81c9-11ea-9c05-d42b1b20fc7f.gif)
 
+Stack technologies: 
++ React
++ Material UI
++ Redux
++ Saga
 
 This project was bootstrapped with [Create React Index](https://github.com/facebook/create-react-app).
 
@@ -32,6 +37,7 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
 
 ### `yarn eject`
 
