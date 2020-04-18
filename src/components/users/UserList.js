@@ -5,7 +5,7 @@ import {USERS_API} from "../../additionalData/links/back";
 import {columns} from "./components/Columns";
 import Container from "@material-ui/core/Container";
 
-export default ({filteredName, current, users, fetchUsers, onChangeFilteredName}) => {
+export default ({current, fetchUsers}) => {
 
     useEffect(() => {
         fetchUsers()
@@ -48,7 +48,6 @@ export default ({filteredName, current, users, fetchUsers, onChangeFilteredName}
                         backgroundColor: '#101010',
                         fontWeight: 'bold',
                     },
-
                 }}
 
                 editable={{
