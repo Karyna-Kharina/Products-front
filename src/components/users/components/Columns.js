@@ -4,6 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import {
+    isValidDate,
     isValidEmail,
     isValidImageUrl,
     isValidName,
@@ -31,7 +32,6 @@ export const columns = [
         title: 'Avatar',
         field: 'photo',
         filtering: false,
-        emptyValue: "",
         render: rowData => <Avatar src={rowData.photo}/>,
         editComponent: (props) => (
             <Input
@@ -78,6 +78,8 @@ export const columns = [
                 label="Birthday"
                 type="date"
                 defaultValue={props.value}
+                placeholder={props.columnDef.title}
+                error={!isValidDate(props.value)}
                 InputLabelProps={{
                     shrink: true,
                 }}

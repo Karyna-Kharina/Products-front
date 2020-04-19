@@ -19,13 +19,13 @@ const daysInMonth = (m, y) => {
 
 export function isValidDate(date = new Date()) {
 
+    date = new Date(date);
+
     if (date) {
 
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
-
-        month = parseInt(month, 10) - 1;
 
         return month >= 0
             && month < 12
