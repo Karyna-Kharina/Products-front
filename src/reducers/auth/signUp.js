@@ -19,17 +19,17 @@ import {
 } from "../../additionalData/validation";
 
 const initialStateForSignUp = {
-    firstName: '',
+    firstName: 'TestName',
     isValidFirstName: false,
-    lastName: '',
+    lastName: 'TestLastName',
     isValidLastName: false,
     date: new Date("1990-01-01"),
     isValidDate: false,
     email: '',
     isValidEmail: false,
-    phoneNumber: '',
+    phoneNumber: '+380964502345',
     isValidPhoneNumber: false,
-    photo: '',
+    photo: 'https://lh3.googleusercontent.com/proxy/OvqyfyoxP7Wvcfd8bU28i58H4F1vcONDj3Jta26i57iyBg3RDK4mZOpZq9wKbsZILRqRRdodsrrLZqAGe85a1K_JFHsYtQaYYTGwOxGQ4IzT',
     isValidPhoto: false,
     password: '',
     isValidPassword: false,
