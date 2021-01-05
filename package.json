@@ -46,7 +46,7 @@
   "devDependencies": {
     "@material-ui/lab": "^4.0.0-alpha.46",
     "@material-ui/pickers": "^3.2.10",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",
