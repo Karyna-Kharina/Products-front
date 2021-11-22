@@ -12,18 +12,6 @@ export default [
         image: "https://assets.bonappetit.com/photos/5c62e4a3e81bbf522a9579ce/master/pass/milk-bread.jpg"
     },
     {
-        id: 3,
-        name: "Chia",
-        price: 185.6,
-        image: "https://mir-chistoty.com.ua/2366-large_default/%D1%81%D0%B5%D0%BC%D0%B5%D0%BD%D0%B0-%D1%87%D0%B8%D0%B0-100%D0%B3.jpg"
-    },
-    {
-        id: 4,
-        name: "Kinoa",
-        price: 254.85,
-        image: "https://bonappetit.news/wp-content/uploads/2019/07/kino-kak-progotobit-1300x861.png"
-    },
-    {
         id: 5,
         name: "Noot",
         price: 74.4,

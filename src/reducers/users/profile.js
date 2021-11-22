@@ -1,7 +1,8 @@
-import {SET_CURRENT_USER} from "../../additionalData/constants/user";
+import { SET_CURRENT_USER } from "../../additionalData/constants/user";
 
 const initialState = {
-    current: JSON.parse(sessionStorage.getItem("current"))
+    // current: JSON.parse(sessionStorage.getItem("current")),
+    current: {}
 };
 
 export default (state = initialState, action) => {
@@ -14,7 +15,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 current: action.user
-            }
+            };
         }
         default:
             return state;
