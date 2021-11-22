@@ -1,3 +1,19 @@
+
+[Demo Version](http://product-react-app-prod.herokuapp.com/)
+
+![products-react-app](https://user-images.githubusercontent.com/45922206/79670185-d595df00-81c9-11ea-9c05-d42b1b20fc7f.gif)
+
+Front stack technologies: 
++ React
++ Material UI
++ Redux
++ Saga
+
+Back stack technologies:
++ Spring Boot
++ Spring Data JPA
+
+
 This project was bootstrapped with [Create React Index](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -26,6 +42,7 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
 
 ### `yarn eject`
 
