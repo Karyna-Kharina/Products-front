@@ -1,13 +1,13 @@
 import React from "react";
-import {Route, Switch} from "react-router";
+import { Route, Switch } from "react-router";
 import ProductCart from "../containers/products/ProductCart";
 import ProductCards from "../containers/products/ProductCards";
-import ProductList from "../containers/products/ProductList";
-import UserList from "../containers/users/UserList";
-import CreateUserForm from "../containers/users/CreateUserForm";
-import CreateProductForm from "../containers/products/CreateProductForm";
-import Profile from "../containers/users/Profile";
-import News from "../containers/news/News";
+import ProductList from "../containers/products";
+import UserList from "../containers/users";
+import CreateUserForm from "../containers/userForm";
+import CreateProductForm from "../containers/productForm";
+import Profile from "../containers/profile";
+import News from "../containers/news";
 import {
     APP,
     CREATE_PRODUCT_FORM,
@@ -22,7 +22,7 @@ import {
     USER_UPDATE
 } from "../additionalData/links/front";
 
-export default () => (
+const Routers = () => (
     <Switch>
         <Route exact path={APP}>
             <ProductCards/>
@@ -69,3 +69,5 @@ export default () => (
         </Route>
     </Switch>
 );
+
+export default Routers;

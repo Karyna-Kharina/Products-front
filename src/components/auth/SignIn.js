@@ -1,32 +1,27 @@
 import React from "react";
-import {Avatar, Button, Container, Grid, Typography} from "@material-ui/core";
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-import {makeStyles} from '@material-ui/core/styles';
-import {styles} from "./components/AuthStyle";
-import {Link} from "react-router-dom";
-import {SIGN_UP} from "../../additionalData/links/front";
-import Email from "./components/Email";
-import Password from "./components/Password";
+import { Link } from "react-router-dom";
+import { Avatar, Button, Container, Grid, Typography } from "@material-ui/core";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import { makeStyles } from "@material-ui/core/styles";
+import Email from "./constituents/Email";
+import Password from "./constituents/Password";
+import AuthStyles from "./constituents/AuthStyles";
+import { SIGN_UP } from "../../additionalData/links/front";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(AuthStyles);
 
-export default ({email, isValidEmail, password, isValidPassword, onChangeEmail, onChangePassword, onLogIn}) => {
-
+const SignIn = ({ email, isValidEmail, password, isValidPassword, onChangeEmail, onChangePassword, onLogIn }) => {
     const classes = useStyles();
-
-    const isDisabledButton = () => {
-        return !(isValidEmail && isValidPassword);
-    };
+    const isDisabledButton = () => !(isValidEmail && isValidPassword);
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component={"main"} maxWidth={"xs"}>
             <div className={classes.paper}>
-
                 <Avatar className={classes.avatar}>
                     <LockOpenIcon/>
                 </Avatar>
 
-                <Typography component="h1" variant="h5">
+                <Typography component={"h1"} variant={"h5"}>
                     Sign In
                 </Typography>
 
@@ -51,22 +46,24 @@ export default ({email, isValidEmail, password, isValidPassword, onChangeEmail, 
                 <Button
                     fullWidth
                     disabled={isDisabledButton()}
-                    variant="contained"
-                    color="primary"
+                    variant={"contained"}
+                    color={"primary"}
                     className={classes.submit}
                     onClick={onLogIn}
                 >
                     LogIn
                 </Button>
 
-                <Grid container justify="flex-end">
+                <Grid container justifyContent={"flex-end"}>
                     <Grid item>
-                        <Button color='secondary' to={SIGN_UP} component={Link}>
+                        <Button color={"secondary"} to={SIGN_UP} component={Link}>
                             Do you haven't an account? Sign up
                         </Button>
                     </Grid>
                 </Grid>
             </div>
         </Container>
-    )
-}
+    );
+};
+
+export default SignIn;

@@ -1,19 +1,18 @@
-import {call, put, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {setProductList} from "../../actions/products/productListAction";
-import {PRODUCTS_API} from "../../additionalData/links/back";
-import {GET_PRODUCTS_SAGA} from "../../additionalData/constants/product";
-import {setMessageInfo} from "../../actions/info/infoAction";
+import { call, put, takeEvery } from "redux-saga/effects";
+import { setProductList } from "../../actions/products";
+import { setMessageInfo } from "../../actions/info";
+import { PRODUCTS_API } from "../../additionalData/links/back";
+import { GET_PRODUCTS_SAGA } from "../../additionalData/constants/productsSaga";
 
 export function* getProductListSaga() {
-
     try {
         const result = yield call(
             axios.get,
             PRODUCTS_API
         );
-        yield put(setProductList(result.data));
 
+        yield put(setProductList(result.data));
     } catch (e) {
         yield put(setMessageInfo(
             {

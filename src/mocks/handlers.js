@@ -1,33 +1,35 @@
 import { rest } from "msw";
-import productFixtures from "../additionalData/fixtures/productFixtures"; // src/mocks/handlers.js
+import key from "weak-key";
+import productFixtures from "../additionalData/fixtures/productFixtures";
+import userFixtures from "../additionalData/fixtures/userFixtures";
 
 export const handlers = [
     rest.get("http://localhost:9000/api/products", (req, res, ctx) => {
         return res(
             // Respond with a 200 status code
             ctx.status(200),
-            ctx.json(productFixtures),
+            ctx.json(productFixtures)
         );
     }),
     rest.post("http://localhost:9000/api/products", (req, res, ctx) => {
+        const { name, price, image } = req.body;
+
+        productFixtures.push({
+            id: key(req.body),
+            name,
+            price,
+            image
+        });
+
         return res(
             ctx.status(200),
-            ctx.json({  message: "Product is saved" }),
+            ctx.json({ message: "Product is posted." })
         );
     }),
-    rest.delete("http://localhost:9000/api/products/1", (req, res, ctx) => {
-        return res(
-            // Respond with a 200 status code
-            ctx.status(200),
-        );
-    }),
-
-
-
-
-    rest.post("/login", (req, res, ctx) => {
-        // Persist user's authentication in the session
-        sessionStorage.setItem("is-authenticated", "true");
+    rest.delete("http://localhost:9000/api/products/:productId", (req, res, ctx) => {
+        const { productId } = req.params;
+        const index = productFixtures.findIndex(({ id }) => id === productId);
+        console.log("index", index, ", id", productId);
 
         return res(
             // Respond with a 200 status code
@@ -35,26 +37,41 @@ export const handlers = [
         );
     }),
 
-    rest.get("/user", (req, res, ctx) => {
-        // Check if the user is authenticated in this session
-        const isAuthenticated = sessionStorage.getItem("is-authenticated");
-
-        if (!isAuthenticated) {
-            // If not authenticated, respond with a 403 error
-            return res(
-                ctx.status(403),
-                ctx.json({
-                    errorMessage: "Not authorized"
-                })
-            );
-        }
-
-        // If authenticated, return a mocked user details
+    rest.get("http://localhost:9000/api/users", (req, res, ctx) => {
         return res(
+            // Respond with a 200 status code
             ctx.status(200),
             ctx.json({
-                username: "admin"
+                content: userFixtures,
+                pageable: { pageNumber: 0 },
+                totalElements: userFixtures.length
             })
+        );
+    }),
+    rest.post("http://localhost:9000/api/users", (req, res, ctx) => {
+        const index = userFixtures.findIndex(({ id }) => id === req.body.id);
+        userFixtures[index] = req.body;
+
+        return res(
+            ctx.status(200),
+            ctx.json({ message: "User is saved" })
+        );
+    }),
+    rest.delete("http://localhost:9000/api/users/:userId", (req, res, ctx) => {
+        const { userId } = req.params;
+        const index = userFixtures.findIndex(({ id }) => id === userId);
+
+        if (index === -1) {
+            return res(ctx.status(404));
+        }
+
+        userFixtures.splice(index, 1);
+        return res(ctx.status(200));
+    }),
+    rest.get("http://localhost:9000/api/users/profile", (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json(userFixtures[0])
         );
     })
 ];

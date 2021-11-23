@@ -1,20 +1,22 @@
-import {call, put, select, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {PRODUCTS_API} from "../../additionalData/links/back";
-import {CLEAR_PRODUCT_FORM, SAVE_PRODUCT_SAGA} from "../../additionalData/constants/product";
+import { call, put, select, takeEvery } from "redux-saga/effects";
+import { setMessageInfo } from "../../actions/info";
+import { PRODUCTS_API } from "../../additionalData/links/back";
+import { CLEAR_PRODUCT_FORM } from "../../additionalData/constants/products";
+import { SAVE_PRODUCT_SAGA } from "../../additionalData/constants/productsSaga";
 
 export function* saveProductSaga() {
+    const { product } = yield select(state => state.productForm);
+    const { id, name, price, image } = product;
 
-    const {product} = yield select(state => state.productForm);
-    const {id, name, price, image} = product;
-
-    yield call(
+    const result = yield call(
         axios.post,
         PRODUCTS_API,
-        {id, name, price, image}
+        { id, name, price, image }
     );
 
-    yield put({type: CLEAR_PRODUCT_FORM});
+    yield put(setMessageInfo({ type: "success", text: result.data.message }));
+    yield put({ type: CLEAR_PRODUCT_FORM });
 }
 
 export function* watchSaveProductSaga() {

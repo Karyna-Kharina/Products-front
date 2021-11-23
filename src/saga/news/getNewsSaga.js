@@ -1,14 +1,14 @@
-import {call, put, select, takeEvery} from "redux-saga/effects";
 import * as axios from "axios";
-import {API_KEY, GET_NEWS_SAGA} from "../../additionalData/constants/news";
-import {NEWS_API} from "../../additionalData/links/back";
-import {setNews} from "../../actions/news/newsAction";
-import {setMessageInfo} from "../../actions/info/infoAction";
+import { call, put, select, takeEvery } from "redux-saga/effects";
+import { setNews } from "../../actions/news";
+import { setMessageInfo } from "../../actions/info";
+import { API_KEY } from "../../additionalData/constants/news";
+import { NEWS_API } from "../../additionalData/links/back";
+import { GET_NEWS_SAGA } from "../../additionalData/constants/newsSaga";
 
 export function* getNewsSaga() {
-
     try {
-        const {country, category, pageSize} = yield select(state => state.news);
+        const { country, category, pageSize } = yield select(state => state.news);
 
         const result = yield call(
             axios.get,
@@ -27,9 +27,8 @@ export function* getNewsSaga() {
         const type = "success";
         const text = "Request completed successfully!";
 
-        yield put(setMessageInfo({type, text}));
+        yield put(setMessageInfo({ type, text }));
         yield put(setNews(result.data.articles));
-
     } catch (e) {
         yield put(setMessageInfo(
             {

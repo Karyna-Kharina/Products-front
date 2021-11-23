@@ -1,14 +1,14 @@
-import {call, put, select, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {setCurrentUser} from "../../actions/users/profile";
-import {USERS_API} from "../../additionalData/links/back";
-import {CLEAR_SIGN_IN, LOG_IN_SAGA} from "../../additionalData/constants/auth";
-import {setMessageInfo} from "../../actions/info/infoAction";
+import { call, put, select, takeEvery } from "redux-saga/effects";
+import { setCurrentUser } from "../../actions/profile";
+import { setMessageInfo } from "../../actions/info";
+import { USERS_API } from "../../additionalData/links/back";
+import { CLEAR_SIGN_IN } from "../../additionalData/constants/auth";
+import { LOG_IN_SAGA } from "../../additionalData/constants/authSaga";
 
 export function* signInSaga() {
-
     try {
-        const {email, password} = yield select(state => state.signIn);
+        const { email, password } = yield select(state => state.signIn);
 
         const result = yield call(
             axios.get,
@@ -22,7 +22,7 @@ export function* signInSaga() {
         );
 
         if (result.data) {
-            yield put(setMessageInfo({type: "success", text: "Login OK"}));
+            yield put(setMessageInfo({ type: "success", text: "Login OK" }));
             yield put(setCurrentUser(result.data));
         } else {
             yield put(setMessageInfo(
@@ -32,7 +32,6 @@ export function* signInSaga() {
                 }
             ));
         }
-
     } catch (e) {
         yield put(setMessageInfo(
             {
@@ -42,7 +41,7 @@ export function* signInSaga() {
         ));
     }
 
-    yield put({type: CLEAR_SIGN_IN});
+    yield put({ type: CLEAR_SIGN_IN });
 }
 
 export function* watchSignInSaga() {

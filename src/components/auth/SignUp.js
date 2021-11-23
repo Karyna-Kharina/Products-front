@@ -1,17 +1,26 @@
-import React from 'react';
-import {Avatar, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Typography} from '@material-ui/core';
-import {MuiPickersUtilsProvider,} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import {makeStyles} from '@material-ui/core/styles';
-import {styles} from "./components/AuthStyle";
-import {Link} from "react-router-dom";
-import {SIGN_IN} from "../../additionalData/links/front";
-import {Birthday, Email, FirstName, LastName, Password, PhoneNumber, PhotoUrl} from "./components";
+import React from "react";
+import { Link } from "react-router-dom";
+import DateFnsUtils from "@date-io/date-fns";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import {
+    Avatar,
+    Button,
+    Checkbox,
+    Container,
+    CssBaseline,
+    FormControlLabel,
+    Grid,
+    Typography
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import AuthStyles from "./constituents/AuthStyles";
+import { Birthday, Email, FirstName, LastName, Password, PhoneNumber, PhotoUrl } from "./constituents";
+import { SIGN_IN } from "../../additionalData/links/front";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(AuthStyles);
 
-export default ({
+const SignUp = ({
                     firstName, isValidFirstName, onChangeFirstName,
                     lastName, isValidLastName, onChangeLastName,
                     date, isValidDate, onChangeDate,
@@ -22,11 +31,9 @@ export default ({
                     isCheckedBox, onChangeCheckbox,
                     onSignUp
                 }) => {
-
     const classes = useStyles();
 
     const isDisabledButton = () => {
-
         return !(
             isValidFirstName &&
             isValidLastName &&
@@ -39,16 +46,15 @@ export default ({
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component={"main"} maxWidth={"xs"}>
             <CssBaseline/>
 
             <div className={classes.paper}>
-
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon/>
                 </Avatar>
 
-                <Typography component="h1" variant="h5">
+                <Typography component={"h1"} variant={"h5"}>
                     Sign Up
                 </Typography>
 
@@ -70,7 +76,7 @@ export default ({
                     </Grid>
 
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <Grid container justify="space-around">
+                        <Grid container justifyContent={"space-around"}>
                             <Birthday
                                 date={date}
                                 isValidDate={isValidDate}
@@ -117,10 +123,10 @@ export default ({
                                 <Checkbox
                                     onChange={(e) => onChangeCheckbox(e.target.checked)}
                                     checked={isCheckedBox}
-                                    color="primary"
+                                    color={"primary"}
                                 />
                             }
-                            label="I want to receive marketing promotions and updates via email."
+                            label={"I want to receive marketing promotions and updates via email."}
                         />
                     </Grid>
                 </Grid>
@@ -128,17 +134,17 @@ export default ({
                 <Button
                     fullWidth
                     disabled={isDisabledButton()}
-                    variant="contained"
-                    color="primary"
+                    variant={"contained"}
+                    color={"primary"}
                     className={classes.submit}
                     onClick={onSignUp}
                 >
                     Sign Up
                 </Button>
 
-                <Grid container justify="flex-end">
+                <Grid container justifyContent={"flex-end"}>
                     <Grid item>
-                        <Button color='secondary' to={SIGN_IN} component={Link}>
+                        <Button color={"secondary"} to={SIGN_IN} component={Link}>
                             Already have an account? Sign in
                         </Button>
                     </Grid>
@@ -146,4 +152,6 @@ export default ({
             </div>
         </Container>
     );
-}
+};
+
+export default SignUp;

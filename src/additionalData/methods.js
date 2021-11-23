@@ -1,5 +1,4 @@
 export function removeItemFrom(list, item) {
-
     const index = list.findIndex((el) => el.id === item.id);
 
     return [

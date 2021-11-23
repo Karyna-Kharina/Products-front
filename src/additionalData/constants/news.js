@@ -1,7 +1,6 @@
-export const SET_NEWS = 'SET_NEWS';
-export const CHOOSE_COUNTRY = 'CHOOSE_COUNTRY';
-export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
-export const CHOOSE_CATEGORY = 'CHOOSE_CATEGORY';
-export const GET_NEWS_SAGA = 'GET_NEWS_SAGA';
+export const SET_NEWS = "SET_NEWS";
+export const CHOOSE_COUNTRY = "CHOOSE_COUNTRY";
+export const SET_PAGE_SIZE = "SET_PAGE_SIZE";
+export const CHOOSE_CATEGORY = "CHOOSE_CATEGORY";
 
-export const API_KEY = 'fd868cb7d74b41d59cb8f6dc708c521c';
+export const API_KEY = "fd868cb7d74b41d59cb8f6dc708c521c";

@@ -1,19 +1,17 @@
-import {call, put, takeEvery} from "redux-saga/effects";
 import *  as axios from "axios";
-import {PRODUCTS_API} from "../../additionalData/links/back";
-import {DELETE_PRODUCT_SAGA, GET_PRODUCTS_SAGA} from "../../additionalData/constants/product";
-import {setMessageInfo} from "../../actions/info/infoAction";
+import { call, put, takeEvery } from "redux-saga/effects";
+import { setMessageInfo } from "../../actions/info";
+import { PRODUCTS_API } from "../../additionalData/links/back";
+import { DELETE_PRODUCT_SAGA, GET_PRODUCTS_SAGA } from "../../additionalData/constants/productsSaga";
 
 export function* deleteProductSaga(action) {
-
     try {
-        const {id} = action.product;
+        const { id } = action.product;
 
         yield call(
             axios.delete,
             PRODUCTS_API + "/" + id
         );
-
     } catch (e) {
         yield put(setMessageInfo(
             {
@@ -23,7 +21,7 @@ export function* deleteProductSaga(action) {
         ));
     }
 
-    yield put({type: GET_PRODUCTS_SAGA});
+    yield put({ type: GET_PRODUCTS_SAGA });
 }
 
 export function* watchDeleteProductSaga() {

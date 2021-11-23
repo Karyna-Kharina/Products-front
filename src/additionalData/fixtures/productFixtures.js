@@ -1,32 +1,44 @@
 export default [
     {
         id: 1,
-        name: "Rise",
-        price: 42.5,
-        image: "https://yaisup.ru/wp-content/uploads/risovaya_krupa.jpg"
+        name: "Gymnastic Ball",
+        price: 490,
+        image: "https://content2.rozetka.com.ua/goods/images/big/63425039.jpg"
     },
     {
         id: 2,
-        name: "Bread",
-        price: 15,
-        image: "https://assets.bonappetit.com/photos/5c62e4a3e81bbf522a9579ce/master/pass/milk-bread.jpg"
+        name: "Press Roller",
+        price: 215,
+        image: "https://content2.rozetka.com.ua/goods/images/big/37886025.jpg"
+    },
+    {
+        id: 3,
+        name: "Skipping Rope",
+        price: 150,
+        image: "https://content1.rozetka.com.ua/goods/images/big/54450642.jpg"
+    },
+    {
+        id: 4,
+        name: "Massage Hoop",
+        price: 279,
+        image: "https://content1.rozetka.com.ua/goods/images/big/212057062.jpg"
     },
     {
         id: 5,
-        name: "Noot",
-        price: 74.4,
-        image: "https://images.aif.ru/007/880/2cb76d7e1d602efdc56b1c2a28f8fc1b.jpg"
+        name: "Weights",
+        price: 89,
+        image: "https://content2.rozetka.com.ua/goods/images/big/230557950.jpg"
     },
     {
         id: 6,
-        name: "Buckweat",
-        price: 88.8,
-        image: "https://sunmint.ru/wp-content/uploads/2016/10/Grechka-ekologicheski-chistaya-soldatskaya-kasha-620x380.jpg"
+        name: "Gymnastic Mat",
+        price: 1312,
+        image: "https://content2.rozetka.com.ua/goods/images/big/193749581.jpg"
     },
     {
         id: 7,
-        name: "Pasta",
-        price: 25.6,
-        image: "https://dp.informator.ua/wp-content/uploads/2019/12/1536583794146633675.jpg"
-    },
-]
+        name: "Crossfit Rope",
+        price: 1999,
+        image: "https://content2.rozetka.com.ua/goods/images/big/16623441.jpg"
+    }
+];

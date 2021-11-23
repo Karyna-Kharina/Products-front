@@ -13,27 +13,21 @@ const daysInMonth = (m, y) => {
         case 10 :
             return 30;
         default :
-            return 31
+            return 31;
     }
 };
 
 export function isValidDate(date = new Date()) {
-
     date = new Date(date);
 
     if (date) {
-
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
 
-        return month >= 0
-            && month < 12
-            && day > 0
-            && day <= daysInMonth(month, year)
-            && year >= 1950
-            && year <= 2010;
+        return month >= 0 && month < 12 && day > 0 && day <= daysInMonth(month, year) && year >= 1950 && year <= 2010;
     }
+
     return false;
 }
 

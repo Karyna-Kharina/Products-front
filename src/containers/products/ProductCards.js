@@ -1,6 +1,7 @@
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import ProductCards from "../../components/products/ProductCards";
-import {addProductToCart, getProductsSaga} from '../../actions/products/productListAction';
+import { addProductToCart } from "../../actions/products";
+import { getProductsSaga } from "../../actions/productsSaga";
 
 const mapStateToProps = (state) => ({
     products: state.products.products

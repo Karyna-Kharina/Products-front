@@ -1,3 +1,4 @@
+import { isValidImageUrl, isValidName, isValidPrice } from "../../additionalData/validation";
 import {
     CLEAR_PRODUCT_FORM,
     PUT_PRODUCT_TO_FORM,
@@ -5,33 +6,30 @@ import {
     UPDATE_IMAGE,
     UPDATE_NAME,
     UPDATE_PRICE
-} from "../../additionalData/constants/product";
-import {isValidName, isValidImageUrl, isValidPrice} from "../../additionalData/validation";
+} from "../../additionalData/constants/products";
 
-const initialStateForProductForm = {
+const initialState = {
     product: {
-        id: '',
-        name: '',
+        id: "",
+        name: "",
         isValidName: false,
-        price: '',
+        price: "",
         isValidPrice: false,
-        image: '',
+        image: "",
         isValidImage: false
     }
 };
 
-export default (state = initialStateForProductForm, action) => {
-
+export default (state = initialState, action) => {
     switch (action.type) {
-
         case UPDATE_ID: {
             return {
                 ...state,
                 product: {
                     ...state.product,
-                    id: action.id,
-                },
-            }
+                    id: action.id
+                }
+            };
         }
         case UPDATE_NAME: {
             return {
@@ -41,7 +39,7 @@ export default (state = initialStateForProductForm, action) => {
                     name: action.name,
                     isValidName: isValidName(action.name)
                 }
-            }
+            };
         }
         case UPDATE_PRICE: {
             return {
@@ -51,7 +49,7 @@ export default (state = initialStateForProductForm, action) => {
                     price: action.price,
                     isValidPrice: isValidPrice(action.price)
                 }
-            }
+            };
         }
         case UPDATE_IMAGE: {
             return {
@@ -61,7 +59,7 @@ export default (state = initialStateForProductForm, action) => {
                     image: action.image,
                     isValidImage: isValidImageUrl(action.image)
                 }
-            }
+            };
         }
         case PUT_PRODUCT_TO_FORM: {
             return {
@@ -72,13 +70,13 @@ export default (state = initialStateForProductForm, action) => {
                     isValidPrice: isValidPrice(action.product.price),
                     isValidImage: isValidImageUrl(action.product.image)
                 }
-            }
+            };
         }
         case CLEAR_PRODUCT_FORM: {
             return {
                 ...state,
-                product: {...initialStateForProductForm.product}
-            }
+                product: { ...initialState.product }
+            };
         }
         default:
             return state;

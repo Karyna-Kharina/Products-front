@@ -51,4 +51,4 @@ export default [
         "publishedAt": "2020-03-24T11:28:00Z",
         "content": "Cryptocurrencies have seemingly taken a backseat due to a concerted focus on blockchain technology in Africa, but there is still a growing interest and demand for trading on the continent. This was one of the main takeaways from the Blockchain Africa conferen… [+7887 chars]"
     }
-]
+];

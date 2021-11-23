@@ -1,0 +1,3 @@
+export const GET_USERS_SAGA = "GET_USERS_SAGA";
+export const SAVE_USER_SAGA = "SAVE_USER_SAGA";
+export const DELETE_USER_SAGA = "DELETE_USER_SAGA";

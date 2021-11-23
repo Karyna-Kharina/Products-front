@@ -1,10 +1,10 @@
-import {connect} from "react-redux";
-import App from "./App";
-import {Route, Switch} from "react-router";
-import {APP, SIGN_IN, SIGN_UP} from "../../additionalData/links/front";
+import React from "react";
+import { connect } from "react-redux";
+import { Route, Switch } from "react-router";
+import App from "./index";
 import SignUp from "../auth/SignUp";
 import SignIn from "../auth/SignIn";
-import React from "react";
+import { APP, SIGN_IN, SIGN_UP } from "../../additionalData/links/front";
 
 const mapStateToProps = (state) => ({
     currentUser: state.profile.current
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({});
 
-const Body = ({currentUser}) => (
+const Body = ({ currentUser }) => (
     <Switch>
         <Route path={SIGN_UP}>
             {currentUser ? <App/> : <SignUp/>}

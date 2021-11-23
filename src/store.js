@@ -1,7 +1,7 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import createSagaMiddleware from 'redux-saga';
-import {composeWithDevTools} from "redux-devtools-extension";
-import mainSaga from './saga';
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "redux-devtools-extension";
+import mainSaga from "./saga";
 import users from "./reducers/users/users";
 import products from "./reducers/products/products";
 import productForm from "./reducers/products/productForm";

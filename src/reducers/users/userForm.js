@@ -17,32 +17,30 @@ import {
     CHANGE_USER_PHOTO,
     CLEAR_USER_FORM,
     PUT_USER_TO_FORM
-} from "../../additionalData/constants/user";
+} from "../../additionalData/constants/users";
 
-const initialStateForUserForm = {
+const initialState = {
     user: {
-        id: '',
-        firstName: '',
+        id: "",
+        firstName: "",
         isValidFirstName: false,
-        lastName: '',
+        lastName: "",
         isValidLastName: false,
         date: new Date(),
         isValidDate: false,
-        email: '',
+        email: "",
         isValidEmail: false,
-        phoneNumber: '',
+        phoneNumber: "",
         isValidPhoneNumber: false,
-        photo: '',
+        photo: "",
         isValidPhoto: false,
-        password: '',
-        isValidPassword: false,
+        password: "",
+        isValidPassword: false
     }
 };
 
-export default (state = initialStateForUserForm, action) => {
-
+export default (state = initialState, action) => {
     switch (action.type) {
-
         case CHANGE_USER_ID: {
             return {
                 ...state,
@@ -50,7 +48,7 @@ export default (state = initialStateForUserForm, action) => {
                     ...state.user,
                     id: action.id
                 }
-            }
+            };
         }
         case CHANGE_USER_FIRST_NAME: {
             return {
@@ -60,7 +58,7 @@ export default (state = initialStateForUserForm, action) => {
                     firstName: action.firstName,
                     isValidFirstName: isValidName(action.firstName)
                 }
-            }
+            };
         }
         case CHANGE_USER_LAST_NAME: {
             return {
@@ -70,7 +68,7 @@ export default (state = initialStateForUserForm, action) => {
                     lastName: action.lastName,
                     isValidLastName: isValidName(action.lastName)
                 }
-            }
+            };
         }
         case CHANGE_USER_DATE: {
             return {
@@ -80,7 +78,7 @@ export default (state = initialStateForUserForm, action) => {
                     date: action.date,
                     isValidDate: isValidDate(action.date)
                 }
-            }
+            };
         }
         case CHANGE_USER_PHONE_NUMBER: {
             return {
@@ -90,7 +88,7 @@ export default (state = initialStateForUserForm, action) => {
                     phoneNumber: action.phoneNumber,
                     isValidPhoneNumber: isValidPhoneNumber(action.phoneNumber)
                 }
-            }
+            };
         }
         case CHANGE_USER_EMAIL: {
             return {
@@ -100,7 +98,7 @@ export default (state = initialStateForUserForm, action) => {
                     email: action.email,
                     isValidEmail: isValidEmail(action.email)
                 }
-            }
+            };
         }
         case CHANGE_USER_PHOTO: {
             return {
@@ -110,7 +108,7 @@ export default (state = initialStateForUserForm, action) => {
                     photo: action.photo,
                     isValidPhoto: isValidImageUrl(action.photo)
                 }
-            }
+            };
         }
         case CHANGE_USER_PASSWORD: {
             return {
@@ -120,7 +118,7 @@ export default (state = initialStateForUserForm, action) => {
                     password: action.password,
                     isValidPassword: isValidPassword(action.password)
                 }
-            }
+            };
         }
         case PUT_USER_TO_FORM: {
             return {
@@ -135,13 +133,13 @@ export default (state = initialStateForUserForm, action) => {
                     isValidPhoto: isValidImageUrl(action.user.photo),
                     isValidPassword: isValidPassword(action.user.password)
                 }
-            }
+            };
         }
         case CLEAR_USER_FORM: {
             return {
                 ...state,
-                user: {...initialStateForUserForm.user}
-            }
+                user: { ...initialState.user }
+            };
         }
         default:
             return state;

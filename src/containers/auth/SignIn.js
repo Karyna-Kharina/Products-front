@@ -1,7 +1,7 @@
-import {changeEmail, changePassword,} from "../../actions/auth/signInAction";
+import { connect } from "react-redux";
+import { logIn } from "../../actions/authSaga/signIn";
 import SignIn from "../../components/auth/SignIn";
-import {connect} from "react-redux";
-import {logIn} from "../../actions/auth/signInAction";
+import { changeEmail, changePassword } from "../../actions/auth/signIn";
 
 const mapStateToProps = (state) => {
     return {
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
         password: state.signIn.password,
         isValidEmail: state.signIn.isValidEmail,
         isValidPassword: state.signIn.isValidPassword
-    }
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
         onChangeEmail: (email) => dispatch(changeEmail(email)),
         onChangePassword: (password) => dispatch(changePassword(password)),
         onLogIn: () => dispatch(logIn())
-    }
+    };
 };
 
 export default connect(
