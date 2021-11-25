@@ -9,7 +9,5 @@ export const UPDATE_NAME = "UPDATE_NAME";
 export const UPDATE_PRICE = "UPDATE_PRICE";
 export const UPDATE_IMAGE = "UPDATE_IMAGE";
 
-export const SWAP = "SWAP";
-
 export const PUT_PRODUCT_TO_FORM = "PUT_PRODUCT_TO_FORM";
 export const CLEAR_PRODUCT_FORM = "CLEAR_PRODUCT_FORM";

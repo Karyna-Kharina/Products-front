@@ -1,4 +1,4 @@
-import *  as axios from "axios";
+import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { setMessageInfo } from "../../actions/info";
 import { PRODUCTS_API } from "../../additionalData/links/back";
@@ -6,19 +6,13 @@ import { DELETE_PRODUCT_SAGA, GET_PRODUCTS_SAGA } from "../../additionalData/con
 
 export function* deleteProductSaga(action) {
     try {
-        const { id } = action.product;
-
+        const { id } = action;
         yield call(
             axios.delete,
             PRODUCTS_API + "/" + id
         );
     } catch (e) {
-        yield put(setMessageInfo(
-            {
-                type: "error",
-                text: "Error occurred!"
-            }
-        ));
+        yield put(setMessageInfo({ type: "error", text: e.message }));
     }
 
     yield put({ type: GET_PRODUCTS_SAGA });

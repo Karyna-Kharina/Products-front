@@ -3,8 +3,7 @@ import {
     ADD_PRODUCT_TO_CART,
     CHANGE_FILTERED_NAME,
     REMOVE_PRODUCT_FROM_CART,
-    SET_PRODUCTS,
-    SWAP
+    SET_PRODUCTS
 } from "../../additionalData/constants/products";
 
 const initialState = {
@@ -25,12 +24,6 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 productsInCart: removeItemFrom(state.productsInCart, action.product)
-            };
-        }
-        case SWAP: {
-            return {
-                ...state,
-                products: [...state.products].reverse()
             };
         }
         case CHANGE_FILTERED_NAME: {

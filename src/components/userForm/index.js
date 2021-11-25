@@ -10,7 +10,7 @@ const UserForm = ({
                       phoneNumber, isValidPhoneNumber, onChangePhoneNumber,
                       photo, isValidPhoto, onChangePhoto,
                       password, isValidPassword, onChangePassword,
-                      onCreate
+                      onSave
                   }) => {
     const isDisabledButtonSave = () => !(
         isValidFirstName &&
@@ -142,7 +142,7 @@ const UserForm = ({
                             variant={"contained"}
                             disabled={isDisabledButtonSave()}
                             startIcon={id ? <Update/> : <Save/>}
-                            onClick={() => onCreate({ id, firstName, lastName, phoneNumber, email, photo, password })}
+                            onClick={() => onSave({ id, firstName, lastName, phoneNumber, email, photo, password })}
                         >
                             {id ? "UPDATE" : "SAVE"}
                         </Button>

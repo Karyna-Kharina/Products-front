@@ -10,9 +10,9 @@ export const saveProduct = (product) => ({
     product
 });
 
-export const removeProduct = (product) => ({
+export const removeProduct = (id) => ({
     type: DELETE_PRODUCT_SAGA,
-    product
+    id
 });
 
 export const getProductsSaga = () => ({

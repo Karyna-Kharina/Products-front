@@ -27,7 +27,7 @@ export default [
         email: "walterwhite@gmail.com",
         phoneNumber: "+380664561230",
         password: "87654321",
-        photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSAJvpoz6PSdVmzUnOGG-Qt9HMX6O3q72p0H8EJ5heRDdRDWNZ0"
+        photo: "https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg0NTEzNzgyNTMyNDE2OTk5/black-cat-gettyimages-901574784.jpg"
     },
     {
         id: "4",
@@ -35,8 +35,8 @@ export default [
         lastName: "Rose",
         birthday: "10.01.1998",
         email: "rubyrose@gmail.com",
-        phoneNumber: "+38066555230",
+        phoneNumber: "+380665558230",
         password: "9876543210",
-        photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYriA6A0MAPyDhCYRAUDnHvh79vlxGoUJXAgA5kMLPEagBCSqh"
+        photo: "https://www.thesprucepets.com/thmb/zJcsXQ_WzaBtvrHV5IM9lcFB-sc=/941x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/twenty20_e47b3798-dd9b-40b1-91ef-1d820337966e-5aa3f798642dca00363b0df1.jpg"
     }
 ];

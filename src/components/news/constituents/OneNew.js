@@ -22,8 +22,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const OneNew = ({ source, author, title, description, url, urlToImage, publishedAt, content }) => {
+const OneNew = ({ oneNew }) => {
     const classes = useStyles();
+    const {source, author, title, description, url, urlToImage, publishedAt, content} = oneNew;
 
     return (
         <Box border={1} p={5} className={classes.content}>

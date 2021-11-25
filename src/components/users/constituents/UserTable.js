@@ -17,7 +17,7 @@ const StyledTableCell = withStyles((theme) => ({
     }
 }))(TableCell);
 
-const UserTable = ({ classes, users, current, onDeleteClick, onClickPutUserToForm }) => (
+const UserTable = ({ classes, users, current, onDelete, putUserToForm }) => (
     <Table className={classes.table} size={"small"} aria-label={"a dense table"}>
         <TableHead>
             <TableRow>
@@ -34,24 +34,24 @@ const UserTable = ({ classes, users, current, onDeleteClick, onClickPutUserToFor
 
         <TableBody>
             {
-                users.map((item) => (
-                    <TableRow key={item.id}>
+                users.map((user) => (
+                    <TableRow key={user.id}>
                         <TableCell align={"center"} component={"th"} scope={"row"}>
-                            <Avatar src={item.photo}/>
+                            <Avatar src={user.photo}/>
                         </TableCell>
 
                         <TableCell align={"center"}>
-                            {item.id}
+                            {user.id}
                         </TableCell>
 
-                        <TableCell align={"center"}>{item.firstName}</TableCell>
-                        <TableCell align={"center"}>{item.lastName}</TableCell>
-                        <TableCell align={"center"}>{item.phoneNumber}</TableCell>
-                        <TableCell align={"center"}>{item.email}</TableCell>
+                        <TableCell align={"center"}>{user.firstName}</TableCell>
+                        <TableCell align={"center"}>{user.lastName}</TableCell>
+                        <TableCell align={"center"}>{user.phoneNumber}</TableCell>
+                        <TableCell align={"center"}>{user.email}</TableCell>
 
                         <TableCell align={"center"}>
                             <Link to={USER_UPDATE}>
-                                <IconButton onClick={() => onClickPutUserToForm(item)}>
+                                <IconButton onClick={() => putUserToForm(user)}>
                                     <Update/>
                                 </IconButton>
                             </Link>
@@ -59,8 +59,8 @@ const UserTable = ({ classes, users, current, onDeleteClick, onClickPutUserToFor
 
                         <TableCell align={"center"}>
                             <IconButton
-                                disabled={item.id === current.id}
-                                onClick={() => onDeleteClick(item)}
+                                disabled={user.id === current.id}
+                                onClick={() => onDelete(user.id)}
                             >
                                 <Delete/>
                             </IconButton>

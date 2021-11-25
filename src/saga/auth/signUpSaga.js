@@ -1,4 +1,4 @@
-import *  as axios from "axios";
+import axios from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setCurrentUser } from "../../actions/profile";
 import { setMessageInfo } from "../../actions/info";
@@ -13,18 +13,13 @@ export function* signUpSaga() {
 
         const result = yield call(
             axios.post,
-            USERS_API,
+            USERS_API + "/sign-up",
             { firstName, lastName, date, email, phoneNumber, photo, password }
         );
 
         yield put(setCurrentUser(result.data));
     } catch (e) {
-        yield put(setMessageInfo(
-            {
-                type: "error",
-                text: e.message
-            }
-        ));
+        yield put(setMessageInfo({ type: "error", text: e.message }));
     }
 
     yield put({ type: CLEAR_SIGN_UP });

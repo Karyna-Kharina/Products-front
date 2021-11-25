@@ -14,6 +14,3 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 export const PUT_USER_TO_FORM = "PUT_USER_TO_FORM";
 export const CLEAR_USER_FORM = "CLEAR_USER_FORM";
-
-export const CLICK_ON_PAGE = "CLICK_ON_PAGE";
-export const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";

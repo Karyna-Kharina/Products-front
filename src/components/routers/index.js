@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import ProductCart from "../containers/products/ProductCart";
-import ProductCards from "../containers/products/ProductCards";
-import ProductList from "../containers/products";
-import UserList from "../containers/users";
-import CreateUserForm from "../containers/userForm";
-import CreateProductForm from "../containers/productForm";
-import Profile from "../containers/profile";
-import News from "../containers/news";
+import ProductCart from "../../containers/products/ProductCart";
+import ProductCards from "../../containers/products/ProductCards";
+import ProductList from "../../containers/products";
+import UserList from "../../containers/users";
+import CreateUserForm from "../../containers/userForm";
+import CreateProductForm from "../../containers/productForm";
+import Profile from "../../containers/profile";
+import News from "../../containers/news";
 import {
     APP,
     CREATE_PRODUCT_FORM,
@@ -20,7 +20,7 @@ import {
     USER_LIST,
     USER_PROFILE,
     USER_UPDATE
-} from "../additionalData/links/front";
+} from "../../additionalData/links/front";
 
 const Routers = () => (
     <Switch>

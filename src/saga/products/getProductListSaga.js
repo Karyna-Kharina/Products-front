@@ -1,4 +1,4 @@
-import *  as axios from "axios";
+import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { setProductList } from "../../actions/products";
 import { setMessageInfo } from "../../actions/info";
@@ -14,12 +14,10 @@ export function* getProductListSaga() {
 
         yield put(setProductList(result.data));
     } catch (e) {
-        yield put(setMessageInfo(
-            {
-                type: "warning",
-                text: "Product list is empty!"
-            }
-        ));
+        yield put(setMessageInfo({
+            type: "warning",
+            text: "Product list is empty!"
+        }));
     }
 }
 

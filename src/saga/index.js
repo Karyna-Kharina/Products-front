@@ -6,6 +6,10 @@ import { watchGetProductListSaga } from "./products/getProductListSaga";
 import { watchSaveProductSaga } from "./products/saveProductSaga";
 import { watchDeleteProductSaga } from "./products/deleteProductSaga";
 import { watchGetProductByNameSaga } from "./products/getProductByNameSaga";
+import { watchDeleteUserSaga } from "./users/deleteUserSaga";
+import { watchGetUserListSaga } from "./users/getUserListSaga";
+import { watchGetUsersByNameSaga } from "./users/getUsersByNameSaga";
+import { watchSaveUserSaga } from "./users/saveUserSaga";
 
 export default function* mainSaga() {
     yield all([
@@ -15,6 +19,10 @@ export default function* mainSaga() {
         watchSaveProductSaga(),
         watchDeleteProductSaga(),
         watchGetProductByNameSaga(),
-        watchGetNewsSaga()
+        watchGetNewsSaga(),
+        watchDeleteUserSaga(),
+        watchGetUserListSaga(),
+        watchGetUsersByNameSaga(),
+        watchSaveUserSaga()
     ]);
 }

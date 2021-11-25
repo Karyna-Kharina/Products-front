@@ -17,7 +17,7 @@ const StyledTableCell = withStyles((theme) => ({
     }
 }))(TableCell);
 
-const ProductTable = ({ products, onDeleteClick, onClickPutProductToForm }) => (
+const ProductTable = ({ products, onDelete, putProductToForm }) => (
     <Table size={"small"} aria-label={"a dense table"}>
         <TableHead>
             <TableRow>
@@ -30,26 +30,26 @@ const ProductTable = ({ products, onDeleteClick, onClickPutProductToForm }) => (
         </TableHead>
 
         <TableBody>
-            {products
-                .map(item => (
-                    <TableRow key={item.id}>
+            {
+                products.map((product) => (
+                    <TableRow key={product.id}>
                         <TableCell align={"center"} component={"th"} scope={"row"}>
-                            {item.id}
+                            {product.id}
                         </TableCell>
 
-                        <TableCell align={"center"}>{item.name}</TableCell>
-                        <TableCell align={"center"}>{item.price}</TableCell>
+                        <TableCell align={"center"}>{product.name}</TableCell>
+                        <TableCell align={"center"}>{product.price}</TableCell>
 
                         <TableCell align={"center"}>
                             <Link to={PRODUCT_UPDATE}>
-                                <IconButton onClick={() => onClickPutProductToForm(item)}>
+                                <IconButton onClick={() => putProductToForm(product)}>
                                     <Update/>
                                 </IconButton>
                             </Link>
                         </TableCell>
 
                         <TableCell align={"center"}>
-                            <IconButton onClick={() => onDeleteClick(item)}>
+                            <IconButton onClick={() => onDelete(product.id)}>
                                 <Delete/>
                             </IconButton>
                         </TableCell>

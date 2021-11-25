@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
         onChangeEmail: (email) => dispatch(changeEmail(email)),
         onChangePhoto: (photo) => dispatch(changePhoto(photo)),
         onChangePassword: (password) => dispatch(changePassword(password)),
-        onCreate: (user) => dispatch(saveUser(user))
+        onSave: (user) => dispatch(saveUser(user))
     };
 };
 
