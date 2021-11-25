@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/Products-front/static/js/main.357a798a.chunk.js",
-    "main.js.map": "/Products-front/static/js/main.357a798a.chunk.js.map",
+    "main.js": "/Products-front/static/js/main.87f86d0f.chunk.js",
+    "main.js.map": "/Products-front/static/js/main.87f86d0f.chunk.js.map",
     "runtime-main.js": "/Products-front/static/js/runtime-main.d1f58d26.js",
     "runtime-main.js.map": "/Products-front/static/js/runtime-main.d1f58d26.js.map",
     "static/js/2.bec09f28.chunk.js": "/Products-front/static/js/2.bec09f28.chunk.js",
     "static/js/2.bec09f28.chunk.js.map": "/Products-front/static/js/2.bec09f28.chunk.js.map",
     "index.html": "/Products-front/index.html",
-    "precache-manifest.9e43c7a4e9e1eb87c6a5b9c3d7697b2c.js": "/Products-front/precache-manifest.9e43c7a4e9e1eb87c6a5b9c3d7697b2c.js",
+    "precache-manifest.e7553f6f8aa03d253a0b5310df09e93e.js": "/Products-front/precache-manifest.e7553f6f8aa03d253a0b5310df09e93e.js",
     "service-worker.js": "/Products-front/service-worker.js",
     "static/js/2.bec09f28.chunk.js.LICENSE.txt": "/Products-front/static/js/2.bec09f28.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d1f58d26.js",
     "static/js/2.bec09f28.chunk.js",
-    "static/js/main.357a798a.chunk.js"
+    "static/js/main.87f86d0f.chunk.js"
   ]
 }
