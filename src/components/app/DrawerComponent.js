@@ -11,16 +11,9 @@ import {
     ListItemText,
     Typography
 } from "@material-ui/core";
-import { Create, FiberNew, Lock, People, ShoppingCart, ViewModule } from "@material-ui/icons";
+import { Create, Lock, People, ShoppingCart, ViewModule } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-    CREATE_PRODUCT_FORM,
-    PRODUCT_CARDS,
-    PRODUCT_CART,
-    PRODUCT_LIST,
-    SHOW_NEWS,
-    USER_LIST
-} from "../../additionalData/links/front";
+import { CREATE_PRODUCT_FORM, PRODUCT_CARDS, PRODUCT_CART, PRODUCTS, USERS } from "../../additionalData/links/front";
 
 const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
@@ -41,22 +34,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const DrawerComponent = ({countProductsInCart}) => {
+const DrawerComponent = ({ countProductsInCart }) => {
     const classes = useStyles();
 
     return (
         <Drawer
             className={classes.drawer}
-            classes={{
-                paper: classes.drawerPaper
-            }}
+            classes={{ paper: classes.drawerPaper }}
             variant={"permanent"}
             open={true}
         >
             <div className={classes.toolbar}/>
 
             <List className={classes.list}>
-                <Button color={"inherit"} fullWidth to={PRODUCT_LIST} component={Link}>
+                <Button color={"inherit"} fullWidth to={PRODUCTS} component={Link}>
                     <ListItem>
                         <ListItemIcon><Lock/></ListItemIcon>
                         <ListItemText primary={
@@ -111,26 +102,12 @@ const DrawerComponent = ({countProductsInCart}) => {
 
                 <Divider className={classes.divider}/>
 
-                <Button color={"inherit"} fullWidth to={USER_LIST} component={Link}>
+                <Button color={"inherit"} fullWidth to={USERS} component={Link}>
                     <ListItem>
                         <ListItemIcon><People/></ListItemIcon>
                         <ListItemText primary={
                             <Typography variant={"subtitle2"}>
                                 Users
-                            </Typography>
-                        }
-                        />
-                    </ListItem>
-                </Button>
-
-                <Divider className={classes.divider}/>
-
-                <Button color={"inherit"} fullWidth to={SHOW_NEWS} component={Link}>
-                    <ListItem>
-                        <ListItemIcon><FiberNew/></ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant={"subtitle2"}>
-                                News
                             </Typography>
                         }
                         />

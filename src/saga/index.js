@@ -1,12 +1,11 @@
 import { all } from "redux-saga/effects";
-import { watchGetNewsSaga } from "./news/getNewsSaga";
 import { watchSignInSaga } from "./auth/signInSaga";
 import { watchSignUpSaga } from "./auth/signUpSaga";
 import { watchGetProductListSaga } from "./products/getProductListSaga";
 import { watchSaveProductSaga } from "./products/saveProductSaga";
-import { watchDeleteProductSaga } from "./products/deleteProductSaga";
+import { watchRemoveProductSaga } from "./products/removeProductSaga";
 import { watchGetProductByNameSaga } from "./products/getProductByNameSaga";
-import { watchDeleteUserSaga } from "./users/deleteUserSaga";
+import { watchRemoveUserSaga } from "./users/removeUserSaga";
 import { watchGetUserListSaga } from "./users/getUserListSaga";
 import { watchGetUsersByNameSaga } from "./users/getUsersByNameSaga";
 import { watchSaveUserSaga } from "./users/saveUserSaga";
@@ -17,10 +16,9 @@ export default function* mainSaga() {
         watchSignUpSaga(),
         watchGetProductListSaga(),
         watchSaveProductSaga(),
-        watchDeleteProductSaga(),
+        watchRemoveProductSaga(),
         watchGetProductByNameSaga(),
-        watchGetNewsSaga(),
-        watchDeleteUserSaga(),
+        watchRemoveUserSaga(),
         watchGetUserListSaga(),
         watchGetUsersByNameSaga(),
         watchSaveUserSaga()

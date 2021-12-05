@@ -7,17 +7,15 @@ import UserList from "../../containers/users";
 import CreateUserForm from "../../containers/userForm";
 import CreateProductForm from "../../containers/productForm";
 import Profile from "../../containers/profile";
-import News from "../../containers/news";
 import {
     APP,
     CREATE_PRODUCT_FORM,
     CREATE_USER_FORM,
     PRODUCT_CARDS,
     PRODUCT_CART,
-    PRODUCT_LIST,
+    PRODUCTS,
     PRODUCT_UPDATE,
-    SHOW_NEWS,
-    USER_LIST,
+    USERS,
     USER_PROFILE,
     USER_UPDATE
 } from "../../additionalData/links/front";
@@ -28,7 +26,7 @@ const Routers = () => (
             <ProductCards/>
         </Route>
 
-        <Route path={PRODUCT_LIST}>
+        <Route path={PRODUCTS}>
             <ProductList/>
         </Route>
 
@@ -48,7 +46,7 @@ const Routers = () => (
             <CreateProductForm/>
         </Route>
 
-        <Route path={USER_LIST}>
+        <Route path={USERS}>
             <UserList/>
         </Route>
 
@@ -62,10 +60,6 @@ const Routers = () => (
 
         <Route path={CREATE_USER_FORM}>
             <CreateUserForm/>
-        </Route>
-
-        <Route path={SHOW_NEWS}>
-            <News/>
         </Route>
     </Switch>
 );

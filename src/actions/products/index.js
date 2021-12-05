@@ -14,12 +14,13 @@ export const removeProductFromCart = (product) => ({
     type: REMOVE_PRODUCT_FROM_CART,
     product
 });
+
 export const changeFilteredName = (filteredName) => ({
     type: CHANGE_FILTERED_NAME,
     filteredName
 });
 
-export const setProductList = (products) => ({
+export const setProducts = (products) => ({
     type: SET_PRODUCTS,
     products
 });

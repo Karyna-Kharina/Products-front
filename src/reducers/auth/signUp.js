@@ -7,7 +7,6 @@ import {
     isValidPhoneNumber
 } from "../../additionalData/validation";
 import {
-    CHANGE_CHECKBOX,
     CHANGE_DATE,
     CHANGE_EMAIL,
     CHANGE_FIRST_NAME,
@@ -32,8 +31,7 @@ const initialState = {
     photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Sc4PFchrEZb4f1dO2qe5YacCM1PaSX7P23cWsOGXYwVF_D0KQEuG6pmPOlx6-4pk68U&usqp=CAU",
     isValidPhoto: true,
     password: "",
-    isValidPassword: false,
-    isCheckedBox: false
+    isValidPassword: false
 };
 
 export default (state = initialState, action) => {
@@ -85,12 +83,6 @@ export default (state = initialState, action) => {
                 ...state,
                 photo: action.photo,
                 isValidPhoto: isValidImageUrl(action.photo)
-            };
-        }
-        case CHANGE_CHECKBOX: {
-            return {
-                ...state,
-                isCheckedBox: action.checkbox
             };
         }
         case CLEAR_SIGN_UP: {

@@ -1,5 +1,4 @@
 import {
-    CHANGE_CHECKBOX,
     CHANGE_DATE,
     CHANGE_EMAIL,
     CHANGE_FIRST_NAME,
@@ -42,9 +41,4 @@ export const changePhone = (phone) => ({
 export const changePhoto = (photo) => ({
     type: CHANGE_PHOTO,
     photo
-});
-
-export const changeCheckbox = (checkbox) => ({
-    type: CHANGE_CHECKBOX,
-    checkbox
 });

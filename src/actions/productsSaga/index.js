@@ -1,5 +1,5 @@
 import {
-    DELETE_PRODUCT_SAGA,
+    REMOVE_PRODUCT_SAGA,
     GET_PRODUCTS_BY_NAME_SAGA,
     GET_PRODUCTS_SAGA,
     SAVE_PRODUCT_SAGA
@@ -11,7 +11,7 @@ export const saveProduct = (product) => ({
 });
 
 export const removeProduct = (id) => ({
-    type: DELETE_PRODUCT_SAGA,
+    type: REMOVE_PRODUCT_SAGA,
     id
 });
 

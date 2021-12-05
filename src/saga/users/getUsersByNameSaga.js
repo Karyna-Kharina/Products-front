@@ -1,6 +1,6 @@
 import axios from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
-import { setUserList } from "../../actions/users";
+import { setUsers } from "../../actions/users";
 import { setMessageInfo } from "../../actions/info";
 import { USERS_API_SEARCH } from "../../additionalData/links/back";
 import { GET_USERS_BY_NAME_SAGA } from "../../additionalData/constants/usersSaga";
@@ -18,7 +18,7 @@ export function* getUsersByNameSaga() {
             }
         );
 
-        yield put(setUserList(result.data));
+        yield put(setUsers(result.data));
     } catch (e) {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }

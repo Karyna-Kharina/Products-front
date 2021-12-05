@@ -1,6 +1,6 @@
 import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
-import { setProductList } from "../../actions/products";
+import { setProducts } from "../../actions/products";
 import { setMessageInfo } from "../../actions/info";
 import { PRODUCTS_API } from "../../additionalData/links/back";
 import { GET_PRODUCTS_SAGA } from "../../additionalData/constants/productsSaga";
@@ -12,7 +12,7 @@ export function* getProductListSaga() {
             PRODUCTS_API
         );
 
-        yield put(setProductList(result.data));
+        yield put(setProducts(result.data));
     } catch (e) {
         yield put(setMessageInfo({
             type: "warning",

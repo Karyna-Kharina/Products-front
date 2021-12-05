@@ -2,9 +2,9 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import store from "./store";
+import { worker } from "./mocks/browser";
 import Body from "./containers/app/Body";
 import MessageInfo from "./containers/info";
 
@@ -12,7 +12,8 @@ const theme = createTheme({
     palette: {
         type: "dark",
         primary: {
-            main: "#334e8b"
+            main: "#334e8b",
+            light: "#76c7da"
         },
         secondary: {
             main: "#d13e45"
@@ -20,20 +21,26 @@ const theme = createTheme({
     }
 });
 
-if (process.env.NODE_ENV === "development") {
-    const { worker } = require("./mocks/browser");
-    worker.start();
-}
+(function () {
+    if (window.location.pathname === "/Products-front") {
+        window.location.pathname = "/Products-front/";
+        return;
+    }
+    worker.start({
+        serviceWorker: {
+            url: "/Products-front/mockServiceWorker.js"
+        }
+    });
 
-render(
-    <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <Provider store={store}>
-            <BrowserRouter>
-                <Body/>
-                <MessageInfo/>
-            </BrowserRouter>
-        </Provider>
-    </ThemeProvider>,
-    document.getElementById("root")
-);
+    render(
+        <ThemeProvider theme={theme}>
+            <Provider store={store}>
+                <BrowserRouter basename={"/Products-front/"}>
+                    <Body/>
+                    <MessageInfo/>
+                </BrowserRouter>
+            </Provider>
+        </ThemeProvider>,
+        document.getElementById("root")
+    );
+})();

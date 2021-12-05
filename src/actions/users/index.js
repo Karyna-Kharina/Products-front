@@ -5,7 +5,7 @@ export const changeFilteredUsername = (filteredName) => ({
     filteredName
 });
 
-export const setUserList = (users) => ({
+export const setUsers = (users) => ({
     type: SET_USERS,
     users
 });

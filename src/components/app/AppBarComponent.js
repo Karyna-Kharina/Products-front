@@ -20,7 +20,7 @@ const AppBarComponent = ({ photo, logOut }) => {
     const [auth] = React.useState(true);
     const open = Boolean(anchorEl);
 
-    const handleMenu = event => setAnchorEl(event.currentTarget);
+    const handleMenu = (event) => setAnchorEl(event.currentTarget);
     const handleClose = () => setAnchorEl(null);
 
     return (
@@ -31,38 +31,40 @@ const AppBarComponent = ({ photo, logOut }) => {
                 </Typography>
 
                 <Box ml={8}>
-                    {auth && (
-                        <div>
-                            <IconButton
-                                aria-label={"account of current user"}
-                                aria-controls={"menu-appbar"}
-                                aria-haspopup={"true"}
-                                onClick={handleMenu}
-                                color={"inherit"}
-                            >
-                                <Avatar src={photo}/>
-                            </IconButton>
+                    {
+                        auth && (
+                            <div>
+                                <IconButton
+                                    aria-label={"account of current user"}
+                                    aria-controls={"menu-appbar"}
+                                    aria-haspopup={"true"}
+                                    onClick={handleMenu}
+                                    color={"inherit"}
+                                >
+                                    <Avatar src={photo}/>
+                                </IconButton>
 
-                            <Menu
-                                id={"menu-appbar"}
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}
-                            >
-                                <MenuItem>
-                                    <Button color={"inherit"} to={USER_PROFILE} component={Link}>
-                                        Profile
-                                    </Button>
-                                </MenuItem>
+                                <Menu
+                                    id={"menu-appbar"}
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                >
+                                    <MenuItem>
+                                        <Button color={"inherit"} to={USER_PROFILE} component={Link}>
+                                            Profile
+                                        </Button>
+                                    </MenuItem>
 
-                                <MenuItem>
-                                    <Button color={"inherit"} onClick={logOut} to={SIGN_IN} component={Link}>
-                                        Log Out
-                                    </Button>
-                                </MenuItem>
-                            </Menu>
-                        </div>
-                    )}
+                                    <MenuItem>
+                                        <Button color={"inherit"} onClick={logOut} to={SIGN_IN} component={Link}>
+                                            Log Out
+                                        </Button>
+                                    </MenuItem>
+                                </Menu>
+                            </div>
+                        )
+                    }
                 </Box>
             </Toolbar>
         </AppBar>

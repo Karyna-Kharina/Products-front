@@ -2,7 +2,7 @@ import axios from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setCurrentUser } from "../../actions/profile";
 import { setMessageInfo } from "../../actions/info";
-import { USERS_API } from "../../additionalData/links/back";
+import { SIGN_UP_API } from "../../additionalData/links/back";
 import { CLEAR_SIGN_UP } from "../../additionalData/constants/auth";
 import { SIGN_UP_SAGA } from "../../additionalData/constants/authSaga";
 
@@ -13,7 +13,7 @@ export function* signUpSaga() {
 
         const result = yield call(
             axios.post,
-            USERS_API + "/sign-up",
+            SIGN_UP_API,
             { firstName, lastName, date, email, phoneNumber, photo, password }
         );
 

@@ -3,19 +3,9 @@ import { Link } from "react-router-dom";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import {
-    Avatar,
-    Button,
-    Checkbox,
-    Container,
-    CssBaseline,
-    FormControlLabel,
-    Grid,
-    Typography
-} from "@material-ui/core";
+import { Avatar, Button, Container, CssBaseline, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import AuthStyles from "./constituents/AuthStyles";
-import { Birthday, Email, FirstName, LastName, Password, PhoneNumber, PhotoUrl } from "./constituents";
+import { AuthStyles, Birthday, Email, FirstName, LastName, Password, PhoneNumber, PhotoUrl } from "./constituents";
 import { SIGN_IN } from "../../additionalData/links/front";
 
 const useStyles = makeStyles(AuthStyles);
@@ -28,7 +18,6 @@ const SignUp = ({
                     phoneNumber, isValidPhoneNumber, onChangePhone,
                     photo, isValidPhoto, onChangePhoto,
                     password, isValidPassword, onChangePassword,
-                    isCheckedBox, onChangeCheckbox,
                     onSignUp
                 }) => {
     const classes = useStyles();
@@ -40,8 +29,7 @@ const SignUp = ({
             isValidDate &&
             isValidEmail &&
             isValidPhoneNumber &&
-            isValidPassword &&
-            isCheckedBox
+            isValidPassword
         );
     };
 
@@ -114,19 +102,6 @@ const SignUp = ({
                             password={password}
                             isValidPassword={isValidPassword}
                             onChangePassword={onChangePassword}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    onChange={(e) => onChangeCheckbox(e.target.checked)}
-                                    checked={isCheckedBox}
-                                    color={"primary"}
-                                />
-                            }
-                            label={"I want to receive marketing promotions and updates via email."}
                         />
                     </Grid>
                 </Grid>

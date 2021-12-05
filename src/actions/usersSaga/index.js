@@ -1,5 +1,5 @@
 import {
-    DELETE_USER_SAGA,
+    REMOVE_USER_SAGA,
     GET_USERS_BY_NAME_SAGA,
     GET_USERS_SAGA,
     SAVE_USER_SAGA
@@ -11,7 +11,7 @@ export const saveUser = (user) => ({
 });
 
 export const removeUser = (id) => ({
-    type: DELETE_USER_SAGA,
+    type: REMOVE_USER_SAGA,
     id
 });
 

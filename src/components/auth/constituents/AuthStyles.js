@@ -7,7 +7,7 @@ const AuthStyles = (theme) => ({
     },
     avatar: {
         margin: theme.spacing(2),
-        backgroundColor: "pink"
+        backgroundColor: theme.palette.primary.light
     },
     grid: {
         width: "100%",

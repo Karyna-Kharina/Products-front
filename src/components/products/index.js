@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, InputBase, Paper, TableContainer } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
-import { alpha } from "@mui/material/styles";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 import ProductTable from "./constituents/ProductTable";
 
 const useStyles = makeStyles((theme) => ({

@@ -2,9 +2,9 @@ import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { setMessageInfo } from "../../actions/info";
 import { USERS_API } from "../../additionalData/links/back";
-import { DELETE_USER_SAGA, GET_USERS_SAGA } from "../../additionalData/constants/usersSaga";
+import { GET_USERS_SAGA, REMOVE_USER_SAGA } from "../../additionalData/constants/usersSaga";
 
-export function* deleteUserSaga(action) {
+export function* removeUserSaga(action) {
     try {
         const { id } = action;
         yield call(
@@ -18,6 +18,6 @@ export function* deleteUserSaga(action) {
     }
 }
 
-export function* watchDeleteUserSaga() {
-    yield takeEvery(DELETE_USER_SAGA, deleteUserSaga);
+export function* watchRemoveUserSaga() {
+    yield takeEvery(REMOVE_USER_SAGA, removeUserSaga);
 }

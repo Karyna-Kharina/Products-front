@@ -2,7 +2,14 @@ import { rest } from "msw";
 import key from "weak-key";
 import productFixtures from "../additionalData/fixtures/productFixtures";
 import userFixtures from "../additionalData/fixtures/userFixtures";
-import { PRODUCTS_API, PRODUCTS_API_SEARCH, USERS_API, USERS_API_SEARCH } from "../additionalData/links/back";
+import {
+    PRODUCTS_API,
+    PRODUCTS_API_SEARCH,
+    SIGN_IN_API,
+    SIGN_UP_API,
+    USERS_API,
+    USERS_API_SEARCH
+} from "../additionalData/links/back";
 
 export const handlers = [
     rest.get(PRODUCTS_API, (req, res, ctx) => {
@@ -95,23 +102,16 @@ export const handlers = [
         return res(ctx.status(200));
     }),
 
-    rest.get("http://localhost:9000/api/users/profile", (req, res, ctx) => {
+    rest.get(SIGN_IN_API, (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json(userFixtures[0])
         );
     }),
-    rest.post("http://localhost:9000/api/users/sign-up", (req, res, ctx) => {
+    rest.post(SIGN_UP_API, (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json(req.body)
         );
     })
-
-    // rest.get(NEWS_API, (req, res, ctx) => {
-    //     return res(
-    //         ctx.status(200),
-    //         ctx.json(newsFixtures)
-    //     );
-    // })
 ];

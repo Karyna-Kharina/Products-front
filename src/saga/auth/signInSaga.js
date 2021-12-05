@@ -2,16 +2,16 @@ import axios from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setCurrentUser } from "../../actions/profile";
 import { setMessageInfo } from "../../actions/info";
-import { USERS_API } from "../../additionalData/links/back";
+import { SIGN_IN_API } from "../../additionalData/links/back";
 import { CLEAR_SIGN_IN } from "../../additionalData/constants/auth";
-import { LOG_IN_SAGA } from "../../additionalData/constants/authSaga";
+import { SIGN_IN_SAGA } from "../../additionalData/constants/authSaga";
 
 export function* signInSaga() {
     try {
         const { email, password } = yield select(state => state.signIn);
         const result = yield call(
             axios.get,
-            USERS_API + "/profile",
+            SIGN_IN_API,
             {
                 params: {
                     email,
@@ -40,5 +40,5 @@ export function* signInSaga() {
 }
 
 export function* watchSignInSaga() {
-    yield takeEvery(LOG_IN_SAGA, signInSaga);
+    yield takeEvery(SIGN_IN_SAGA, signInSaga);
 }

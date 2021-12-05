@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import SignUp from "../../components/auth/SignUp";
 import { signUp } from "../../actions/authSaga/signUp";
 import {
-    changeCheckbox,
     changeDate,
     changeEmail,
     changeFirstName,
@@ -27,8 +26,7 @@ export const mapStateToProps = (state) => {
         photo: state.signUp.photo,
         isValidPhoto: state.signUp.isValidPhoto,
         password: state.signUp.password,
-        isValidPassword: state.signUp.isValidPassword,
-        isCheckedBox: state.signUp.isCheckedBox
+        isValidPassword: state.signUp.isValidPassword
     };
 };
 
@@ -41,7 +39,6 @@ const mapDispatchToProps = (dispatch) => {
         onChangePhoto: (photo) => dispatch(changePhoto(photo)),
         onChangePassword: (password) => dispatch(changePassword(password)),
         onChangeDate: (date) => dispatch(changeDate(date)),
-        onChangeCheckbox: (checkbox) => dispatch(changeCheckbox(checkbox)),
         onSignUp: () => dispatch(signUp())
     };
 };
