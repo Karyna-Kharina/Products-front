@@ -6,18 +6,13 @@ const mapStateToProps = (state) => {
     return {
         firstName: state.profile.current.firstName,
         lastName: state.profile.current.lastName,
-        date: state.profile.current.date,
+        birthday: state.profile.current.birthday,
         phoneNumber: state.profile.current.phoneNumber,
         email: state.profile.current.email,
         photo: state.profile.current.photo
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
+const mapDispatchToProps = () => ({});
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -1,19 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import {
-    Badge,
-    Button,
-    Divider,
-    Drawer,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-    Typography
-} from "@material-ui/core";
-import { Create, Lock, People, ShoppingCart, ViewModule } from "@material-ui/icons";
+import { Drawer } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { CREATE_PRODUCT_FORM, PRODUCT_CARDS, PRODUCT_CART, PRODUCTS, USERS } from "../../additionalData/links/front";
+import NavigationMenu from "../navigationMenu";
 
 const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
@@ -24,13 +12,6 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: 250,
         backgroundColor: "rgba(40,106,153,0.02)"
-    },
-    list: {
-        color: "#64d1ff"
-    },
-    divider: {
-        margin: "1%",
-        backgroundColor: theme.palette.primary.light
     }
 }));
 
@@ -45,77 +26,7 @@ const DrawerComponent = ({ countProductsInCart }) => {
             open={true}
         >
             <div className={classes.toolbar}/>
-
-            <List className={classes.list}>
-                <Button color={"inherit"} fullWidth to={PRODUCTS} component={Link}>
-                    <ListItem>
-                        <ListItemIcon><Lock/></ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant={"subtitle2"}>
-                                Products
-                            </Typography>
-                        }
-                        />
-                    </ListItem>
-                </Button>
-
-                <Button color={"inherit"} fullWidth to={CREATE_PRODUCT_FORM} component={Link}>
-                    <ListItem>
-                        <ListItemIcon><Create/></ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant={"subtitle2"}>
-                                Add Product
-                            </Typography>
-                        }
-                        />
-                    </ListItem>
-                </Button>
-
-                <Button color={"inherit"} fullWidth to={PRODUCT_CARDS} component={Link}>
-                    <ListItem>
-                        <ListItemIcon><ViewModule/></ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant={"subtitle2"}>
-                                Product Cards
-                            </Typography>
-                        }
-                        />
-                    </ListItem>
-                </Button>
-
-                <Button color={"inherit"} fullWidth to={PRODUCT_CART} component={Link}>
-                    <ListItem>
-                        <ListItemIcon>
-                            <Badge badgeContent={countProductsInCart} color={"secondary"}>
-                                <ShoppingCart/>
-                            </Badge>
-                        </ListItemIcon>
-
-                        <ListItemText primary={
-                            <Typography variant={"subtitle2"}>
-                                Cart
-                            </Typography>
-                        }
-                        />
-                    </ListItem>
-                </Button>
-
-                <Divider className={classes.divider}/>
-
-                <Button color={"inherit"} fullWidth to={USERS} component={Link}>
-                    <ListItem>
-                        <ListItemIcon><People/></ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant={"subtitle2"}>
-                                Users
-                            </Typography>
-                        }
-                        />
-                    </ListItem>
-                </Button>
-
-                <Divider className={classes.divider}/>
-            </List>
+            <NavigationMenu countProductsInCart={countProductsInCart}/>
         </Drawer>
     );
 };

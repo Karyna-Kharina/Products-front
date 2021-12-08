@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, InputBase, Paper, TableContainer } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
-import { alpha } from "@mui/material/styles";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 import UserTable from "./constituents/UserTable";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,11 +13,9 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: theme.shape.borderRadius,
         backgroundColor: alpha(theme.palette.common.white, 0.15),
         margin: "50px 0",
-        width: 400,
-        float: "right",
-        "&:hover": {
-            backgroundColor: alpha(theme.palette.common.white, 0.25)
-        }
+        width: 350,
+        height: 42.25,
+        float: "right"
     },
     searchIcon: {
         width: theme.spacing(7),
@@ -33,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         color: "inherit"
     },
     inputInput: {
-        padding: theme.spacing(1, 1, 1, 7),
+        padding: theme.spacing(1.5, 1, 1, 7),
         transition: theme.transitions.create("width"),
         width: 340
     }

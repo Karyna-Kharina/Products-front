@@ -13,7 +13,7 @@ const useStyles = makeStyles(AuthStyles);
 const SignUp = ({
                     firstName, isValidFirstName, onChangeFirstName,
                     lastName, isValidLastName, onChangeLastName,
-                    date, isValidDate, onChangeDate,
+                    birthday, isValidBirthday, onChangeBirthday,
                     email, isValidEmail, onChangeEmail,
                     phoneNumber, isValidPhoneNumber, onChangePhone,
                     photo, isValidPhoto, onChangePhoto,
@@ -26,7 +26,7 @@ const SignUp = ({
         return !(
             isValidFirstName &&
             isValidLastName &&
-            isValidDate &&
+            isValidBirthday &&
             isValidEmail &&
             isValidPhoneNumber &&
             isValidPassword
@@ -63,15 +63,15 @@ const SignUp = ({
                         />
                     </Grid>
 
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <Grid container justifyContent={"space-around"}>
+                    <Grid item xs={12}>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <Birthday
-                                date={date}
-                                isValidDate={isValidDate}
-                                onChangeDate={onChangeDate}
+                                birthday={birthday}
+                                isValidBirthday={isValidBirthday}
+                                onChangeBirthday={onChangeBirthday}
                             />
-                        </Grid>
-                    </MuiPickersUtilsProvider>
+                        </MuiPickersUtilsProvider>
+                    </Grid>
 
                     <Grid item xs={12}>
                         <Email

@@ -1,34 +1,12 @@
+import { MAX_DATE, MIN_DATE } from "./constants/dates";
+
 export function isValidName(name = "") {
     const pattern = /^[A-Za-z]+[\s]?[A-Za-z]+$/;
     return pattern.test(name) && name.length > 1;
 }
 
-const daysInMonth = (m, y) => {
-    switch (m) {
-        case 1 :
-            return (y % 4 === 0 && y % 100) || y % 400 === 0 ? 29 : 28;
-        case 8 :
-        case 3 :
-        case 5 :
-        case 10 :
-            return 30;
-        default :
-            return 31;
-    }
-};
-
 export function isValidDate(date = new Date()) {
-    date = new Date(date);
-
-    if (date) {
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-
-        return month >= 0 && month < 12 && day > 0 && day <= daysInMonth(month, year) && year >= 1950 && year <= 2010;
-    }
-
-    return false;
+    return new Date(date) >= MIN_DATE && new Date(date) <= MAX_DATE;
 }
 
 export function isValidEmail(email = "") {

@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import SignUp from "../../components/auth/SignUp";
 import { signUp } from "../../actions/authSaga/signUp";
 import {
-    changeDate,
+    changeBirthday,
     changeEmail,
     changeFirstName,
     changeLastName,
@@ -17,8 +17,8 @@ export const mapStateToProps = (state) => {
         isValidFirstName: state.signUp.isValidFirstName,
         lastName: state.signUp.lastName,
         isValidLastName: state.signUp.isValidLastName,
-        date: state.signUp.date,
-        isValidDate: state.signUp.isValidDate,
+        birthday: state.signUp.birthday,
+        isValidBirthday: state.signUp.isValidBirthday,
         email: state.signUp.email,
         isValidEmail: state.signUp.isValidEmail,
         phoneNumber: state.signUp.phoneNumber,
@@ -38,13 +38,10 @@ const mapDispatchToProps = (dispatch) => {
         onChangePhone: (phone) => dispatch(changePhone(phone)),
         onChangePhoto: (photo) => dispatch(changePhoto(photo)),
         onChangePassword: (password) => dispatch(changePassword(password)),
-        onChangeDate: (date) => dispatch(changeDate(date)),
+        onChangeBirthday: (birthday) => dispatch(changeBirthday(birthday)),
         onSignUp: () => dispatch(signUp())
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 

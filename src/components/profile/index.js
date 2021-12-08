@@ -2,6 +2,7 @@ import React from "react";
 import { CardMedia, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { EMPTY_AVATAR } from "../../additionalData/links/front";
+import { getFormattedDate } from "../../additionalData/methods";
 
 const useStyles = makeStyles({
     root: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
     }
 });
 
-const Profile = ({ firstName, lastName, date, phoneNumber, email, photo }) => {
+const Profile = ({ firstName, lastName, birthday, phoneNumber, email, photo }) => {
     const classes = useStyles();
 
     return (
@@ -61,7 +62,7 @@ const Profile = ({ firstName, lastName, date, phoneNumber, email, photo }) => {
                                 variant={"h4"}
                                 color={"secondary"}
                             >
-                                {date}
+                                {getFormattedDate(birthday)}
                             </Typography>
                         </Grid>
                     </Grid>

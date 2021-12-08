@@ -1,4 +1,5 @@
 import axios from "axios";
+import key from "weak-key";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setMessageInfo } from "../../actions/info";
 import { PRODUCTS_API } from "../../additionalData/links/back";
@@ -8,13 +9,23 @@ import { SAVE_PRODUCT_SAGA } from "../../additionalData/constants/productsSaga";
 export function* saveProductSaga() {
     try {
         const { product } = yield select(state => state.productForm);
-        const { id, name, price, image } = product;
+        let result;
 
-        const result = yield call(
-            axios.post,
-            PRODUCTS_API,
-            { id, name, price, image }
-        );
+        if (product.id) {
+            result = yield call(
+                axios.put,
+                PRODUCTS_API,
+                product
+            );
+        } else {
+            product.id = key(product);
+
+            result = yield call(
+                axios.post,
+                PRODUCTS_API,
+                product
+            );
+        }
 
         yield put(setMessageInfo({ type: "success", text: result.data.message }));
     } catch (e) {

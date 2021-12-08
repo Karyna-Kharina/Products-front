@@ -1,23 +1,28 @@
 import React, { useEffect } from "react";
-import { Container, InputBase, Paper, TableContainer } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
+import { Button, Container, InputBase, Paper, TableContainer } from "@material-ui/core";
+import { Add, Search } from "@material-ui/icons";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import ProductTable from "./constituents/ProductTable";
+import { Link } from "react-router-dom";
+import { CREATE_PRODUCT_FORM } from "../../additionalData/links/front";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: 5
     },
+    div: {
+        margin: "50px 0"
+    },
+    btn: {
+        width: 300
+    },
     search: {
         position: "relative",
         borderRadius: theme.shape.borderRadius,
         backgroundColor: alpha(theme.palette.common.white, 0.15),
-        margin: "50px 0",
-        width: 400,
+        width: 350,
+        height: 42.25,
         float: "right",
-        "&:hover": {
-            backgroundColor: alpha(theme.palette.common.white, 0.25)
-        }
     },
     searchIcon: {
         width: theme.spacing(7),
@@ -32,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         color: "inherit"
     },
     inputInput: {
-        padding: theme.spacing(1, 1, 1, 7),
+        padding: theme.spacing(1.5, 1, 1, 7),
         transition: theme.transitions.create("width"),
         width: 340
     }
@@ -47,20 +52,36 @@ const Products = ({ products, filteredName, fetchProducts, onChangeFilteredName,
 
     return (
         <Container className={classes.root}>
-            <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                    <Search/>
+            <div className={classes.div}>
+                <Link to={CREATE_PRODUCT_FORM}>
+                    <Button
+                        className={classes.btn}
+                        size={"large"}
+                        color={"primary"}
+                        variant={"contained"}
+                        // disabled={isDisabledButtonSave()}
+                        startIcon={<Add/>}
+                        // onClick={() => onSave({ id, name, price, image })}
+                    >
+                        Add new product
+                    </Button>
+                </Link>
+
+                <div className={classes.search}>
+                    <div className={classes.searchIcon}>
+                        <Search/>
+                    </div>
+                    <InputBase
+                        placeholder={"Search…"}
+                        value={filteredName}
+                        classes={{
+                            root: classes.inputRoot,
+                            input: classes.inputInput
+                        }}
+                        inputProps={{ "aria-label": "search" }}
+                        onChange={(e) => onChangeFilteredName(e.target.value)}
+                    />
                 </div>
-                <InputBase
-                    placeholder={"Search…"}
-                    value={filteredName}
-                    classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput
-                    }}
-                    inputProps={{ "aria-label": "search" }}
-                    onChange={(e) => onChangeFilteredName(e.target.value)}
-                />
             </div>
 
             <TableContainer component={Paper}>

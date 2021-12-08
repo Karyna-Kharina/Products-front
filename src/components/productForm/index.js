@@ -1,10 +1,12 @@
 import React from "react";
-import { Button, Container, Grid, TextField, Typography } from "@material-ui/core";
-import { Save, Update } from "@material-ui/icons";
+import { Container, Grid, Typography } from "@material-ui/core";
+import UserFormRow from "../userForm/UserFormRow";
+import FullWidthButtonSave from "./FullWidthButtonSave";
+import { PRODUCTS } from "../../additionalData/links/front";
 
 const ProductForm = ({
                          id, name, isValidName, price, isValidPrice, image, isValidImage,
-                         onChangeId, onChangeName, onChangePrice, onChangeImage, onCreate
+                         onChangeId, onChangeName, onChangePrice, onChangeImage, onSave
                      }) => {
     const isDisabledButtonSave = () => !(isValidName && isValidPrice && isValidImage);
 
@@ -14,78 +16,47 @@ const ProductForm = ({
                 <Grid item container justifyContent={"center"} alignItems={"center"} spacing={4} xs={10}>
                     <Grid item xs={12}>
                         <Typography variant={"h2"}>
-                            Product Creating
+                            Create a product
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            id={"margin-normal"}
-                            label={"ID"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            disabled
-                            value={id}
-                            onChange={(e) => onChangeId(e.target.value)}
-                        />
-                    </Grid>
+                    <UserFormRow
+                        label={"ID"}
+                        value={id}
+                        disabled={true}
+                        isValidData={true}
+                        onChangeData={onChangeId}
+                    />
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            id={"margin-normal"}
-                            label={"Name"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"text"}
-                            value={name}
-                            error={!isValidName}
-                            onChange={(e) => onChangeName(e.target.value)}
-                        />
-                    </Grid>
+                    <UserFormRow
+                        label={"Name"}
+                        value={name}
+                        isValidData={isValidName}
+                        onChangeData={onChangeName}
+                    />
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            id={"margin-normal"}
-                            label={"Price"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"number"}
-                            value={price}
-                            error={!isValidPrice}
-                            onChange={(e) => onChangePrice(e.target.value)}
-                        />
-                    </Grid>
+                    <UserFormRow
+                        label={"Price"}
+                        type={"number"}
+                        value={price}
+                        isValidData={isValidPrice}
+                        onChangeData={onChangePrice}
+                    />
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            id={"margin-normal"}
-                            label={"Image"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"text"}
-                            value={image}
-                            error={!isValidImage}
-                            onChange={(e) => onChangeImage(e.target.value)}
-                        />
-                    </Grid>
+                    <UserFormRow
+                        label={"Image"}
+                        value={image}
+                        isValidData={isValidImage}
+                        onChangeData={onChangeImage}
+                    />
 
-                    <Grid item xs={12}>
-                        <Button
-                            fullWidth
-                            size={"large"}
-                            color={"primary"}
-                            variant={"contained"}
-                            disabled={isDisabledButtonSave()}
-                            startIcon={id ? <Update/> : <Save/>}
-                            onClick={() => onCreate({ id, name, price, image })}
-                        >
-                            {id ? "UPDATE" : "SAVE"}
-                        </Button>
-                    </Grid>
+                    <FullWidthButtonSave
+                        id={id}
+                        data={{ id, name, price, image }}
+                        linkTo={PRODUCTS}
+                        isDisabledButtonSave={isDisabledButtonSave}
+                        onSave={onSave}
+                    />
                 </Grid>
             </Container>
         </form>

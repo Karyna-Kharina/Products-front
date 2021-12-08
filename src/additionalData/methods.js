@@ -6,3 +6,7 @@ export function removeItemFrom(list, item) {
         ...list.slice(index + 1)
     ];
 }
+
+export function getFormattedDate(date = new Date()) {
+    return new Date(date).toISOString().slice(0, 10);
+}

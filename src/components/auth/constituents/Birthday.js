@@ -1,21 +1,21 @@
 import React from "react";
 import { KeyboardDatePicker } from "@material-ui/pickers";
+import { getFormattedDate } from "../../../additionalData/methods";
+import { MAX_DATE, MIN_DATE } from "../../../additionalData/constants/dates";
 
-const Birthday = ({ date, isValidDate, onChangeDate }) => (
+const Birthday = ({ birthday, isValidBirthday, onChangeBirthday }) => (
     <KeyboardDatePicker
         id={"date"}
         label={"Birthday"}
         format={"yyyy-MM-dd"}
-        value={date}
-        margin={"normal"}
-        style={{ "marginLeft": 10, "marginRight": 10 }}
+        value={new Date(birthday)}
         required
         fullWidth
-        error={!isValidDate}
-        minDate={"1950-01-01"}
-        maxDate={"2010-12-31"}
+        error={!isValidBirthday}
+        minDate={MIN_DATE}
+        maxDate={MAX_DATE}
         inputVariant={"outlined"}
-        onChange={onChangeDate}
+        onChange={(e) => onChangeBirthday(getFormattedDate(e))}
         KeyboardButtonProps={{
             "aria-label": "change date"
         }}

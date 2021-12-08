@@ -1,4 +1,5 @@
 import axios from "axios";
+import key from "weak-key";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setCurrentUser } from "../../actions/profile";
 import { setMessageInfo } from "../../actions/info";
@@ -8,13 +9,22 @@ import { SIGN_UP_SAGA } from "../../additionalData/constants/authSaga";
 
 export function* signUpSaga() {
     try {
-        const { firstName, lastName, date, email, phoneNumber, photo, password } =
-            yield select(state => state.signUp);
+        const user = yield select(state => state.signUp);
+        const { firstName, lastName, birthday, email, phoneNumber, photo, password } = user;
 
         const result = yield call(
             axios.post,
             SIGN_UP_API,
-            { firstName, lastName, date, email, phoneNumber, photo, password }
+            {
+                id: key(user),
+                firstName,
+                lastName,
+                birthday,
+                email,
+                phoneNumber,
+                photo,
+                password
+            }
         );
 
         yield put(setCurrentUser(result.data));

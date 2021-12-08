@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, Input, TextField, Typography } from "@material-ui/core";
 import {
-    isValidDate,
+    isValidBirthday,
     isValidEmail,
     isValidImageUrl,
     isValidName,
@@ -68,15 +68,15 @@ export const Columns = [
     {
         title: "Birthday",
         field: "date",
-        render: (rowData) => (<Typography>{rowData.date}</Typography>),
+        render: (rowData) => (<Typography>{rowData.birthday}</Typography>),
         editComponent: (props) => (
             <TextField
-                id={"date"}
+                id={"birthday"}
                 label={"Birthday"}
                 type={"date"}
                 defaultValue={props.value}
                 placeholder={props.columnDef.title}
-                error={!isValidDate(props.value)}
+                error={!isValidBirthday(props.value)}
                 InputLabelProps={{
                     shrink: true
                 }}

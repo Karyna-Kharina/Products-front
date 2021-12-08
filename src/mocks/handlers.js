@@ -1,5 +1,4 @@
 import { rest } from "msw";
-import key from "weak-key";
 import productFixtures from "../additionalData/fixtures/productFixtures";
 import userFixtures from "../additionalData/fixtures/userFixtures";
 import {
@@ -33,18 +32,21 @@ export const handlers = [
         );
     }),
     rest.post(PRODUCTS_API, (req, res, ctx) => {
-        const { name, price, image } = req.body;
-
-        productFixtures.push({
-            id: key(req.body),
-            name,
-            price,
-            image
-        });
+        productFixtures.push(req.body);
 
         return res(
             ctx.status(200),
-            ctx.json({ message: "Product is posted." })
+            ctx.json({ message: "Product is saved." })
+        );
+    }),
+    rest.put(PRODUCTS_API, (req, res, ctx) => {
+        const product = req.body;
+        const index = productFixtures.findIndex(({ id }) => id === product.id);
+        productFixtures.splice(index, 1, product);
+
+        return res(
+            ctx.status(200),
+            ctx.json({ message: "Product is updated." })
         );
     }),
     rest.delete(PRODUCTS_API + "/:productId", (req, res, ctx) => {
@@ -81,13 +83,14 @@ export const handlers = [
             ctx.json(result)
         );
     }),
-    rest.post(USERS_API, (req, res, ctx) => {
-        const index = userFixtures.findIndex(({ id }) => id === req.body.id);
-        userFixtures[index] = req.body;
+    rest.put(USERS_API, (req, res, ctx) => {
+        const user = req.body;
+        const index = userFixtures.findIndex(({ id }) => id === user.id);
+        userFixtures.splice(index, 1, user);
 
         return res(
             ctx.status(200),
-            ctx.json({ message: "User is saved" })
+            ctx.json({ message: "User is updated." })
         );
     }),
     rest.delete(USERS_API + "/:userId", (req, res, ctx) => {
@@ -109,6 +112,8 @@ export const handlers = [
         );
     }),
     rest.post(SIGN_UP_API, (req, res, ctx) => {
+        userFixtures.push(req.body);
+
         return res(
             ctx.status(200),
             ctx.json(req.body)

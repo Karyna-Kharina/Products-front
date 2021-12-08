@@ -1,3 +1,4 @@
+import { MAX_DATE } from "../../additionalData/constants/dates";
 import {
     isValidDate,
     isValidEmail,
@@ -7,7 +8,7 @@ import {
     isValidPhoneNumber
 } from "../../additionalData/validation";
 import {
-    CHANGE_USER_DATE,
+    CHANGE_USER_BIRTHDAY,
     CHANGE_USER_EMAIL,
     CHANGE_USER_FIRST_NAME,
     CHANGE_USER_ID,
@@ -26,8 +27,8 @@ const initialState = {
         isValidFirstName: false,
         lastName: "",
         isValidLastName: false,
-        date: new Date(),
-        isValidDate: false,
+        birthday: MAX_DATE,
+        isValidBirthday: true,
         email: "",
         isValidEmail: false,
         phoneNumber: "",
@@ -70,13 +71,13 @@ export default (state = initialState, action) => {
                 }
             };
         }
-        case CHANGE_USER_DATE: {
+        case CHANGE_USER_BIRTHDAY: {
             return {
                 ...state,
                 user: {
                     ...state.user,
-                    date: action.date,
-                    isValidDate: isValidDate(action.date)
+                    birthday: action.birthday,
+                    isValidBirthday: isValidDate(action.birthday)
                 }
             };
         }
@@ -121,17 +122,19 @@ export default (state = initialState, action) => {
             };
         }
         case PUT_USER_TO_FORM: {
+            const { firstName, lastName, birthday, email, phoneNumber, photo, password } = action.user;
+
             return {
                 ...state,
                 user: {
                     ...action.user,
-                    isValidFirstName: isValidName(action.user.firstName),
-                    isValidLastName: isValidName(action.user.lastName),
-                    isValidDate: isValidDate(action.user.date),
-                    isValidEmail: isValidEmail(action.user.email),
-                    isValidPhoneNumber: isValidPhoneNumber(action.user.phoneNumber),
-                    isValidPhoto: isValidImageUrl(action.user.photo),
-                    isValidPassword: isValidPassword(action.user.password)
+                    isValidFirstName: isValidName(firstName),
+                    isValidLastName: isValidName(lastName),
+                    isValidBirthday: isValidDate(birthday),
+                    isValidEmail: isValidEmail(email),
+                    isValidPhoneNumber: isValidPhoneNumber(phoneNumber),
+                    isValidPhoto: isValidImageUrl(photo),
+                    isValidPassword: isValidPassword(password)
                 }
             };
         }

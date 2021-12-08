@@ -12,7 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
     onClickAddProduct: (product) => dispatch(addProductToCart(product))
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ProductCards);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCards);

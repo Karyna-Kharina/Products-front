@@ -8,12 +8,23 @@ import { setMessageInfo } from "../../actions/info";
 export function* saveUserSaga() {
     try {
         const { user } = yield select(state => state.userForm);
+        let result;
 
-        yield call(
-            axios.post,
-            USERS_API,
-            user
-        );
+        if (user.id) {
+            result = yield call(
+                axios.put,
+                USERS_API,
+                user
+            );
+        } else {
+            result = yield call(
+                axios.post,
+                USERS_API,
+                user
+            );
+        }
+
+        yield put(setMessageInfo({ type: "success", text: result.data.message }));
     } catch (e) {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }

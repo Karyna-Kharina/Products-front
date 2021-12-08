@@ -7,7 +7,7 @@ import {
     isValidPhoneNumber
 } from "../../additionalData/validation";
 import {
-    CHANGE_DATE,
+    CHANGE_BIRTHDAY,
     CHANGE_EMAIL,
     CHANGE_FIRST_NAME,
     CHANGE_LAST_NAME,
@@ -16,14 +16,16 @@ import {
     CHANGE_PHOTO,
     CLEAR_SIGN_UP
 } from "../../additionalData/constants/auth";
+import { getFormattedDate } from "../../additionalData/methods";
+import { MIN_DATE } from "../../additionalData/constants/dates";
 
 const initialState = {
-    firstName: "TestName",
+    firstName: "Name",
     isValidFirstName: true,
-    lastName: "TestLastName",
+    lastName: "LastName",
     isValidLastName: true,
-    date: new Date("1990-01-01"),
-    isValidDate: true,
+    birthday: getFormattedDate(MIN_DATE),
+    isValidBirthday: true,
     email: "",
     isValidEmail: false,
     phoneNumber: "+380964502345",
@@ -64,11 +66,11 @@ export default (state = initialState, action) => {
                 isValidPassword: isValidPassword(action.password)
             };
         }
-        case CHANGE_DATE: {
+        case CHANGE_BIRTHDAY: {
             return {
                 ...state,
-                date: action.date,
-                isValidDate: isValidDate(action.date)
+                birthday: action.birthday,
+                isValidBirthday: isValidDate(action.birthday)
             };
         }
         case CHANGE_PHONE: {

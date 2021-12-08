@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
 const ProductCart = ({ products, onClickAddProduct, onClickRemoveProduct }) => {
     const classes = useStyles();
-    let totalSum = products.reduce((a, { price }) => a + price, 0);
+    let totalSum = products.reduce((a, { price }) => a + parseFloat(price), 0);
 
     function getCountOfProduct(id) {
         let count = 0;

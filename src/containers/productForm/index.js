@@ -21,11 +21,8 @@ const mapDispatchToProps = (dispatch) => {
         onChangeName: (name) => dispatch(updateName(name)),
         onChangePrice: (price) => dispatch(updatePrice(price)),
         onChangeImage: (image) => dispatch(updateImage(image)),
-        onCreate: (product) => dispatch(saveProduct(product))
+        onSave: (product) => dispatch(saveProduct(product))
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ProductForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);

@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import UserForm from "../../components/userForm";
 import { saveUser } from "../../actions/usersSaga";
 import {
+    changeBirthday,
     changeEmail,
     changeFirstName,
     changeId,
@@ -18,6 +19,8 @@ const mapStateToProps = (state) => {
         isValidFirstName: state.userForm.user.isValidFirstName,
         lastName: state.userForm.user.lastName,
         isValidLastName: state.userForm.user.isValidLastName,
+        birthday: state.userForm.user.birthday,
+        isValidBirthday: state.userForm.user.isValidBirthday,
         email: state.userForm.user.email,
         isValidEmail: state.userForm.user.isValidEmail,
         phoneNumber: state.userForm.user.phoneNumber,
@@ -34,6 +37,7 @@ const mapDispatchToProps = (dispatch) => {
         onChangeId: (id) => dispatch(changeId(id)),
         onChangeFirstName: (firstName) => dispatch(changeFirstName(firstName)),
         onChangeLastName: (lastName) => dispatch(changeLastName(lastName)),
+        onChangeBirthday: (birthday) => dispatch(changeBirthday(birthday)),
         onChangePhoneNumber: (phoneNumber) => dispatch(changePhoneNumber(phoneNumber)),
         onChangeEmail: (email) => dispatch(changeEmail(email)),
         onChangePhoto: (photo) => dispatch(changePhoto(photo)),
@@ -42,7 +46,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(UserForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UserForm);

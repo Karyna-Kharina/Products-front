@@ -1,17 +1,35 @@
 import React from "react";
-import { Button, Container, Grid, TextField, Typography } from "@material-ui/core";
-import { Save, Update } from "@material-ui/icons";
+import DateFnsUtils from "@date-io/date-fns";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { Container, Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Birthday } from "../auth/constituents";
+import UserFormRow from "./UserFormRow";
+import FullWidthButtonSave from "../productForm/FullWidthButtonSave";
+import { USERS } from "../../additionalData/links/front";
+
+const useStyles = makeStyles({
+    root: {
+        marginTop: 15
+    },
+    date: {
+        padding: "0 24px 0 6px"
+    }
+});
 
 const UserForm = ({
                       id, onChangeId,
                       firstName, isValidFirstName, onChangeFirstName,
                       lastName, isValidLastName, onChangeLastName,
+                      birthday, isValidBirthday, onChangeBirthday,
                       email, isValidEmail, onChangeEmail,
                       phoneNumber, isValidPhoneNumber, onChangePhoneNumber,
                       photo, isValidPhoto, onChangePhoto,
                       password, isValidPassword, onChangePassword,
                       onSave
                   }) => {
+    const classes = useStyles();
+
     const isDisabledButtonSave = () => !(
         isValidFirstName &&
         isValidLastName &&
@@ -23,130 +41,76 @@ const UserForm = ({
 
     return (
         <form noValidate>
-            <Container component={"main"} style={{ marginTop: 15 }}>
+            <Container className={classes.root} component={"main"}>
                 <Grid item container justifyContent={"center"} alignItems={"center"} spacing={4} xs={10}>
-                    <Grid item xs={12}>
-                        <Typography variant={"h2"}>
-                            User Creating
-                        </Typography>
+                    <UserFormRow
+                        label={"ID"}
+                        value={id}
+                        disabled={true}
+                        isValidData={true}
+                        onChangeData={onChangeId}
+                    />
+
+                    <UserFormRow
+                        label={"First Name"}
+                        value={firstName}
+                        isValidData={isValidFirstName}
+                        onChangeData={onChangeFirstName}
+                    />
+
+                    <UserFormRow
+                        label={"Last Name"}
+                        value={lastName}
+                        isValidData={isValidLastName}
+                        onChangeData={onChangeLastName}
+                    />
+
+                    <Grid item xs={12} className={classes.date}>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <Birthday
+                                birthday={birthday}
+                                isValidBirthday={isValidBirthday}
+                                onChangeBirthday={onChangeBirthday}
+                            />
+                        </MuiPickersUtilsProvider>
                     </Grid>
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            disabled
-                            id={"margin-normal"}
-                            label={"ID"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            value={id}
-                            onChange={(e) => onChangeId(e.target.value)}
-                        />
-                    </Grid>
+                    <UserFormRow
+                        label={"Phone Number"}
+                        value={phoneNumber}
+                        isValidData={isValidPhoneNumber}
+                        onChangeData={onChangePhoneNumber}
+                    />
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            required
-                            id={"margin-normal"}
-                            label={"First Name"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"text"}
-                            value={firstName}
-                            error={!isValidFirstName}
-                            onChange={(e) => onChangeFirstName(e.target.value)}
-                        />
-                    </Grid>
+                    <UserFormRow
+                        label={"Email"}
+                        value={email}
+                        isValidData={isValidEmail}
+                        onChangeData={onChangeEmail}
+                    />
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            required
-                            id={"margin-normal"}
-                            label={"Last Name"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"text"}
-                            value={lastName}
-                            error={!isValidLastName}
-                            onChange={(e) => onChangeLastName(e.target.value)}
-                        />
-                    </Grid>
+                    <UserFormRow
+                        label={"Photo"}
+                        value={photo}
+                        isValidData={isValidPhoto}
+                        onChangeData={onChangePhoto}
+                    />
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            required
-                            id={"margin-normal"}
-                            label={"Phone Number"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"text"}
-                            value={phoneNumber}
-                            error={!isValidPhoneNumber}
-                            onChange={(e) => onChangePhoneNumber(e.target.value)}
-                        />
-                    </Grid>
+                    <UserFormRow
+                        label={"Password"}
+                        type={id ? "any" : "password"}
+                        value={password}
+                        isValidData={isValidPassword}
+                        onChangeData={onChangePassword}
+                    />
 
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            required
-                            id={"margin-normal"}
-                            label={"Email"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"text"}
-                            value={email}
-                            error={!isValidEmail}
-                            onChange={(e) => onChangeEmail(e.target.value)}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            required
-                            id={"margin-normal"}
-                            label={"Photo"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"text"}
-                            value={photo}
-                            error={!isValidPhoto}
-                            onChange={(e) => onChangePhoto(e.target.value)}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <TextField
-                            fullWidth
-                            required
-                            id={"margin-normal"}
-                            label={"Password"}
-                            size={"medium"}
-                            variant={"outlined"}
-                            type={"password"}
-                            value={password}
-                            error={!isValidPassword}
-                            onChange={(e) => onChangePassword(e.target.value)}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <Button
-                            fullWidth
-                            size={"large"}
-                            color={"primary"}
-                            variant={"contained"}
-                            disabled={isDisabledButtonSave()}
-                            startIcon={id ? <Update/> : <Save/>}
-                            onClick={() => onSave({ id, firstName, lastName, phoneNumber, email, photo, password })}
-                        >
-                            {id ? "UPDATE" : "SAVE"}
-                        </Button>
-                    </Grid>
+                    <FullWidthButtonSave
+                        id={id}
+                        data={{ id, firstName, lastName, phoneNumber, email, photo, password }}
+                        linkTo={USERS}
+                        isDisabledButtonSave={isDisabledButtonSave}
+                        onSave={onSave}
+                    />
                 </Grid>
             </Container>
         </form>
