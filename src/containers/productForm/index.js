@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import ProductForm from "../../components/productForm";
-import { updateId, updateImage, updateName, updatePrice } from "../../actions/productForm";
 import { saveProduct } from "../../actions/productsSaga";
+import { updateId, updateImage, updateName, updatePrice } from "../../actions/productForm";
 
 const mapStateToProps = (state) => {
     return {

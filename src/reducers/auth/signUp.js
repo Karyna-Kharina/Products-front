@@ -1,3 +1,4 @@
+import { getFormattedDate } from "../../additionalData/methods";
 import {
     isValidDate,
     isValidEmail,
@@ -16,13 +17,12 @@ import {
     CHANGE_PHOTO,
     CLEAR_SIGN_UP
 } from "../../additionalData/constants/auth";
-import { getFormattedDate } from "../../additionalData/methods";
 import { MIN_DATE } from "../../additionalData/constants/dates";
 
 const initialState = {
-    firstName: "Name",
+    firstName: "First Name",
     isValidFirstName: true,
-    lastName: "LastName",
+    lastName: "Last Name",
     isValidLastName: true,
     birthday: getFormattedDate(MIN_DATE),
     isValidBirthday: true,

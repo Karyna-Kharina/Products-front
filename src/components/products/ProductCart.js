@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
     Avatar,
     Box,
@@ -14,12 +15,13 @@ import {
 } from "@material-ui/core";
 import { Add, Remove } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
+import { getCountOfItemsWithId, getFloatingPointAmount } from "../../additionalData/methods";
 
 const useStyles = makeStyles({
     table: {
         minWidth: 650
     },
-    cellWidth: {
+    cell: {
         width: "50px"
     }
 });
@@ -28,26 +30,16 @@ const ProductCart = ({ products, onClickAddProduct, onClickRemoveProduct }) => {
     const classes = useStyles();
     let totalSum = products.reduce((a, { price }) => a + parseFloat(price), 0);
 
-    function getCountOfProduct(id) {
-        let count = 0;
-
-        for (const item of products) {
-            if (item.id === id) count++;
-        }
-
-        return count;
-    }
-
     return (
-        <Container component={"main"} maxWidth={"lg"} style={{ marginTop: 100 }}>
-            <Table className={classes.table} aria-label={"simple table"}>
+        <Container maxWidth={"lg"} style={{ marginTop: 100 }}>
+            <Table className={classes.table}>
                 <TableBody>
                     {
                         products
                             .filter((item, index, arr) => arr.indexOf(item) === index)
                             .map((item) => (
                                     <TableRow key={item.id}>
-                                        <TableCell className={classes.cellWidth}>
+                                        <TableCell className={classes.cell}>
                                             <ListItemAvatar>
                                                 <Avatar src={item.image}/>
                                             </ListItemAvatar>
@@ -64,7 +56,7 @@ const ProductCart = ({ products, onClickAddProduct, onClickRemoveProduct }) => {
                                         </TableCell>
 
                                         <TableCell align={"center"}>
-                                            <ListItemText primary={getCountOfProduct(item.id)}/>
+                                            <ListItemText primary={getCountOfItemsWithId(products, item.id)}/>
                                         </TableCell>
 
                                         <TableCell align={"left"}>
@@ -73,7 +65,7 @@ const ProductCart = ({ products, onClickAddProduct, onClickRemoveProduct }) => {
                                             </IconButton>
                                         </TableCell>
 
-                                        <TableCell className={classes.cellWidth}>
+                                        <TableCell className={classes.cell}>
                                             <ListItemText primary={item.price}/>
                                         </TableCell>
                                     </TableRow>
@@ -85,11 +77,24 @@ const ProductCart = ({ products, onClickAddProduct, onClickRemoveProduct }) => {
 
             <Box display={"flex"} mt={6} flexDirection={"row-reverse"}>
                 <Typography variant={"h4"}>
-                    Total sum: {totalSum.toFixed(2)}
+                    Total sum: {getFloatingPointAmount(totalSum)}
                 </Typography>
             </Box>
         </Container>
     );
+};
+
+ProductCart.propTypes = {
+    products: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+            image: PropTypes.string.isRequired
+        }).isRequired
+    ).isRequired,
+    onClickAddProduct: PropTypes.func.isRequired,
+    onClickRemoveProduct: PropTypes.func.isRequired
 };
 
 export default ProductCart;

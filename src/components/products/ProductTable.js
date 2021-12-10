@@ -1,9 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { IconButton, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { Delete, Update } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";
-import { PRODUCT_UPDATE } from "../../../additionalData/links/front";
+import { getFloatingPointAmount } from "../../additionalData/methods";
+import { PRODUCT_UPDATE } from "../../additionalData/links/front";
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -18,7 +20,7 @@ const StyledTableCell = withStyles((theme) => ({
 }))(TableCell);
 
 const ProductTable = ({ products, onDelete, putProductToForm }) => (
-    <Table size={"small"} aria-label={"a dense table"}>
+    <Table size={"small"}>
         <TableHead>
             <TableRow>
                 <StyledTableCell align={"center"}>ID</StyledTableCell>
@@ -31,25 +33,25 @@ const ProductTable = ({ products, onDelete, putProductToForm }) => (
 
         <TableBody>
             {
-                products.map((product) => (
-                    <TableRow key={product.id}>
+                products.map(({ id, name, price, image }) => (
+                    <TableRow key={id}>
                         <TableCell align={"center"} component={"th"} scope={"row"}>
-                            {product.id}
+                            {id}
                         </TableCell>
 
-                        <TableCell align={"center"}>{product.name}</TableCell>
-                        <TableCell align={"center"}>{product.price}</TableCell>
+                        <TableCell align={"center"}>{name}</TableCell>
+                        <TableCell align={"center"}>{getFloatingPointAmount(price)}</TableCell>
 
                         <TableCell align={"center"}>
                             <Link to={PRODUCT_UPDATE}>
-                                <IconButton onClick={() => putProductToForm(product)}>
+                                <IconButton onClick={() => putProductToForm({ id, name, price, image })}>
                                     <Update/>
                                 </IconButton>
                             </Link>
                         </TableCell>
 
                         <TableCell align={"center"}>
-                            <IconButton onClick={() => onDelete(product.id)}>
+                            <IconButton onClick={() => onDelete(id)}>
                                 <Delete/>
                             </IconButton>
                         </TableCell>
@@ -59,5 +61,18 @@ const ProductTable = ({ products, onDelete, putProductToForm }) => (
         </TableBody>
     </Table>
 );
+
+ProductTable.propTypes = {
+    products: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+            image: PropTypes.string.isRequired
+        }).isRequired
+    ).isRequired,
+    onDelete: PropTypes.func.isRequired,
+    putProductToForm: PropTypes.func.isRequired
+};
 
 export default ProductTable;

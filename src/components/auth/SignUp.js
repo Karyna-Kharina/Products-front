@@ -1,11 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import DateFnsUtils from "@date-io/date-fns";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import { Avatar, Button, Container, CssBaseline, Grid, Typography } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { Container, Grid } from "@material-ui/core";
+import { LockOutlined } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-import { AuthStyles, Birthday, Email, FirstName, LastName, Password, PhoneNumber, PhotoUrl } from "./constituents";
+import AuthStyles from "./AuthStyles";
+import Birthday from "./Birthday";
+import TextFieldComponent from "../TextFieldComponent";
+import SignHeader from "./SignHeader";
+import SignButton from "./SignButton";
+import SignFooter from "./SignFooter";
 import { SIGN_IN } from "../../additionalData/links/front";
 
 const useStyles = makeStyles(AuthStyles);
@@ -34,99 +37,110 @@ const SignUp = ({
     };
 
     return (
-        <Container component={"main"} maxWidth={"xs"}>
-            <CssBaseline/>
-
+        <Container maxWidth={"xs"}>
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon/>
-                </Avatar>
-
-                <Typography component={"h1"} variant={"h5"}>
-                    Sign Up
-                </Typography>
+                <SignHeader
+                    style={classes.avatar}
+                    Icon={() => <LockOutlined/>}
+                    name={"Sign Up"}
+                />
 
                 <Grid className={classes.grid} container spacing={2}>
                     <Grid item xs={12} sm={6}>
-                        <FirstName
-                            firstName={firstName}
-                            isValidFirstName={isValidFirstName}
-                            onChangeFirstName={onChangeFirstName}
+                        <TextFieldComponent
+                            label={"First Name"}
+                            value={firstName}
+                            isValidData={isValidFirstName}
+                            onChangeData={onChangeFirstName}
                         />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <LastName
-                            lastName={lastName}
-                            isValidLastName={isValidLastName}
-                            onChangeLastName={onChangeLastName}
+                        <TextFieldComponent
+                            label={"Last Name"}
+                            value={lastName}
+                            isValidData={isValidLastName}
+                            onChangeData={onChangeLastName}
                         />
                     </Grid>
 
                     <Grid item xs={12}>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <Birthday
-                                birthday={birthday}
-                                isValidBirthday={isValidBirthday}
-                                onChangeBirthday={onChangeBirthday}
-                            />
-                        </MuiPickersUtilsProvider>
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <Email
-                            email={email}
-                            isValidEmail={isValidEmail}
-                            onChangeEmail={onChangeEmail}
+                        <Birthday
+                            birthday={birthday}
+                            isValidBirthday={isValidBirthday}
+                            onChangeBirthday={onChangeBirthday}
                         />
                     </Grid>
 
-                    <Grid item xs={12}>
-                        <PhoneNumber
-                            phoneNumber={phoneNumber}
-                            isValidPhoneNumber={isValidPhoneNumber}
-                            onChangePhone={onChangePhone}
-                        />
-                    </Grid>
+                    <TextFieldComponent
+                        label={"Email Address"}
+                        value={email}
+                        isValidData={isValidEmail}
+                        onChangeData={onChangeEmail}
+                    />
 
-                    <Grid item xs={12}>
-                        <PhotoUrl
-                            photo={photo}
-                            isValidPhoto={isValidPhoto}
-                            onChangePhoto={onChangePhoto}
-                        />
-                    </Grid>
+                    <TextFieldComponent
+                        label={"Phone Number"}
+                        value={phoneNumber}
+                        isValidData={isValidPhoneNumber}
+                        onChangeData={onChangePhone}
+                    />
 
-                    <Grid item xs={12}>
-                        <Password
-                            password={password}
-                            isValidPassword={isValidPassword}
-                            onChangePassword={onChangePassword}
-                        />
-                    </Grid>
+                    <TextFieldComponent
+                        label={"Photo URL"}
+                        value={photo}
+                        isValidData={isValidPhoto}
+                        onChangeData={onChangePhoto}
+                    />
+
+                    <TextFieldComponent
+                        label={"Password"}
+                        type={"password"}
+                        value={password}
+                        isValidData={isValidPassword}
+                        onChangeData={onChangePassword}
+                    />
                 </Grid>
 
-                <Button
-                    fullWidth
-                    disabled={isDisabledButton()}
-                    variant={"contained"}
-                    color={"primary"}
-                    className={classes.submit}
-                    onClick={onSignUp}
-                >
-                    Sign Up
-                </Button>
+                <SignButton
+                    style={classes.submit}
+                    name={"Sign Up"}
+                    isDisabledButton={isDisabledButton}
+                    onClickButton={onSignUp}
+                />
 
-                <Grid container justifyContent={"flex-end"}>
-                    <Grid item>
-                        <Button color={"secondary"} to={SIGN_IN} component={Link}>
-                            Already have an account? Sign in
-                        </Button>
-                    </Grid>
-                </Grid>
+                <SignFooter
+                    linkTo={SIGN_IN}
+                    name={"Do you have an account? Sign in"}
+                />
             </div>
         </Container>
     );
+};
+
+SignUp.propTypes = {
+    firstName: PropTypes.string.isRequired,
+    isValidFirstName: PropTypes.bool.isRequired,
+    onChangeFirstName: PropTypes.func.isRequired,
+    lastName: PropTypes.string.isRequired,
+    isValidLastName: PropTypes.bool.isRequired,
+    onChangeLastName: PropTypes.func.isRequired,
+    birthday: PropTypes.string.isRequired,
+    isValidBirthday: PropTypes.bool.isRequired,
+    onChangeBirthday: PropTypes.func.isRequired,
+    email: PropTypes.string.isRequired,
+    isValidEmail: PropTypes.bool.isRequired,
+    onChangeEmail: PropTypes.func.isRequired,
+    phoneNumber: PropTypes.string.isRequired,
+    isValidPhoneNumber: PropTypes.bool.isRequired,
+    onChangePhone: PropTypes.func.isRequired,
+    photo: PropTypes.string.isRequired,
+    isValidPhoto: PropTypes.bool.isRequired,
+    onChangePhoto: PropTypes.func.isRequired,
+    password: PropTypes.string.isRequired,
+    isValidPassword: PropTypes.bool.isRequired,
+    onChangePassword: PropTypes.func.isRequired,
+    onSignUp: PropTypes.func.isRequired
 };
 
 export default SignUp;

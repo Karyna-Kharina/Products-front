@@ -1,10 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Badge, Button, ListItem, ListItemIcon, ListItemText, Typography } from "@material-ui/core";
 import { PRODUCT_CART } from "../../additionalData/links/front";
 
 const MenuElement = ({ linkTo, Icon, name, countProductsInCart }) => (
-    <Button color={"inherit"} fullWidth to={linkTo} component={Link}>
+    <Button fullWidth to={linkTo} component={Link}>
         <ListItem>
             <ListItemIcon>
                 {
@@ -24,5 +25,12 @@ const MenuElement = ({ linkTo, Icon, name, countProductsInCart }) => (
         </ListItem>
     </Button>
 );
+
+MenuElement.propTypes = {
+    linkTo: PropTypes.string.isRequired,
+    Icon: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
+    countProductsInCart: PropTypes.number.isRequired
+};
 
 export default MenuElement;

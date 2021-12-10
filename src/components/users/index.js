@@ -1,40 +1,15 @@
 import React, { useEffect } from "react";
-import { Container, InputBase, Paper, TableContainer } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
-import { alpha, makeStyles } from "@material-ui/core/styles";
-import UserTable from "./constituents/UserTable";
+import PropTypes from "prop-types";
+import { Container, Paper, TableContainer, Toolbar } from "@material-ui/core";
+import SearchLine from "../SearchLine";
+import UserTable from "./UserTable";
+import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        marginTop: 5
-    },
-    search: {
-        position: "relative",
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-        margin: "50px 0",
-        width: 350,
-        height: 42.25,
-        float: "right"
-    },
-    searchIcon: {
-        width: theme.spacing(7),
-        height: "100%",
-        position: "absolute",
-        pointerEvents: "none",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    inputRoot: {
-        color: "inherit"
-    },
-    inputInput: {
-        padding: theme.spacing(1.5, 1, 1, 7),
-        transition: theme.transitions.create("width"),
-        width: 340
+const useStyles = makeStyles({
+    div: {
+        contain: "content"
     }
-}));
+});
 
 const Users = ({ current, users, filteredName, fetchUsers, putUserToForm, onDelete, onChangeFilteredName }) => {
     const classes = useStyles();
@@ -44,26 +19,20 @@ const Users = ({ current, users, filteredName, fetchUsers, putUserToForm, onDele
     }, [fetchUsers]);
 
     return (
-        <Container className={classes.root}>
-            <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                    <Search/>
-                </div>
-                <InputBase
-                    placeholder={"Search…"}
-                    value={filteredName}
-                    classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput
-                    }}
-                    inputProps={{ "aria-label": "search" }}
-                    onChange={(e) => onChangeFilteredName(e.target.value)}
+        <Container>
+            <Toolbar/>
+
+            <div className={classes.div}>
+                <SearchLine
+                    filteredName={filteredName}
+                    onChangeFilteredName={onChangeFilteredName}
                 />
             </div>
 
+            <Toolbar/>
+
             <TableContainer component={Paper}>
                 <UserTable
-                    classes={classes}
                     users={users}
                     current={current}
                     onDelete={(id) => onDelete(id)}
@@ -72,6 +41,36 @@ const Users = ({ current, users, filteredName, fetchUsers, putUserToForm, onDele
             </TableContainer>
         </Container>
     );
+};
+
+Users.propTypes = {
+    current: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        birthday: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        phoneNumber: PropTypes.string.isRequired,
+        photo: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired
+    }).isRequired,
+    users: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            firstName: PropTypes.string.isRequired,
+            lastName: PropTypes.string.isRequired,
+            birthday: PropTypes.string.isRequired,
+            email: PropTypes.string.isRequired,
+            phoneNumber: PropTypes.string.isRequired,
+            photo: PropTypes.string.isRequired,
+            password: PropTypes.string.isRequired
+        }).isRequired
+    ).isRequired,
+    filteredName: PropTypes.string.isRequired,
+    fetchUsers: PropTypes.func.isRequired,
+    putUserToForm: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    onChangeFilteredName: PropTypes.func.isRequired
 };
 
 export default Users;

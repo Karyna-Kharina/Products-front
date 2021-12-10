@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { List } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { MenuElements } from "./MenuElements";
@@ -32,6 +33,10 @@ const NavigationMenu = ({ menuElements, countProductsInCart }) => {
 
 NavigationMenu.defaultProps = {
     menuElements: MenuElements
+};
+
+NavigationMenu.propTypes = {
+    countProductsInCart: PropTypes.number.isRequired
 };
 
 export default NavigationMenu;

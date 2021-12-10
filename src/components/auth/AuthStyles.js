@@ -10,7 +10,6 @@ const AuthStyles = (theme) => ({
         backgroundColor: theme.palette.primary.light
     },
     grid: {
-        width: "100%",
         marginTop: theme.spacing(5)
     },
     submit: {

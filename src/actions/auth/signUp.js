@@ -5,7 +5,8 @@ import {
     CHANGE_LAST_NAME,
     CHANGE_PASSWORD,
     CHANGE_PHONE,
-    CHANGE_PHOTO
+    CHANGE_PHOTO,
+    CLEAR_SIGN_UP
 } from "../../additionalData/constants/auth";
 
 export const changeFirstName = (firstName) => ({
@@ -41,4 +42,8 @@ export const changePhone = (phone) => ({
 export const changePhoto = (photo) => ({
     type: CHANGE_PHOTO,
     photo
+});
+
+export const clearSignUp = () => ({
+    type: CLEAR_SIGN_UP
 });

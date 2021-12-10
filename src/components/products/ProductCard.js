@@ -1,18 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import { Box, CardContent, CardMedia, Divider, IconButton, Typography } from "@material-ui/core";
-import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
+import { AddShoppingCart } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
+import { getFloatingPointAmount } from "../../additionalData/methods";
 
 const useStyles = makeStyles((theme) => ({
     card: {
         maxWidth: 250,
         maxHeight: 290,
-        margin: "5",
-        transition: "0.3s",
-        boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
         "&:hover": {
-            boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)"
+            border: "1px solid #8aabf2"
         }
     },
     media: {
@@ -20,34 +19,11 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         textAlign: "left",
-        padding: "1%"
+        paddingLeft: 15
     },
     divider: {
         margin: "2%",
         backgroundColor: theme.palette.error.light
-    },
-    heading: {
-        fontWeight: "bold"
-    },
-    subheading: {
-        lineHeight: 1.8
-    },
-    avatar: {
-        display: "inline-block",
-        border: "2px solid white"
-    },
-    root: {
-        maxWidth: 345
-    },
-    expand: {
-        transform: "rotate(0deg)",
-        marginLeft: "auto",
-        transition: theme.transitions.create("transform", {
-            duration: theme.transitions.duration.shortest
-        })
-    },
-    expandOpen: {
-        transform: "rotate(180deg)"
     }
 }));
 
@@ -71,16 +47,16 @@ const ProductCard = ({ product, onClickAddProduct }) => {
                     {name}
                 </Typography>
 
-                <Divider className={classes.divider} light/>
+                <Divider className={classes.divider}/>
 
                 <Box display={"flex"} alignItems={"center"}>
-                    <Box flexGrow={1} bgcolor={"#"}>
+                    <Box flexGrow={1}>
                         <Typography
                             className={classes.content}
                             variant={"h5"}
                             color={"error"}
                         >
-                            {price % 1 > 0 ? price : price + ".0"}
+                            {getFloatingPointAmount(price)}
                         </Typography>
                     </Box>
 
@@ -93,6 +69,16 @@ const ProductCard = ({ product, onClickAddProduct }) => {
             </CardContent>
         </Card>
     );
+};
+
+ProductCard.propTypes = {
+    product: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+        image: PropTypes.string.isRequired
+    }).isRequired,
+    onClickAddProduct: PropTypes.func.isRequired
 };
 
 export default ProductCard;

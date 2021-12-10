@@ -4,8 +4,8 @@ import ProductCart from "../../containers/products/ProductCart";
 import ProductCards from "../../containers/products/ProductCards";
 import ProductList from "../../containers/products";
 import UserList from "../../containers/users";
-import CreateUserForm from "../../containers/userForm";
-import CreateProductForm from "../../containers/productForm";
+import UserForm from "../../containers/userForm";
+import ProductForm from "../../containers/productForm";
 import Profile from "../../containers/profile";
 import {
     APP,
@@ -13,11 +13,11 @@ import {
     CREATE_USER_FORM,
     PRODUCT_CARDS,
     PRODUCT_CART,
-    PRODUCTS,
     PRODUCT_UPDATE,
-    USERS,
+    PRODUCTS,
     USER_PROFILE,
-    USER_UPDATE
+    USER_UPDATE,
+    USERS
 } from "../../additionalData/links/front";
 
 const Routers = () => (
@@ -31,7 +31,7 @@ const Routers = () => (
         </Route>
 
         <Route path={CREATE_PRODUCT_FORM}>
-            <CreateProductForm/>
+            <ProductForm/>
         </Route>
 
         <Route path={PRODUCT_CARDS}>
@@ -43,7 +43,7 @@ const Routers = () => (
         </Route>
 
         <Route path={PRODUCT_UPDATE}>
-            <CreateProductForm/>
+            <ProductForm/>
         </Route>
 
         <Route path={USERS}>
@@ -55,11 +55,11 @@ const Routers = () => (
         </Route>
 
         <Route path={USER_UPDATE}>
-            <CreateUserForm/>
+            <UserForm/>
         </Route>
 
         <Route path={CREATE_USER_FORM}>
-            <CreateUserForm/>
+            <UserForm/>
         </Route>
     </Switch>
 );

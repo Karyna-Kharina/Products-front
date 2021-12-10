@@ -3,8 +3,8 @@ import key from "weak-key";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setCurrentUser } from "../../actions/profile";
 import { setMessageInfo } from "../../actions/info";
+import { clearSignUp } from "../../actions/auth/signUp";
 import { SIGN_UP_API } from "../../additionalData/links/back";
-import { CLEAR_SIGN_UP } from "../../additionalData/constants/auth";
 import { SIGN_UP_SAGA } from "../../additionalData/constants/authSaga";
 
 export function* signUpSaga() {
@@ -32,7 +32,7 @@ export function* signUpSaga() {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }
 
-    yield put({ type: CLEAR_SIGN_UP });
+    yield put(clearSignUp);
 }
 
 export function* watchSignUpSaga() {

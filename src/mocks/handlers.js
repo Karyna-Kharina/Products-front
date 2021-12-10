@@ -20,10 +20,10 @@ export const handlers = [
     rest.get(PRODUCTS_API_SEARCH, (req, res, ctx) => {
         const filteredName = req.url.searchParams.get("name");
 
-        const result = productFixtures.filter((product) =>
-            product.id.includes(filteredName) ||
-            product.name.includes(filteredName) ||
-            product.price.includes(filteredName)
+        const result = productFixtures.filter(({ id, name, price }) =>
+            id.includes(filteredName) ||
+            name.includes(filteredName) ||
+            String(price).includes(filteredName)
         );
 
         return res(

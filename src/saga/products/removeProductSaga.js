@@ -1,21 +1,21 @@
 import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { setMessageInfo } from "../../actions/info";
+import { getProductsSaga } from "../../actions/productsSaga";
 import { PRODUCTS_API } from "../../additionalData/links/back";
-import { GET_PRODUCTS_SAGA, REMOVE_PRODUCT_SAGA } from "../../additionalData/constants/productsSaga";
+import { REMOVE_PRODUCT_SAGA } from "../../additionalData/constants/productsSaga";
 
 export function* removeProductSaga(action) {
     try {
-        const { id } = action;
         yield call(
             axios.delete,
-            PRODUCTS_API + "/" + id
+            PRODUCTS_API + "/" + action.id
         );
     } catch (e) {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }
 
-    yield put({ type: GET_PRODUCTS_SAGA });
+    yield put(getProductsSaga);
 }
 
 export function* watchRemoveProductSaga() {

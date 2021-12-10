@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Avatar, Button, Container, Grid, Typography } from "@material-ui/core";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
+import PropTypes from "prop-types";
+import { Container, Grid } from "@material-ui/core";
+import { LockOpen } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-import Email from "./constituents/Email";
-import Password from "./constituents/Password";
-import AuthStyles from "./constituents/AuthStyles";
+import AuthStyles from "./AuthStyles";
+import TextFieldComponent from "../TextFieldComponent";
+import SignHeader from "./SignHeader";
+import SignFooter from "./SignFooter";
+import SignButton from "./SignButton";
 import { SIGN_UP } from "../../additionalData/links/front";
 
 const useStyles = makeStyles(AuthStyles);
@@ -15,55 +17,53 @@ const SignIn = ({ email, isValidEmail, password, isValidPassword, onChangeEmail,
     const isDisabledButton = () => !(isValidEmail && isValidPassword);
 
     return (
-        <Container component={"main"} maxWidth={"xs"}>
-            <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOpenIcon/>
-                </Avatar>
+        <Container className={classes.paper} maxWidth={"xs"}>
+            <SignHeader
+                style={classes.avatar}
+                Icon={() => <LockOpen/>}
+                name={"Sign In"}
+            />
 
-                <Typography component={"h1"} variant={"h5"}>
-                    Sign In
-                </Typography>
+            <Grid className={classes.grid} container spacing={2}>
+                <TextFieldComponent
+                    label={"Email Address"}
+                    value={email}
+                    isValidData={isValidEmail}
+                    onChangeData={onChangeEmail}
+                />
 
-                <Grid className={classes.grid} container spacing={2}>
-                    <Grid item xs={12}>
-                        <Email
-                            email={email}
-                            isValidEmail={isValidEmail}
-                            onChangeEmail={onChangeEmail}
-                        />
-                    </Grid>
+                <TextFieldComponent
+                    label={"Password"}
+                    type={"password"}
+                    value={password}
+                    isValidData={isValidPassword}
+                    onChangeData={onChangePassword}
+                />
+            </Grid>
 
-                    <Grid item xs={12}>
-                        <Password
-                            password={password}
-                            isValidPassword={isValidPassword}
-                            onChangePassword={onChangePassword}
-                        />
-                    </Grid>
-                </Grid>
+            <SignButton
+                style={classes.submit}
+                name={"Log In"}
+                isDisabledButton={isDisabledButton}
+                onClickButton={onLogIn}
+            />
 
-                <Button
-                    fullWidth
-                    disabled={isDisabledButton()}
-                    variant={"contained"}
-                    color={"primary"}
-                    className={classes.submit}
-                    onClick={onLogIn}
-                >
-                    LogIn
-                </Button>
-
-                <Grid container justifyContent={"flex-end"}>
-                    <Grid item>
-                        <Button color={"secondary"} to={SIGN_UP} component={Link}>
-                            Do you haven't an account? Sign up
-                        </Button>
-                    </Grid>
-                </Grid>
-            </div>
+            <SignFooter
+                linkTo={SIGN_UP}
+                name={"Don't you have an account? Sign up"}
+            />
         </Container>
     );
+};
+
+SignIn.propTypes = {
+    email: PropTypes.string.isRequired,
+    isValidEmail: PropTypes.bool.isRequired,
+    password: PropTypes.string.isRequired,
+    isValidPassword: PropTypes.bool.isRequired,
+    onChangeEmail: PropTypes.func.isRequired,
+    onChangePassword: PropTypes.func.isRequired,
+    onLogIn: PropTypes.func.isRequired
 };
 
 export default SignIn;

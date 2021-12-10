@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import MuiAlert from "@material-ui/lab/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
 import { makeStyles } from "@material-ui/core/styles";
@@ -42,6 +43,11 @@ const MessageInfo = ({ message, handleClose }) => {
             }
         </>
     );
+};
+
+MessageInfo.propTypes = {
+    message: PropTypes.object,
+    handleClose: PropTypes.func.isRequired
 };
 
 export default MessageInfo;

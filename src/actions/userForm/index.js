@@ -7,6 +7,7 @@ import {
     CHANGE_USER_PASSWORD,
     CHANGE_USER_PHONE_NUMBER,
     CHANGE_USER_PHOTO,
+    CLEAR_USER_FORM,
     PUT_USER_TO_FORM
 } from "../../additionalData/constants/users";
 
@@ -53,4 +54,8 @@ export const changePassword = (password) => ({
 export const putUserToForm = (user) => ({
     type: PUT_USER_TO_FORM,
     user
+});
+
+export const clearUserForm = () => ({
+    type: CLEAR_USER_FORM
 });

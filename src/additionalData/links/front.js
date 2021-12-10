@@ -1,4 +1,7 @@
 export const APP = "/";
+export const BASE_PATH = "/Products-front";
+export const BASE_PATH_WITH_TRAILING_SLASH = "/Products-front/";
+export const SERVICE_WORKER_URL = BASE_PATH_WITH_TRAILING_SLASH + "mockServiceWorker.js";
 
 export const SIGN_IN = "/sign-in";
 export const SIGN_UP = "/sign-up";

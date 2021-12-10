@@ -1,12 +1,16 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
+import DateFnsUtils from "@date-io/date-fns";
 import { BrowserRouter } from "react-router-dom";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { CssBaseline } from "@material-ui/core";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import store from "./store";
 import { worker } from "./mocks/browser";
-import Body from "./containers/app/Body";
+import store from "./store";
+import AppBody from "./containers/app/AppBody";
 import MessageInfo from "./containers/info";
+import { BASE_PATH, BASE_PATH_WITH_TRAILING_SLASH, SERVICE_WORKER_URL } from "./additionalData/links/front";
 
 const theme = createTheme({
     palette: {
@@ -22,23 +26,26 @@ const theme = createTheme({
 });
 
 (function () {
-    if (window.location.pathname === "/Products-front") {
-        window.location.pathname = "/Products-front/";
+    if (window.location.pathname === BASE_PATH) {
+        window.location.pathname = BASE_PATH_WITH_TRAILING_SLASH;
         return;
     }
     worker.start({
         serviceWorker: {
-            url: "/Products-front/mockServiceWorker.js"
+            url: SERVICE_WORKER_URL
         }
     });
 
     render(
         <ThemeProvider theme={theme}>
             <Provider store={store}>
-                <BrowserRouter basename={"/Products-front/"}>
-                    <Body/>
-                    <MessageInfo/>
-                </BrowserRouter>
+                <CssBaseline/>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <BrowserRouter basename={BASE_PATH_WITH_TRAILING_SLASH}>
+                        <AppBody/>
+                        <MessageInfo/>
+                    </BrowserRouter>
+                </MuiPickersUtilsProvider>
             </Provider>
         </ThemeProvider>,
         document.getElementById("root")

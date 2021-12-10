@@ -1,8 +1,8 @@
 import React from "react";
-import { CssBaseline } from "@material-ui/core";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBarComponent from "./AppBarComponent";
-import DrawerComponent from "./DrawerComponent";
+import AppBarComponent from "../appBar";
+import DrawerComponent from "../drawer";
 import Routers from "../routers";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,6 @@ const App = ({ countProductsInCart, photo, logOut }) => {
 
     return (
         <div className={classes.root}>
-            <CssBaseline/>
             <AppBarComponent photo={photo} logOut={logOut}/>
             <DrawerComponent countProductsInCart={countProductsInCart}/>
 
@@ -31,6 +30,12 @@ const App = ({ countProductsInCart, photo, logOut }) => {
             </main>
         </div>
     );
+};
+
+App.propTypes = {
+    countProductsInCart: PropTypes.number.isRequired,
+    photo: PropTypes.string.isRequired,
+    logOut: PropTypes.func.isRequired
 };
 
 export default App;

@@ -1,4 +1,4 @@
-import { CHANGE_EMAIL_AT_LOGIN, CHANGE_PASSWORD_AT_LOGIN } from "../../additionalData/constants/auth";
+import { CHANGE_EMAIL_AT_LOGIN, CHANGE_PASSWORD_AT_LOGIN, CLEAR_SIGN_IN } from "../../additionalData/constants/auth";
 
 export const changeEmailAtLogin = (email) => ({
     type: CHANGE_EMAIL_AT_LOGIN,
@@ -8,4 +8,8 @@ export const changeEmailAtLogin = (email) => ({
 export const changePasswordAtLogin = (password) => ({
     type: CHANGE_PASSWORD_AT_LOGIN,
     password
+});
+
+export const clearSignIn = () => ({
+    type: CLEAR_SIGN_IN
 });

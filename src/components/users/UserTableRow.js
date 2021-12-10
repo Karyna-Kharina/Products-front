@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Avatar, IconButton, TableCell, TableRow } from "@material-ui/core";
 import { Delete, Update } from "@material-ui/icons";
-import { USER_UPDATE } from "../../../additionalData/links/front";
+import { USER_UPDATE } from "../../additionalData/links/front";
+import PropTypes from "prop-types";
 
 const UserTableRow = ({ user, current, onDelete, putUserToForm }) => {
     const { id, firstName, lastName, birthday, email, phoneNumber, photo } = user;
@@ -41,6 +42,31 @@ const UserTableRow = ({ user, current, onDelete, putUserToForm }) => {
             </TableCell>
         </TableRow>
     );
+};
+
+UserTableRow.propTypes = {
+    user: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        birthday: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        phoneNumber: PropTypes.string.isRequired,
+        photo: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired
+    }).isRequired,
+    current: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        birthday: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        phoneNumber: PropTypes.string.isRequired,
+        photo: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired
+    }).isRequired,
+    onDelete: PropTypes.func.isRequired,
+    putUserToForm: PropTypes.func.isRequired
 };
 
 export default UserTableRow;

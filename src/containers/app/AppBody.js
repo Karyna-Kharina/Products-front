@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Body from "../../components/app/Body";
+import AppBody from "../../components/app/AppBody";
 
 const mapStateToProps = (state) => ({
     currentUser: state.profile.current
@@ -7,4 +7,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Body);
+export default connect(mapStateToProps, mapDispatchToProps)(AppBody);

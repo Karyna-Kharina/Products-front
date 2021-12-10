@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Drawer } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import NavigationMenu from "../navigationMenu";
+import NavigationMenu from "./NavigationMenu";
 
 const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
@@ -29,6 +30,10 @@ const DrawerComponent = ({ countProductsInCart }) => {
             <NavigationMenu countProductsInCart={countProductsInCart}/>
         </Drawer>
     );
+};
+
+DrawerComponent.propTypes = {
+    countOfProductsInCart: PropTypes.number
 };
 
 export default DrawerComponent;

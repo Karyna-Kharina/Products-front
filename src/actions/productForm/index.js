@@ -1,4 +1,5 @@
 import {
+    CLEAR_PRODUCT_FORM,
     PUT_PRODUCT_TO_FORM,
     UPDATE_ID,
     UPDATE_IMAGE,
@@ -29,4 +30,8 @@ export const updateImage = (image) => ({
 export const putProductToForm = (product) => ({
     type: PUT_PRODUCT_TO_FORM,
     product
+});
+
+export const clearProductForm = () => ({
+    type: CLEAR_PRODUCT_FORM
 });

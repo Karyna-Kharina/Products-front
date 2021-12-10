@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { CardMedia, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { EMPTY_AVATAR } from "../../additionalData/links/front";
 import { getFormattedDate } from "../../additionalData/methods";
+import { EMPTY_AVATAR } from "../../additionalData/links/front";
 
 const useStyles = makeStyles({
     root: {
@@ -17,7 +18,7 @@ const Profile = ({ firstName, lastName, birthday, phoneNumber, email, photo }) =
     const classes = useStyles();
 
     return (
-        <Container component={"main"} maxWidth={"lg"} className={classes.root}>
+        <Container className={classes.root}>
             <Grid container spacing={10}>
                 <Grid item xs={5}>
                     <CardMedia
@@ -110,6 +111,15 @@ const Profile = ({ firstName, lastName, birthday, phoneNumber, email, photo }) =
             </Grid>
         </Container>
     );
+};
+
+Profile.propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    phoneNumber: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired
 };
 
 export default Profile;

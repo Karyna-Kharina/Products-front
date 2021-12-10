@@ -2,8 +2,8 @@ import axios from "axios";
 import key from "weak-key";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setMessageInfo } from "../../actions/info";
+import { clearProductForm } from "../../actions/productForm";
 import { PRODUCTS_API } from "../../additionalData/links/back";
-import { CLEAR_PRODUCT_FORM } from "../../additionalData/constants/products";
 import { SAVE_PRODUCT_SAGA } from "../../additionalData/constants/productsSaga";
 
 export function* saveProductSaga() {
@@ -32,7 +32,7 @@ export function* saveProductSaga() {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }
 
-    yield put({ type: CLEAR_PRODUCT_FORM });
+    yield put(clearProductForm);
 }
 
 export function* watchSaveProductSaga() {
