@@ -1,10 +1,10 @@
-import { removeItemFrom } from "../../additionalData/methods";
+import { removeItemFrom } from "../../utils/methods";
 import {
     ADD_PRODUCT_TO_CART,
     CHANGE_FILTERED_NAME,
     REMOVE_PRODUCT_FROM_CART,
     SET_PRODUCTS
-} from "../../additionalData/constants/products";
+} from "../../utils/constants/products";
 
 const initialState = {
     products: [],

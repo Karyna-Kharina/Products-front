@@ -1,9 +1,9 @@
 import {
-    REMOVE_PRODUCT_SAGA,
     GET_PRODUCTS_BY_NAME_SAGA,
     GET_PRODUCTS_SAGA,
+    REMOVE_PRODUCT_SAGA,
     SAVE_PRODUCT_SAGA
-} from "../../additionalData/constants/productsSaga";
+} from "../../utils/constants/productsSaga";
 
 export const saveProduct = (product) => ({
     type: SAVE_PRODUCT_SAGA,

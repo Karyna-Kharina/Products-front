@@ -3,8 +3,8 @@ import key from "weak-key";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setMessageInfo } from "../../actions/info";
 import { clearProductForm } from "../../actions/productForm";
-import { PRODUCTS_API } from "../../additionalData/links/back";
-import { SAVE_PRODUCT_SAGA } from "../../additionalData/constants/productsSaga";
+import { PRODUCTS_API } from "../../utils/links/back";
+import { SAVE_PRODUCT_SAGA } from "../../utils/constants/productsSaga";
 
 export function* saveProductSaga() {
     try {
@@ -32,7 +32,7 @@ export function* saveProductSaga() {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }
 
-    yield put(clearProductForm);
+    yield put(clearProductForm());
 }
 
 export function* watchSaveProductSaga() {

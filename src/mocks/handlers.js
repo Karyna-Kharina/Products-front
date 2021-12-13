@@ -1,6 +1,6 @@
 import { rest } from "msw";
-import productFixtures from "../additionalData/fixtures/productFixtures";
-import userFixtures from "../additionalData/fixtures/userFixtures";
+import productFixtures from "../utils/fixtures/productFixtures";
+import userFixtures from "../utils/fixtures/userFixtures";
 import {
     PRODUCTS_API,
     PRODUCTS_API_SEARCH,
@@ -8,7 +8,7 @@ import {
     SIGN_UP_API,
     USERS_API,
     USERS_API_SEARCH
-} from "../additionalData/links/back";
+} from "../utils/links/back";
 
 export const handlers = [
     rest.get(PRODUCTS_API, (req, res, ctx) => {
@@ -33,6 +33,7 @@ export const handlers = [
     }),
     rest.post(PRODUCTS_API, (req, res, ctx) => {
         productFixtures.push(req.body);
+        console.log("post:",req.body, productFixtures);
 
         return res(
             ctx.status(200),
@@ -106,10 +107,19 @@ export const handlers = [
     }),
 
     rest.get(SIGN_IN_API, (req, res, ctx) => {
-        return res(
-            ctx.status(200),
-            ctx.json(userFixtures[0])
-        );
+        const email = req.url.searchParams.get("email");
+        const password = req.url.searchParams.get("password");
+
+        for (const user of userFixtures) {
+            if (user.email === email && user.password === password) {
+                return res(
+                    ctx.status(200),
+                    ctx.json(user)
+                );
+            }
+        }
+
+        return res(ctx.status(403));
     }),
     rest.post(SIGN_UP_API, (req, res, ctx) => {
         userFixtures.push(req.body);

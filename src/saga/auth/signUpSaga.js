@@ -4,8 +4,8 @@ import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setCurrentUser } from "../../actions/profile";
 import { setMessageInfo } from "../../actions/info";
 import { clearSignUp } from "../../actions/auth/signUp";
-import { SIGN_UP_API } from "../../additionalData/links/back";
-import { SIGN_UP_SAGA } from "../../additionalData/constants/authSaga";
+import { SIGN_UP_API } from "../../utils/links/back";
+import { SIGN_UP_SAGA } from "../../utils/constants/authSaga";
 
 export function* signUpSaga() {
     try {
@@ -32,7 +32,7 @@ export function* signUpSaga() {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }
 
-    yield put(clearSignUp);
+    yield put(clearSignUp());
 }
 
 export function* watchSignUpSaga() {

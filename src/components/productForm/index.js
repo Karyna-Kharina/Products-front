@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Container, Grid, Toolbar, Typography } from "@material-ui/core";
 import TextFieldComponent from "../TextFieldComponent";
 import ButtonSaveUpdate from "../ButtonSaveUpdate";
-import { PRODUCTS } from "../../additionalData/links/front";
+import { PRODUCTS } from "../../utils/links/front";
 
 const ProductForm = ({
                          id, name, isValidName, price, isValidPrice, image, isValidImage,

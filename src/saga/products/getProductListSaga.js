@@ -2,8 +2,8 @@ import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { setProducts } from "../../actions/products";
 import { setMessageInfo } from "../../actions/info";
-import { PRODUCTS_API } from "../../additionalData/links/back";
-import { GET_PRODUCTS_SAGA } from "../../additionalData/constants/productsSaga";
+import { PRODUCTS_API } from "../../utils/links/back";
+import { GET_PRODUCTS_SAGA } from "../../utils/constants/productsSaga";
 
 export function* getProductListSaga() {
     try {

@@ -17,15 +17,15 @@ function Alert(props) {
     return <MuiAlert elevation={6} variant={"filled"} {...props} />;
 }
 
-const MessageInfo = ({ message, handleClose }) => {
+const MessageInfo = ({ message, onClose }) => {
     const classes = useStyles();
     const { type, text } = message || {};
 
-    const onClose = (event, reason) => {
+    const handleClose = (event, reason) => {
         if (reason === "clickaway") {
             return;
         }
-        handleClose();
+        onClose();
     };
 
     return (
@@ -33,8 +33,8 @@ const MessageInfo = ({ message, handleClose }) => {
             {
                 message && (
                     <div className={classes.root}>
-                        <Snackbar open autoHideDuration={6000} onClose={onClose}>
-                            <Alert onClose={onClose} severity={type}>
+                        <Snackbar open autoHideDuration={6000} onClose={handleClose}>
+                            <Alert onClose={handleClose} severity={type}>
                                 {text}
                             </Alert>
                         </Snackbar>
@@ -47,7 +47,7 @@ const MessageInfo = ({ message, handleClose }) => {
 
 MessageInfo.propTypes = {
     message: PropTypes.object,
-    handleClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired
 };
 
 export default MessageInfo;

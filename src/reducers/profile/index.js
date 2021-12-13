@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from "../../additionalData/constants/users";
+import { SET_CURRENT_USER } from "../../utils/constants/users";
 
 const initialState = {
     current: JSON.parse(sessionStorage.getItem("current"))

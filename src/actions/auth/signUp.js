@@ -7,7 +7,7 @@ import {
     CHANGE_PHONE,
     CHANGE_PHOTO,
     CLEAR_SIGN_UP
-} from "../../additionalData/constants/auth";
+} from "../../utils/constants/auth";
 
 export const changeFirstName = (firstName) => ({
     type: CHANGE_FIRST_NAME,

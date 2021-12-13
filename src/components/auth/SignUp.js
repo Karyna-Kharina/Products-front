@@ -9,7 +9,7 @@ import TextFieldComponent from "../TextFieldComponent";
 import SignHeader from "./SignHeader";
 import SignButton from "./SignButton";
 import SignFooter from "./SignFooter";
-import { SIGN_IN } from "../../additionalData/links/front";
+import { SIGN_IN } from "../../utils/links/front";
 
 const useStyles = makeStyles(AuthStyles);
 

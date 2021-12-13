@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { IconButton, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { Delete, Update } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";
-import { getFloatingPointAmount } from "../../additionalData/methods";
-import { PRODUCT_UPDATE } from "../../additionalData/links/front";
+import { getFloatingPointAmount } from "../../utils/methods";
+import { PRODUCT_UPDATE } from "../../utils/links/front";
 
 const StyledTableCell = withStyles((theme) => ({
     head: {

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Avatar, IconButton, TableCell, TableRow } from "@material-ui/core";
 import { Delete, Update } from "@material-ui/icons";
-import { USER_UPDATE } from "../../additionalData/links/front";
+import { USER_UPDATE } from "../../utils/links/front";
 import PropTypes from "prop-types";
 
 const UserTableRow = ({ user, current, onDelete, putUserToForm }) => {

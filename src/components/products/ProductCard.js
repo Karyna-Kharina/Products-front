@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import { Box, CardContent, CardMedia, Divider, IconButton, Typography } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-import { getFloatingPointAmount } from "../../additionalData/methods";
+import { getFloatingPointAmount } from "../../utils/methods";
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ProductCard = ({ product, onClickAddProduct }) => {
+const ProductCard = ({ product, onAddProduct }) => {
     const classes = useStyles();
     const { name, price, image } = product;
 
@@ -61,7 +61,7 @@ const ProductCard = ({ product, onClickAddProduct }) => {
                     </Box>
 
                     <Box>
-                        <IconButton onClick={onClickAddProduct}>
+                        <IconButton onClick={onAddProduct}>
                             <AddShoppingCart/>
                         </IconButton>
                     </Box>
@@ -78,7 +78,7 @@ ProductCard.propTypes = {
         price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
         image: PropTypes.string.isRequired
     }).isRequired,
-    onClickAddProduct: PropTypes.func.isRequired
+    onAddProduct: PropTypes.func.isRequired
 };
 
 export default ProductCard;

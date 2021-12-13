@@ -3,7 +3,7 @@ import {
     GET_USERS_BY_NAME_SAGA,
     GET_USERS_SAGA,
     SAVE_USER_SAGA
-} from "../../additionalData/constants/usersSaga";
+} from "../../utils/constants/usersSaga";
 
 export const saveUser = (user) => ({
     type: SAVE_USER_SAGA,

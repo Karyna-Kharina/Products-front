@@ -3,7 +3,7 @@ import {
     CHANGE_FILTERED_NAME,
     REMOVE_PRODUCT_FROM_CART,
     SET_PRODUCTS
-} from "../../additionalData/constants/products";
+} from "../../utils/constants/products";
 
 export const addProductToCart = (product) => ({
     type: ADD_PRODUCT_TO_CART,

@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import { Add, Remove } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-import { getCountOfItemsWithId, getFloatingPointAmount } from "../../additionalData/methods";
+import { getCountOfItemsWithId, getFloatingPointAmount } from "../../utils/methods";
 
 const useStyles = makeStyles({
     table: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     }
 });
 
-const ProductCart = ({ products, onClickAddProduct, onClickRemoveProduct }) => {
+const ProductCart = ({ products, onAddProduct, onRemoveProduct }) => {
     const classes = useStyles();
     let totalSum = products.reduce((a, { price }) => a + parseFloat(price), 0);
 
@@ -37,36 +37,36 @@ const ProductCart = ({ products, onClickAddProduct, onClickRemoveProduct }) => {
                     {
                         products
                             .filter((item, index, arr) => arr.indexOf(item) === index)
-                            .map((item) => (
-                                    <TableRow key={item.id}>
+                            .map(({ id, name, price, image }) => (
+                                    <TableRow key={id}>
                                         <TableCell className={classes.cell}>
                                             <ListItemAvatar>
-                                                <Avatar src={item.image}/>
+                                                <Avatar src={image}/>
                                             </ListItemAvatar>
                                         </TableCell>
 
                                         <TableCell align={"left"}>
-                                            <ListItemText primary={item.name}/>
+                                            <ListItemText primary={name}/>
                                         </TableCell>
 
                                         <TableCell align={"right"}>
-                                            <IconButton onClick={() => onClickRemoveProduct(item)}>
+                                            <IconButton onClick={() => onRemoveProduct({ id, name, price, image })}>
                                                 <Remove/>
                                             </IconButton>
                                         </TableCell>
 
                                         <TableCell align={"center"}>
-                                            <ListItemText primary={getCountOfItemsWithId(products, item.id)}/>
+                                            <ListItemText primary={getCountOfItemsWithId(products, id)}/>
                                         </TableCell>
 
                                         <TableCell align={"left"}>
-                                            <IconButton onClick={() => onClickAddProduct(item)}>
+                                            <IconButton onClick={() => onAddProduct({ id, name, price, image })}>
                                                 <Add/>
                                             </IconButton>
                                         </TableCell>
 
                                         <TableCell className={classes.cell}>
-                                            <ListItemText primary={item.price}/>
+                                            <ListItemText primary={getFloatingPointAmount(price)}/>
                                         </TableCell>
                                     </TableRow>
                                 )
@@ -93,8 +93,8 @@ ProductCart.propTypes = {
             image: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    onClickAddProduct: PropTypes.func.isRequired,
-    onClickRemoveProduct: PropTypes.func.isRequired
+    onAddProduct: PropTypes.func.isRequired,
+    onRemoveProduct: PropTypes.func.isRequired
 };
 
 export default ProductCart;

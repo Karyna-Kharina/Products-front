@@ -1,4 +1,4 @@
-import { SET_MESSAGE_INFO } from "../../additionalData/constants/info";
+import { SET_MESSAGE_INFO } from "../../utils/constants/info";
 
 const initialState = { message: null };
 

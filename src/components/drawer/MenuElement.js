@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Badge, Button, ListItem, ListItemIcon, ListItemText, Typography } from "@material-ui/core";
-import { PRODUCT_CART } from "../../additionalData/links/front";
+import { PRODUCT_CART } from "../../utils/links/front";
 
 const MenuElement = ({ linkTo, Icon, name, countProductsInCart }) => (
     <Button fullWidth to={linkTo} component={Link}>

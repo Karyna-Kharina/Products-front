@@ -2,8 +2,8 @@ import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { setMessageInfo } from "../../actions/info";
 import { getUsersSaga } from "../../actions/usersSaga";
-import { USERS_API } from "../../additionalData/links/back";
-import { REMOVE_USER_SAGA } from "../../additionalData/constants/usersSaga";
+import { USERS_API } from "../../utils/links/back";
+import { REMOVE_USER_SAGA } from "../../utils/constants/usersSaga";
 
 export function* removeUserSaga(action) {
     try {
@@ -12,7 +12,7 @@ export function* removeUserSaga(action) {
             USERS_API + "/" + action.id
         );
 
-        yield put(getUsersSaga);
+        yield put(getUsersSaga());
     } catch (e) {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }

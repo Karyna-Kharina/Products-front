@@ -1,5 +1,5 @@
-import { SIGN_IN_SAGA } from "../../additionalData/constants/authSaga";
+import { SIGN_IN_SAGA } from "../../utils/constants/authSaga";
 
-export const logIn = () => ({
+export const signIn = () => ({
     type: SIGN_IN_SAGA
 });

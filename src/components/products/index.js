@@ -5,7 +5,7 @@ import { Button, Container, Paper, TableContainer, Toolbar } from "@material-ui/
 import { Add } from "@material-ui/icons";
 import SearchLine from "../SearchLine";
 import ProductTable from "./ProductTable";
-import { CREATE_PRODUCT_FORM } from "../../additionalData/links/front";
+import { CREATE_PRODUCT_FORM } from "../../utils/links/front";
 
 const Products = ({
                       products, filteredName, fetchProducts,
@@ -42,7 +42,7 @@ const Products = ({
                 <ProductTable
                     products={products}
                     onDelete={(id) => onDelete(id)}
-                    putProductToForm={(product) => putProductToForm(product)}
+                    putProductToForm={putProductToForm}
                 />
             </TableContainer>
         </Container>

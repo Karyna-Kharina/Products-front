@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { logIn } from "../../actions/authSaga/signIn";
 import SignIn from "../../components/auth/SignIn";
+import { signIn } from "../../actions/authSaga/signIn";
 import { changeEmailAtLogin, changePasswordAtLogin } from "../../actions/auth/signIn";
 
 const mapStateToProps = (state) => {
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onChangeEmail: (email) => dispatch(changeEmailAtLogin(email)),
         onChangePassword: (password) => dispatch(changePasswordAtLogin(password)),
-        onLogIn: () => dispatch(logIn())
+        onSignIn: () => dispatch(signIn())
     };
 };
 

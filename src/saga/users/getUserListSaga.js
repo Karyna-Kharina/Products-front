@@ -1,8 +1,8 @@
 import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { setUsers } from "../../actions/users";
-import { USERS_API } from "../../additionalData/links/back";
-import { GET_USERS_SAGA } from "../../additionalData/constants/usersSaga";
+import { USERS_API } from "../../utils/links/back";
+import { GET_USERS_SAGA } from "../../utils/constants/usersSaga";
 import { setMessageInfo } from "../../actions/info";
 
 export function* getUserListSaga() {

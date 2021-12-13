@@ -1,4 +1,4 @@
-import { isValidImageUrl, isValidName, isValidPrice } from "../../additionalData/validation";
+import { isValidImageUrl, isValidName, isValidPrice } from "../../utils/validation";
 import {
     CLEAR_PRODUCT_FORM,
     PUT_PRODUCT_TO_FORM,
@@ -6,7 +6,7 @@ import {
     UPDATE_IMAGE,
     UPDATE_NAME,
     UPDATE_PRICE
-} from "../../additionalData/constants/products";
+} from "../../utils/constants/products";
 
 const initialState = {
     product: {

@@ -1,4 +1,4 @@
-import { getFormattedDate } from "../../additionalData/methods";
+import { getFormattedDate } from "../../utils/methods";
 import {
     isValidDate,
     isValidEmail,
@@ -6,7 +6,7 @@ import {
     isValidName,
     isValidPassword,
     isValidPhoneNumber
-} from "../../additionalData/validation";
+} from "../../utils/validation";
 import {
     CHANGE_BIRTHDAY,
     CHANGE_EMAIL,
@@ -16,8 +16,8 @@ import {
     CHANGE_PHONE,
     CHANGE_PHOTO,
     CLEAR_SIGN_UP
-} from "../../additionalData/constants/auth";
-import { MIN_DATE } from "../../additionalData/constants/dates";
+} from "../../utils/constants/auth";
+import { MIN_DATE } from "../../utils/constants/dates";
 
 const initialState = {
     firstName: "First Name",

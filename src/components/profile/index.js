@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { CardMedia, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { getFormattedDate } from "../../additionalData/methods";
-import { EMPTY_AVATAR } from "../../additionalData/links/front";
+import { getFormattedDate } from "../../utils/methods";
+import { EMPTY_AVATAR } from "../../utils/links/front";
 
 const useStyles = makeStyles({
     root: {

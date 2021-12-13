@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Container, Grid, Toolbar } from "@material-ui/core";
 import ProductCard from "./ProductCard";
 
-const ProductCards = ({ products, fetchProducts, onClickAddProduct }) => {
+const ProductCards = ({ products, fetchProducts, onAddProduct }) => {
     useEffect(() => {
         fetchProducts();
     }, [fetchProducts]);
@@ -18,7 +18,7 @@ const ProductCards = ({ products, fetchProducts, onClickAddProduct }) => {
                         <Grid key={item.id} item sm={3}>
                             <ProductCard
                                 product={item}
-                                onClickAddProduct={() => onClickAddProduct(item)}
+                                onAddProduct={() => onAddProduct(item)}
                             />
                         </Grid>
                     ))
@@ -38,7 +38,7 @@ ProductCards.propTypes = {
         }).isRequired
     ).isRequired,
     fetchProducts: PropTypes.func.isRequired,
-    onClickAddProduct: PropTypes.func.isRequired
+    onAddProduct: PropTypes.func.isRequired
 };
 
 export default ProductCards;

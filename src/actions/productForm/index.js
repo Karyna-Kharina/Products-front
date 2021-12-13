@@ -5,7 +5,7 @@ import {
     UPDATE_IMAGE,
     UPDATE_NAME,
     UPDATE_PRICE
-} from "../../additionalData/constants/products";
+} from "../../utils/constants/products";
 
 export const updateId = (id) => ({
     type: UPDATE_ID,

@@ -18,7 +18,7 @@ import {
     USER_PROFILE,
     USER_UPDATE,
     USERS
-} from "../../additionalData/links/front";
+} from "../../utils/links/front";
 
 const Routers = () => (
     <Switch>

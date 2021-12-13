@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Button, Menu, MenuItem } from "@material-ui/core";
-import { SIGN_IN, USER_PROFILE } from "../../additionalData/links/front";
+import { SIGN_IN, USER_PROFILE } from "../../utils/links/front";
 
-const MenuComponent = ({ anchorEl, setAnchorEl, logOut }) => {
+const MenuComponent = ({ anchorEl, setAnchorEl, onLogOut }) => {
     const open = Boolean(anchorEl);
     const handleClose = () => setAnchorEl(null);
 
@@ -17,7 +17,7 @@ const MenuComponent = ({ anchorEl, setAnchorEl, logOut }) => {
             </MenuItem>
 
             <MenuItem>
-                <Button component={Link} to={SIGN_IN} onClick={logOut}>
+                <Button component={Link} to={SIGN_IN} onClick={onLogOut}>
                     Log Out
                 </Button>
             </MenuItem>
@@ -28,7 +28,7 @@ const MenuComponent = ({ anchorEl, setAnchorEl, logOut }) => {
 MenuComponent.propTypes = {
     anchorEl: PropTypes.object,
     setAnchorEl: PropTypes.func.isRequired,
-    logOut: PropTypes.func.isRequired
+    onLogOut: PropTypes.func.isRequired
 };
 
 export default MenuComponent;

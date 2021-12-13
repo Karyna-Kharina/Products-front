@@ -2,8 +2,8 @@ import axios from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { setMessageInfo } from "../../actions/info";
 import { clearUserForm } from "../../actions/userForm";
-import { USERS_API } from "../../additionalData/links/back";
-import { SAVE_USER_SAGA } from "../../additionalData/constants/usersSaga";
+import { USERS_API } from "../../utils/links/back";
+import { SAVE_USER_SAGA } from "../../utils/constants/usersSaga";
 
 export function* saveUserSaga() {
     try {
@@ -29,7 +29,7 @@ export function* saveUserSaga() {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }
 
-    yield put(clearUserForm);
+    yield put(clearUserForm());
 }
 
 export function* watchSaveUserSaga() {

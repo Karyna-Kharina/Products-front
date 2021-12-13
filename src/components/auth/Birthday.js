@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { KeyboardDatePicker } from "@material-ui/pickers";
-import { getFormattedDate } from "../../additionalData/methods";
-import { MAX_DATE, MIN_DATE } from "../../additionalData/constants/dates";
+import { getFormattedDate } from "../../utils/methods";
+import { MAX_DATE, MIN_DATE } from "../../utils/constants/dates";
 
 const Birthday = ({ birthday, isValidBirthday, onChangeBirthday }) => {
     const [dateOpen, setDateOpen] = useState(false);

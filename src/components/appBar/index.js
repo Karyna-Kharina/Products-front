@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const AppBarComponent = ({ photo, logOut }) => {
+const AppBarComponent = ({ photo, onLogOut }) => {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,7 +33,7 @@ const AppBarComponent = ({ photo, logOut }) => {
                 <MenuComponent
                     anchorEl={anchorEl}
                     setAnchorEl={setAnchorEl}
-                    logOut={logOut}
+                    onLogOut={onLogOut}
                 />
             </Toolbar>
         </AppBar>
@@ -42,7 +42,7 @@ const AppBarComponent = ({ photo, logOut }) => {
 
 AppBarComponent.propTypes = {
     photo: PropTypes.string.isRequired,
-    logOut: PropTypes.func.isRequired
+    onLogOut: PropTypes.func.isRequired
 };
 
 export default AppBarComponent;

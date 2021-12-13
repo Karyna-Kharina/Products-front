@@ -8,8 +8,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClickAddProduct: (product) => dispatch(addProductToCart(product)),
-        onClickRemoveProduct: (product) => dispatch(removeProductFromCart(product))
+        onAddProduct: (product) => dispatch(addProductToCart(product)),
+        onRemoveProduct: (product) => dispatch(removeProductFromCart(product))
     };
 };
 

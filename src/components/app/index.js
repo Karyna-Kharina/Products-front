@@ -16,12 +16,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const App = ({ countProductsInCart, photo, logOut }) => {
+const App = ({ countProductsInCart, photo, onLogOut }) => {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <AppBarComponent photo={photo} logOut={logOut}/>
+            <AppBarComponent photo={photo} onLogOut={onLogOut}/>
             <DrawerComponent countProductsInCart={countProductsInCart}/>
 
             <main className={classes.content}>
@@ -35,7 +35,7 @@ const App = ({ countProductsInCart, photo, logOut }) => {
 App.propTypes = {
     countProductsInCart: PropTypes.number.isRequired,
     photo: PropTypes.string.isRequired,
-    logOut: PropTypes.func.isRequired
+    onLogOut: PropTypes.func.isRequired
 };
 
 export default App;

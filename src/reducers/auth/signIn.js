@@ -1,5 +1,5 @@
-import { isValidEmail, isValidPassword } from "../../additionalData/validation";
-import { CHANGE_EMAIL_AT_LOGIN, CHANGE_PASSWORD_AT_LOGIN, CLEAR_SIGN_IN } from "../../additionalData/constants/auth";
+import { isValidEmail, isValidPassword } from "../../utils/validation";
+import { CHANGE_EMAIL_AT_LOGIN, CHANGE_PASSWORD_AT_LOGIN, CLEAR_SIGN_IN } from "../../utils/constants/auth";
 
 const initialState = {
     email: "admin@gmail.com",

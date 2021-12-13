@@ -9,7 +9,7 @@ import {
     CHANGE_USER_PHOTO,
     CLEAR_USER_FORM,
     PUT_USER_TO_FORM
-} from "../../additionalData/constants/users";
+} from "../../utils/constants/users";
 
 export const changeId = (id) => ({
     type: CHANGE_USER_ID,

@@ -1,4 +1,4 @@
-import { SIGN_UP_SAGA } from "../../additionalData/constants/authSaga";
+import { SIGN_UP_SAGA } from "../../utils/constants/authSaga";
 
 export const signUp = () => ({
     type: SIGN_UP_SAGA

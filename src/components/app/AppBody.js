@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router";
 import App from "../../containers/app";
 import SignUp from "../../containers/auth/SignUp";
 import SignIn from "../../containers/auth/SignIn";
-import { APP, SIGN_IN, SIGN_UP } from "../../additionalData/links/front";
+import { APP, SIGN_IN, SIGN_UP } from "../../utils/links/front";
 
 const AppBody = ({ currentUser }) => (
     <Switch>

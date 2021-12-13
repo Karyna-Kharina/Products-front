@@ -10,7 +10,7 @@ import { worker } from "./mocks/browser";
 import store from "./store";
 import AppBody from "./containers/app/AppBody";
 import MessageInfo from "./containers/info";
-import { BASE_PATH, BASE_PATH_WITH_TRAILING_SLASH, SERVICE_WORKER_URL } from "./additionalData/links/front";
+import { BASE_PATH, BASE_PATH_WITH_TRAILING_SLASH, SERVICE_WORKER_URL } from "./utils/links/front";
 
 const theme = createTheme({
     palette: {

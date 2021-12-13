@@ -8,11 +8,11 @@ import TextFieldComponent from "../TextFieldComponent";
 import SignHeader from "./SignHeader";
 import SignFooter from "./SignFooter";
 import SignButton from "./SignButton";
-import { SIGN_UP } from "../../additionalData/links/front";
+import { SIGN_UP } from "../../utils/links/front";
 
 const useStyles = makeStyles(AuthStyles);
 
-const SignIn = ({ email, isValidEmail, password, isValidPassword, onChangeEmail, onChangePassword, onLogIn }) => {
+const SignIn = ({ email, isValidEmail, password, isValidPassword, onChangeEmail, onChangePassword, onSignIn }) => {
     const classes = useStyles();
     const isDisabledButton = () => !(isValidEmail && isValidPassword);
 
@@ -45,7 +45,7 @@ const SignIn = ({ email, isValidEmail, password, isValidPassword, onChangeEmail,
                 style={classes.submit}
                 name={"Log In"}
                 isDisabledButton={isDisabledButton}
-                onClickButton={onLogIn}
+                onClickButton={onSignIn}
             />
 
             <SignFooter
@@ -63,7 +63,7 @@ SignIn.propTypes = {
     isValidPassword: PropTypes.bool.isRequired,
     onChangeEmail: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
-    onLogIn: PropTypes.func.isRequired
+    onSignIn: PropTypes.func.isRequired
 };
 
 export default SignIn;

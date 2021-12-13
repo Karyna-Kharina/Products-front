@@ -4,7 +4,7 @@ import { Container, Grid, Toolbar } from "@material-ui/core";
 import TextFieldComponent from "../TextFieldComponent";
 import ButtonSaveUpdate from "../ButtonSaveUpdate";
 import Birthday from "../auth/Birthday";
-import { USERS } from "../../additionalData/links/front";
+import { USERS } from "../../utils/links/front";
 
 const UserForm = ({
                       id, onChangeId,

@@ -1,6 +1,6 @@
 import React from "react";
 import { Lock, People, ShoppingCart, ViewModule } from "@material-ui/icons";
-import { PRODUCT_CARDS, PRODUCT_CART, PRODUCTS, USERS } from "../../additionalData/links/front";
+import { PRODUCT_CARDS, PRODUCT_CART, PRODUCTS, USERS } from "../../utils/links/front";
 
 export const MenuElements = [
     {

@@ -1,4 +1,4 @@
-import { MAX_DATE } from "../../additionalData/constants/dates";
+import { MAX_DATE } from "../../utils/constants/dates";
 import {
     isValidDate,
     isValidEmail,
@@ -6,7 +6,7 @@ import {
     isValidName,
     isValidPassword,
     isValidPhoneNumber
-} from "../../additionalData/validation";
+} from "../../utils/validation";
 import {
     CHANGE_USER_BIRTHDAY,
     CHANGE_USER_EMAIL,
@@ -18,7 +18,7 @@ import {
     CHANGE_USER_PHOTO,
     CLEAR_USER_FORM,
     PUT_USER_TO_FORM
-} from "../../additionalData/constants/users";
+} from "../../utils/constants/users";
 
 const initialState = {
     user: {
