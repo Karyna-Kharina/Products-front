@@ -22,7 +22,7 @@ const TextFieldComponent = ({ label, type = "text", value, disabled = false, isV
 TextFieldComponent.propTypes = {
     label: PropTypes.string.isRequired,
     type: PropTypes.string,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     disabled: PropTypes.bool,
     isValidData: PropTypes.bool.isRequired,
     onChangeData: PropTypes.func.isRequired

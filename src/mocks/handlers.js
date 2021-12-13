@@ -33,7 +33,6 @@ export const handlers = [
     }),
     rest.post(PRODUCTS_API, (req, res, ctx) => {
         productFixtures.push(req.body);
-        console.log("post:",req.body, productFixtures);
 
         return res(
             ctx.status(200),
@@ -75,6 +74,7 @@ export const handlers = [
             user.id.includes(filteredName) ||
             user.firstName.includes(filteredName) ||
             user.lastName.includes(filteredName) ||
+            user.birthday.includes(filteredName) ||
             user.phoneNumber.includes(filteredName) ||
             user.email.includes(filteredName)
         );

@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { Container, Paper, TableContainer, Toolbar } from "@material-ui/core";
-import SearchLine from "../SearchLine";
-import UserTable from "./UserTable";
+import { Link } from "react-router-dom";
+import { Avatar, Container, IconButton, Paper, TableContainer, Toolbar } from "@material-ui/core";
+import { Delete, Update } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
+import SearchLine from "../SearchLine";
+import UniversalTable from "../table";
+import { USER_UPDATE } from "../../utils/links/front";
 
 const useStyles = makeStyles({
     div: {
@@ -17,6 +20,59 @@ const Users = ({ current, users, filteredName, fetchUsers, putUserToForm, onDele
     useEffect(() => {
         fetchUsers();
     }, [fetchUsers]);
+
+    const userColumns = [
+        {
+            label: "Photo",
+            field: "photo",
+            render: ({ photo }) => (<Avatar src={photo}/>)
+        },
+        {
+            label: "ID",
+            field: "id"
+        },
+        {
+            label: "First Name",
+            field: "firstName"
+        },
+        {
+            label: "Last Name",
+            field: "lastName"
+        },
+        {
+            label: "Birthday",
+            field: "birthday"
+        },
+        {
+            label: "Phone",
+            field: "phoneNumber"
+        },
+        {
+            label: "Email",
+            field: "email"
+        },
+        {
+            label: "Update",
+            render: (user) => (
+                <Link to={USER_UPDATE}>
+                    <IconButton onClick={() => putUserToForm(user)}>
+                        <Update/>
+                    </IconButton>
+                </Link>
+            )
+        },
+        {
+            label: "Delete",
+            render: ({ id }) => (
+                <IconButton
+                    disabled={id === current.id}
+                    onClick={() => onDelete(id)}
+                >
+                    <Delete/>
+                </IconButton>
+            )
+        }
+    ];
 
     return (
         <Container>
@@ -32,12 +88,7 @@ const Users = ({ current, users, filteredName, fetchUsers, putUserToForm, onDele
             <Toolbar/>
 
             <TableContainer component={Paper}>
-                <UserTable
-                    users={users}
-                    current={current}
-                    onDelete={(id) => onDelete(id)}
-                    putUserToForm={(user) => putUserToForm(user)}
-                />
+                <UniversalTable columns={userColumns} data={users}/>
             </TableContainer>
         </Container>
     );

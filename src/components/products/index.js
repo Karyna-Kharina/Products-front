@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Button, Container, Paper, TableContainer, Toolbar } from "@material-ui/core";
-import { Add } from "@material-ui/icons";
+import { Button, Container, IconButton, Paper, TableContainer, Toolbar } from "@material-ui/core";
+import { Add, Delete, Update } from "@material-ui/icons";
 import SearchLine from "../SearchLine";
-import ProductTable from "./ProductTable";
-import { CREATE_PRODUCT_FORM } from "../../utils/links/front";
+import UniversalTable from "../table";
+import { CREATE_PRODUCT_FORM, PRODUCT_UPDATE } from "../../utils/links/front";
 
 const Products = ({
                       products, filteredName, fetchProducts,
@@ -14,6 +14,39 @@ const Products = ({
     useEffect(() => {
         fetchProducts();
     }, [fetchProducts]);
+
+    const productColumns = [
+        {
+            label: "ID",
+            field: "id"
+        },
+        {
+            label: "Name",
+            field: "name"
+        },
+        {
+            label: "Price",
+            field: "price"
+        },
+        {
+            label: "Update",
+            render: (product) => (
+                <Link to={PRODUCT_UPDATE}>
+                    <IconButton onClick={() => putProductToForm(product)}>
+                        <Update/>
+                    </IconButton>
+                </Link>
+            )
+        },
+        {
+            label: "Delete",
+            render: ({ id }) => (
+                <IconButton onClick={() => onDelete(id)}>
+                    <Delete/>
+                </IconButton>
+            )
+        }
+    ];
 
     return (
         <Container>
@@ -39,11 +72,7 @@ const Products = ({
             <Toolbar/>
 
             <TableContainer component={Paper}>
-                <ProductTable
-                    products={products}
-                    onDelete={(id) => onDelete(id)}
-                    putProductToForm={putProductToForm}
-                />
+                <UniversalTable columns={productColumns} data={products}/>
             </TableContainer>
         </Container>
     );
