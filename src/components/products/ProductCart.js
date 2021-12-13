@@ -1,21 +1,10 @@
 import React from "react";
+import key from "weak-key";
 import PropTypes from "prop-types";
-import {
-    Avatar,
-    Box,
-    Container,
-    IconButton,
-    ListItemAvatar,
-    ListItemText,
-    Table,
-    TableBody,
-    TableCell,
-    TableRow,
-    Typography
-} from "@material-ui/core";
-import { Add, Remove } from "@material-ui/icons";
+import { Box, Container, Table, TableBody, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { getCountOfItemsWithId, getFloatingPointAmount } from "../../utils/methods";
+import ProductCartItem from "./ProductCartItem";
+import { getFloatingPointAmount } from "../../utils/methods";
 
 const useStyles = makeStyles({
     table: {
@@ -37,38 +26,15 @@ const ProductCart = ({ products, onAddProduct, onRemoveProduct }) => {
                     {
                         products
                             .filter((item, index, arr) => arr.indexOf(item) === index)
-                            .map(({ id, name, price, image }) => (
-                                    <TableRow key={id}>
-                                        <TableCell className={classes.cell}>
-                                            <ListItemAvatar>
-                                                <Avatar src={image}/>
-                                            </ListItemAvatar>
-                                        </TableCell>
-
-                                        <TableCell align={"left"}>
-                                            <ListItemText primary={name}/>
-                                        </TableCell>
-
-                                        <TableCell align={"right"}>
-                                            <IconButton onClick={() => onRemoveProduct({ id, name, price, image })}>
-                                                <Remove/>
-                                            </IconButton>
-                                        </TableCell>
-
-                                        <TableCell align={"center"}>
-                                            <ListItemText primary={getCountOfItemsWithId(products, id)}/>
-                                        </TableCell>
-
-                                        <TableCell align={"left"}>
-                                            <IconButton onClick={() => onAddProduct({ id, name, price, image })}>
-                                                <Add/>
-                                            </IconButton>
-                                        </TableCell>
-
-                                        <TableCell className={classes.cell}>
-                                            <ListItemText primary={getFloatingPointAmount(price)}/>
-                                        </TableCell>
-                                    </TableRow>
+                            .map((item) => (
+                                    <ProductCartItem
+                                        key={key(item)}
+                                        style={classes.cell}
+                                        product={item}
+                                        products={products}
+                                        onAddProduct={onAddProduct}
+                                        onRemoveProduct={onRemoveProduct}
+                                    />
                                 )
                             )
                     }
