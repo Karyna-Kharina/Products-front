@@ -1,9 +1,10 @@
 import axios from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
-import { setProducts } from "../../actions/products";
+import { setTableData } from "../../actions/table";
 import { setMessageInfo } from "../../actions/info";
-import { GET_PRODUCTS_BY_NAME_SAGA } from "../../utils/constants/productsSaga";
 import { PRODUCTS_API_SEARCH } from "../../utils/links/back";
+import { PRODUCTS_KEY } from "../../utils/constants/tableKeys";
+import { GET_PRODUCTS_BY_NAME_SAGA } from "../../utils/constants/productsSaga";
 
 export function* getProductByNameSaga() {
     try {
@@ -18,7 +19,7 @@ export function* getProductByNameSaga() {
             }
         );
 
-        yield put(setProducts(result.data));
+        yield put(setTableData(PRODUCTS_KEY, result.data));
     } catch (e) {
         yield put(setMessageInfo({ type: "error", text: e.message }));
     }

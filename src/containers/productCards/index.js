@@ -5,7 +5,7 @@ import { getProductsSaga } from "../../actions/productsSaga";
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products.list
+        products: state.table.products.list
     };
 };
 

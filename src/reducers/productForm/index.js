@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
             };
         }
         case PUT_PRODUCT_TO_FORM: {
-            const { name, price, image } = action;
+            const { name, price, image } = action.product;
 
             return {
                 ...action.product,
