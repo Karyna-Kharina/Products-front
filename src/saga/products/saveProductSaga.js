@@ -8,7 +8,7 @@ import { SAVE_PRODUCT_SAGA } from "../../utils/constants/productsSaga";
 
 export function* saveProductSaga() {
     try {
-        const { product } = yield select(state => state.productForm);
+        const product = yield select(state => state.productForm);
         let result;
 
         if (product.id) {

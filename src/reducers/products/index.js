@@ -1,7 +1,7 @@
 import { CHANGE_FILTERED_NAME, SET_PRODUCTS } from "../../utils/constants/products";
 
 const initialState = {
-    products: [],
+    list: [],
     filteredName: ""
 };
 
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
         case SET_PRODUCTS: {
             return {
                 ...state,
-                products: action.products
+                list: action.products
             };
         }
         default:

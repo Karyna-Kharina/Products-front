@@ -6,7 +6,7 @@ import { getProductsByFilteredNameSaga, getProductsSaga, removeProduct } from ".
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products.products,
+        products: state.products.list,
         filteredName: state.products.filteredName
     };
 };

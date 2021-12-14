@@ -1,9 +1,11 @@
 import { connect } from "react-redux";
 import AppBody from "../../components/app/AppBody";
 
-const mapStateToProps = (state) => ({
-    currentUser: state.profile.current
-});
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.profile.current
+    };
+};
 
 const mapDispatchToProps = () => ({});
 

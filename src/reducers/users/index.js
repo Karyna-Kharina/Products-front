@@ -1,7 +1,7 @@
 import { CHANGE_FILTERED_USERNAME, SET_USERS } from "../../utils/constants/users";
 
 const initialState = {
-    users: [],
+    list: [],
     filteredName: ""
 };
 
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
         case SET_USERS: {
             return {
                 ...state,
-                users: action.users
+                list: action.users
             };
         }
         default:

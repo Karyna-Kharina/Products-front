@@ -6,7 +6,7 @@ import { getUsersByFilteredNameSaga, getUsersSaga, removeUser } from "../../acti
 
 const mapStateToProps = (state) => {
     return {
-        users: state.users.users,
+        users: state.users.list,
         filteredName: state.users.filteredName,
         current: state.profile.current
     };

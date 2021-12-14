@@ -5,13 +5,13 @@ import { updateId, updateImage, updateName, updatePrice } from "../../actions/pr
 
 const mapStateToProps = (state) => {
     return {
-        id: state.productForm.product.id,
-        name: state.productForm.product.name,
-        isValidName: state.productForm.product.isValidName,
-        price: state.productForm.product.price,
-        isValidPrice: state.productForm.product.isValidPrice,
-        image: state.productForm.product.image,
-        isValidImage: state.productForm.product.isValidImage
+        id: state.productForm.id,
+        name: state.productForm.name,
+        isValidName: state.productForm.isValidName,
+        price: state.productForm.price,
+        isValidPrice: state.productForm.isValidPrice,
+        image: state.productForm.image,
+        isValidImage: state.productForm.isValidImage
     };
 };
 

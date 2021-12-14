@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import Profile from "../../components/profile";
 
 const mapStateToProps = (state) => {
-
     return {
         firstName: state.profile.current.firstName,
         lastName: state.profile.current.lastName,

@@ -14,21 +14,21 @@ import {
 
 const mapStateToProps = (state) => {
     return {
-        id: state.userForm.user.id,
-        firstName: state.userForm.user.firstName,
-        isValidFirstName: state.userForm.user.isValidFirstName,
-        lastName: state.userForm.user.lastName,
-        isValidLastName: state.userForm.user.isValidLastName,
-        birthday: state.userForm.user.birthday,
-        isValidBirthday: state.userForm.user.isValidBirthday,
-        email: state.userForm.user.email,
-        isValidEmail: state.userForm.user.isValidEmail,
-        phoneNumber: state.userForm.user.phoneNumber,
-        isValidPhoneNumber: state.userForm.user.isValidPhoneNumber,
-        photo: state.userForm.user.photo,
-        isValidPhoto: state.userForm.user.isValidPhoto,
-        password: state.userForm.user.password,
-        isValidPassword: state.userForm.user.isValidPassword
+        id: state.userForm.id,
+        firstName: state.userForm.firstName,
+        isValidFirstName: state.userForm.isValidFirstName,
+        lastName: state.userForm.lastName,
+        isValidLastName: state.userForm.isValidLastName,
+        birthday: state.userForm.birthday,
+        isValidBirthday: state.userForm.isValidBirthday,
+        email: state.userForm.email,
+        isValidEmail: state.userForm.isValidEmail,
+        phoneNumber: state.userForm.phoneNumber,
+        isValidPhoneNumber: state.userForm.isValidPhoneNumber,
+        photo: state.userForm.photo,
+        isValidPhoto: state.userForm.isValidPhoto,
+        password: state.userForm.password,
+        isValidPassword: state.userForm.isValidPassword
     };
 };
 

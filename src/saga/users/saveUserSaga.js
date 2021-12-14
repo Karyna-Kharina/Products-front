@@ -7,7 +7,7 @@ import { SAVE_USER_SAGA } from "../../utils/constants/usersSaga";
 
 export function* saveUserSaga() {
     try {
-        const { user } = yield select(state => state.userForm);
+        const user = yield select(state => state.userForm);
         let result;
 
         if (user.id) {
