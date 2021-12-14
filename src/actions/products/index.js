@@ -1,19 +1,4 @@
-import {
-    ADD_PRODUCT_TO_CART,
-    CHANGE_FILTERED_NAME,
-    REMOVE_PRODUCT_FROM_CART,
-    SET_PRODUCTS
-} from "../../utils/constants/products";
-
-export const addProductToCart = (product) => ({
-    type: ADD_PRODUCT_TO_CART,
-    product
-});
-
-export const removeProductFromCart = (product) => ({
-    type: REMOVE_PRODUCT_FROM_CART,
-    product
-});
+import { CHANGE_FILTERED_NAME, SET_PRODUCTS } from "../../utils/constants/products";
 
 export const changeFilteredName = (filteredName) => ({
     type: CHANGE_FILTERED_NAME,

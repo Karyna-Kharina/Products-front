@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import ProductCart from "../../containers/products/ProductCart";
-import ProductCards from "../../containers/products/ProductCards";
+import ProductCart from "../../containers/productCart";
+import ProductCards from "../../containers/productCards";
 import ProductList from "../../containers/products";
 import UserList from "../../containers/users";
 import UserForm from "../../containers/userForm";

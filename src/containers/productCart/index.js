@@ -1,10 +1,12 @@
 import { connect } from "react-redux";
-import ProductCart from "../../components/products/ProductCart";
-import { addProductToCart, removeProductFromCart } from "../../actions/products";
+import ProductCart from "../../components/productCart";
+import { addProductToCart, removeProductFromCart } from "../../actions/productCart";
 
-const mapStateToProps = (state) => ({
-    products: state.products.productsInCart
-});
+const mapStateToProps = (state) => {
+    return {
+        products: state.productCart
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
