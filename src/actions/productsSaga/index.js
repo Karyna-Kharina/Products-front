@@ -5,12 +5,12 @@ import {
     SAVE_PRODUCT_SAGA
 } from "../../utils/constants/productsSaga";
 
-export const saveProduct = (product) => ({
+export const saveProductSaga = (product) => ({
     type: SAVE_PRODUCT_SAGA,
     product
 });
 
-export const removeProduct = (id) => ({
+export const removeProductSaga = (id) => ({
     type: REMOVE_PRODUCT_SAGA,
     id
 });

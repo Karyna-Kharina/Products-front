@@ -1,48 +1,40 @@
 import { connect } from "react-redux";
 import UserForm from "../../components/userForm";
-import { saveUser } from "../../actions/usersSaga";
-import {
-    changeBirthday,
-    changeEmail,
-    changeFirstName,
-    changeId,
-    changeLastName,
-    changePassword,
-    changePhoneNumber,
-    changePhoto
-} from "../../actions/userForm";
+import { saveUserSaga } from "../../actions/usersSaga";
+import { changeFormData } from "../../actions/form";
+import { USERS_KEY } from "../../utils/constants/tableKeys";
 
 const mapStateToProps = (state) => {
     return {
-        id: state.userForm.id,
-        firstName: state.userForm.firstName,
-        isValidFirstName: state.userForm.isValidFirstName,
-        lastName: state.userForm.lastName,
-        isValidLastName: state.userForm.isValidLastName,
-        birthday: state.userForm.birthday,
-        isValidBirthday: state.userForm.isValidBirthday,
-        email: state.userForm.email,
-        isValidEmail: state.userForm.isValidEmail,
-        phoneNumber: state.userForm.phoneNumber,
-        isValidPhoneNumber: state.userForm.isValidPhoneNumber,
-        photo: state.userForm.photo,
-        isValidPhoto: state.userForm.isValidPhoto,
-        password: state.userForm.password,
-        isValidPassword: state.userForm.isValidPassword
+        id: state.form.users.id,
+        firstName: state.form.users.firstName,
+        isValidFirstName: state.form.users.isValidFirstName,
+        lastName: state.form.users.lastName,
+        isValidLastName: state.form.users.isValidLastName,
+        birthday: state.form.users.birthday,
+        isValidBirthday: state.form.users.isValidBirthday,
+        email: state.form.users.email,
+        isValidEmail: state.form.users.isValidEmail,
+        phoneNumber: state.form.users.phoneNumber,
+        isValidPhoneNumber: state.form.users.isValidPhoneNumber,
+        photo: state.form.users.photo,
+        isValidPhoto: state.form.users.isValidPhoto,
+        password: state.form.users.password,
+        isValidPassword: state.form.users.isValidPassword
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onChangeId: (id) => dispatch(changeId(id)),
-        onChangeFirstName: (firstName) => dispatch(changeFirstName(firstName)),
-        onChangeLastName: (lastName) => dispatch(changeLastName(lastName)),
-        onChangeBirthday: (birthday) => dispatch(changeBirthday(birthday)),
-        onChangePhoneNumber: (phoneNumber) => dispatch(changePhoneNumber(phoneNumber)),
-        onChangeEmail: (email) => dispatch(changeEmail(email)),
-        onChangePhoto: (photo) => dispatch(changePhoto(photo)),
-        onChangePassword: (password) => dispatch(changePassword(password)),
-        onSave: (user) => dispatch(saveUser(user))
+        onChangeId: (id) => dispatch(changeFormData(USERS_KEY, "id", id)),
+        onChangeFirstName: (firstName) => dispatch(changeFormData(USERS_KEY, "firstName", firstName)),
+        onChangeLastName: (lastName) => dispatch(changeFormData(USERS_KEY, "lastName", lastName)),
+        onChangeBirthday: (birthday) => dispatch(changeFormData(USERS_KEY, "birthday", birthday)),
+        onChangePhoneNumber: (phoneNumber) => dispatch(changeFormData(USERS_KEY, "phoneNumber", phoneNumber)),
+        onChangeEmail: (email) => dispatch(changeFormData(USERS_KEY, "email", email)),
+        onChangePhoto: (photo) => dispatch(changeFormData(USERS_KEY, "photo", photo)),
+        onChangePassword: (password) => dispatch(changeFormData(USERS_KEY, "password", password)),
+        onSave: (user) => dispatch(saveUserSaga(user))
     };
 };
 

@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import Products from "../../components/products";
+import { setFormData } from "../../actions/form";
 import { changeFilteredName } from "../../actions/table";
-import { clearProductForm, putProductToForm } from "../../actions/productForm";
-import { getProductsByFilteredNameSaga, getProductsSaga, removeProduct } from "../../actions/productsSaga";
+import { clearProductForm } from "../../actions/productForm";
+import { getProductsByFilteredNameSaga, getProductsSaga, removeProductSaga } from "../../actions/productsSaga";
 import { PRODUCTS_KEY } from "../../utils/constants/tableKeys";
 
 const mapStateToProps = (state) => {
@@ -15,9 +16,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchProducts: () => dispatch(getProductsSaga()),
-        putProductToForm: (product) => dispatch(putProductToForm(product)),
+        putProductToForm: (product) => dispatch(setFormData(PRODUCTS_KEY, product)),
         onCreate: () => dispatch(clearProductForm()),
-        onDelete: (id) => dispatch(removeProduct(id)),
+        onDelete: (id) => dispatch(removeProductSaga(id)),
         onChangeFilteredName: (filteredName) => {
             dispatch(changeFilteredName(PRODUCTS_KEY, filteredName));
             dispatch(getProductsByFilteredNameSaga(filteredName));

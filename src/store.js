@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
 import mainSaga from "./saga";
+import form from "./reducers/form";
 import table from "./reducers/table";
 import productForm from "./reducers/productForm";
 import productCart from "./reducers/productCart";
@@ -14,6 +15,7 @@ import messageInfo from "./reducers/info";
 const reducers = {
     signIn,
     signUp,
+    form,
     table,
     productForm,
     productCart,

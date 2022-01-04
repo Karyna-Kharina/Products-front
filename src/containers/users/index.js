@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import Users from "../../components/users";
-import { putUserToForm } from "../../actions/userForm";
+import { setFormData } from "../../actions/form";
 import { changeFilteredName } from "../../actions/table";
-import { getUsersByFilteredNameSaga, getUsersSaga, removeUser } from "../../actions/usersSaga";
+import { getUsersByFilteredNameSaga, getUsersSaga, removeUserSaga } from "../../actions/usersSaga";
 import { USERS_KEY } from "../../utils/constants/tableKeys";
 
 const mapStateToProps = (state) => {
@@ -16,8 +16,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchUsers: () => dispatch(getUsersSaga()),
-        putUserToForm: (user) => dispatch(putUserToForm(user)),
-        onDelete: (id) => dispatch(removeUser(id)),
+        putUserToForm: (user) => dispatch(setFormData(USERS_KEY, user)),
+        onDelete: (id) => dispatch(removeUserSaga(id)),
         onChangeFilteredName: (filteredName) => {
             dispatch(changeFilteredName(USERS_KEY, filteredName));
             dispatch(getUsersByFilteredNameSaga());

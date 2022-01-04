@@ -1,16 +1,16 @@
 import {
-    REMOVE_USER_SAGA,
     GET_USERS_BY_NAME_SAGA,
     GET_USERS_SAGA,
+    REMOVE_USER_SAGA,
     SAVE_USER_SAGA
 } from "../../utils/constants/usersSaga";
 
-export const saveUser = (user) => ({
+export const saveUserSaga = (user) => ({
     type: SAVE_USER_SAGA,
     user
 });
 
-export const removeUser = (id) => ({
+export const removeUserSaga = (id) => ({
     type: REMOVE_USER_SAGA,
     id
 });
